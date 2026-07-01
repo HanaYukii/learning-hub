@@ -10,6 +10,20 @@
 
 每主題一張 item-sheet([模板](/quant/template)):條列「核心結果 / 經典題答案 / 易錯」。
 
+## 艱深題庫(面試硬題)
+
+面試常考的艱深數學題,每題「題目 + 技巧 + **答案**」,答案經對抗式校對。
+
+| 題庫 | 涵蓋 |
+| --- | --- |
+| [機率 & 期望 brainteasers](/quant/problems/prob-brainteasers) | 幾何機率、等待時間、順序統計、悖論 |
+| [鞅・隨機漫步・停時](/quant/problems/martingale-walk) | 賭徒破產、Conway/ABRACADABRA、反射、Pólya |
+| [隨機微積分・布朗運動](/quant/problems/stochastic-calculus) | Itô、反射原理、首達、arcsine、OU |
+| [馬可夫鏈・吸收](/quant/problems/markov-chains) | 基本矩陣、吸收時間、hitting/commute time |
+| [組合・計數期望](/quant/problems/combinatorics) | Catalan、錯排、$H_n$、生成函數 |
+| [線代・共變異數・隨機矩陣](/quant/problems/linear-algebra) | PSD、相關係數界、PCA、Marchenko–Pastur |
+| [選擇權・定價數學](/quant/problems/pricing) | 複製、風險中性、BS PDE、Greeks |
+
 ## 數學軌 checklist
 
 **機率**

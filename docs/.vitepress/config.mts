@@ -72,6 +72,19 @@ export default defineConfig({
             { text: '鞅與選擇停時(OST)', link: '/quant/probability/martingale-optional-stopping' },
           ],
         },
+        {
+          text: '艱深題庫',
+          collapsed: false,
+          items: [
+            { text: '機率 brainteasers', link: '/quant/problems/prob-brainteasers' },
+            { text: '鞅・隨機漫步・停時', link: '/quant/problems/martingale-walk' },
+            { text: '隨機微積分・布朗運動', link: '/quant/problems/stochastic-calculus' },
+            { text: '馬可夫鏈・吸收', link: '/quant/problems/markov-chains' },
+            { text: '組合・計數期望', link: '/quant/problems/combinatorics' },
+            { text: '線代・共變異數・隨機矩陣', link: '/quant/problems/linear-algebra' },
+            { text: '選擇權・定價數學', link: '/quant/problems/pricing' },
+          ],
+        },
       ],
     },
 
