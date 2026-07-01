@@ -40,3 +40,4 @@
 | 技巧 | tag | 為何值得 |
 | --- | --- | --- |
 | [線段樹維護矩陣乘積](/cp/techniques/segtree-matrix-product) | 線段樹·矩陣·dp | 「線性遞推 × 區間 × 點修改」通法;ICPC 印尼心結題 |
+| [有界資源維狀態擴充](/cp/techniques/bounded-resource-state) | 最短路·狀態擴充·Pareto | 多準則最短路別折疊成單標籤 |

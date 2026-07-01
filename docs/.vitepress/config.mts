@@ -54,6 +54,7 @@ export default defineConfig({
           items: [
             { text: '技巧卡模板', link: '/cp/template' },
             { text: '線段樹維護矩陣乘積', link: '/cp/techniques/segtree-matrix-product' },
+            { text: '有界資源維狀態擴充', link: '/cp/techniques/bounded-resource-state' },
           ],
         },
       ],
