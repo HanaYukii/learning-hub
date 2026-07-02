@@ -7,7 +7,6 @@ problems:
   - { name: 題名, url: https://..., rating: 2500 }
 reviewed: 2026-07-01
 review_interval: 14
-mastery: learning
 ---
 
 # 技巧名稱

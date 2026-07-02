@@ -4,7 +4,6 @@ track: math
 category: pricing
 reviewed: 2026-07-01
 review_interval: 21
-mastery: learning
 ---
 
 # 選擇權・定價數學(艱深)

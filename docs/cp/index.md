@@ -1,3 +1,12 @@
+---
+title: 競程技巧庫
+---
+
+<script setup>
+import { withBase } from 'vitepress'
+import { data as contests } from './contests.data'
+</script>
+
 # 競程技巧庫
 
 > **用途**:每場比賽後,快速記下「值得學的進步重點」。**主要給自己快速複習**,同時公開、可對外展示;內容與格式一律以「我自己學得到東西」為準。
@@ -9,7 +18,7 @@
 - **比賽 digest** — `contests/<日期>-<比賽>.md`,**主要單位**。一場一檔,每題列「技巧 + 作法」。([模板](/cp/contests/template))
 - **技巧卡** — `techniques/<slug>.md`,只有**反覆出現或值得深挖**的 pattern 才升級成一張卡;也保持精簡(模板碼 + 易錯一兩句,不寫長篇)。([模板](/cp/template))
 
-同一招在不同比賽出現,靠 **tag + 全文搜尋**聚合,日後可自動產技巧索引。
+> 側欄、下方索引表、[tag 索引](/cp/tags)、[複習佇列](/review/)全部**自動生成**——加一場比賽 = 只放一個 md 檔(frontmatter 填好 `contest/date/tags/reviewed`)。
 
 ## 收錄判準
 
@@ -19,21 +28,26 @@
 
 各難度都收(簡單題記一句觀察就好)。**偏門** → 直接丟;**超 2700 又非經典模板** → 移到「不收」或只留標題。
 
-## tag 詞彙(自由擴充)
+## tag 詞彙表(canonical)
 
-`dp` `數位dp` `區間dp` `狀壓` `貪心` `構造` `圖論` `flow` `樹` `線段樹` `資料結構` `數論` `組合` `多項式` `字串` `幾何` `矩陣` `博弈` `機率期望` `根號` `二分` `交互` `bitset`
+**鐵則:tag 只能從這張表選;要新 tag,先把它加進這張表再用。**(同義詞不要另起:`greedy`→`貪心`、`期望/期望值`→`機率期望`、`狀態壓縮`→`狀壓`)
 
-## 比賽 digest 索引
+`dp` `數位dp` `區間dp` `狀壓` `背包` `貪心` `反悔貪心` `構造` `分類討論` `模擬` `數學` `圖論` `最短路` `flow` `樹` `HLD` `線段樹` `BIT` `線段樹分治` `可回滾DSU` `ODT` `資料結構` `數論` `組合計數` `容斥` `機率期望` `反射原理` `多項式` `NTT` `字串` `幾何` `矩陣` `博弈` `排列` `置換環` `逆序對` `位元` `XOR` `WHT` `BSGS` `MITM` `不變量` `貢獻` `差分` `離線` `掃描線` `根號` `二分` `分治` `互動` `bitset` `狀態擴充` `分層圖` `Pareto`
 
-| 日期 | 比賽 | 重點 tag |
-| --- | --- | --- |
-| 2026-06-28 | [AtCoder ARC 223](/cp/contests/2026-06-28-ac-arc223) | 數論·期望·反射原理·分治NTT |
-| 2026-06-27 | [CF Round 1105 (Div.1)](/cp/contests/2026-06-27-cf-round-1105-div1) | 博弈·貢獻·構造·容斥·線段樹分治 |
-| 2026-06-27 | [AtCoder ABC 464](/cp/contests/2026-06-27-ac-abc464) | dp·期望·MITM·反悔貪心 |
-| 2026-06-18 | [CF Round 1104 (Div.1+2)](/cp/contests/2026-06-18-cf-1104) | 貪心·不變量·置換群·數論編碼 |
-| 2026-06-14 | [AtCoder ARC 222](/cp/contests/2026-06-14-ac-arc222) | 數位dp·XOR卷積·BSGS |
-| 2026-06-09 | [Edu Round 191](/cp/contests/2026-06-09-cf-edu191) | 貪心·構造·popcount排列 |
-| 2026-07-01 | [格式範例(示意)](/cp/contests/2026-07-01-example) | 示意 |
+→ 按 tag 聚合的所有題目見 **[技巧 tag 索引](/cp/tags)**。
+
+## 比賽 digest 索引(自動生成)
+
+<table>
+  <thead><tr><th>日期</th><th>比賽</th><th>重點 tag</th></tr></thead>
+  <tbody>
+    <tr v-for="c in contests" :key="c.url">
+      <td>{{ c.date }}</td>
+      <td><a :href="withBase(c.url)">{{ c.short }}</a></td>
+      <td>{{ c.tags.join('·') }}</td>
+    </tr>
+  </tbody>
+</table>
 
 ## 技巧卡索引
 
@@ -41,3 +55,11 @@
 | --- | --- | --- |
 | [線段樹維護矩陣乘積](/cp/techniques/segtree-matrix-product) | 線段樹·矩陣·dp | 「線性遞推 × 區間 × 點修改」通法;ICPC 印尼心結題 |
 | [有界資源維狀態擴充](/cp/techniques/bounded-resource-state) | 最短路·狀態擴充·Pareto | 多準則最短路別折疊成單標籤 |
+
+## 技巧卡候選(digest 反覆出現的 pattern)
+
+出現 ≥2 次或屬經典模板 → 升級成卡。寫 digest 時順手更新:
+
+- `線段樹分治` + `可回滾DSU`(CF1105 E)——經典離線框架,**候選**
+- `反悔貪心`(ABC464 G)——JOI Candies 型,**候選**
+- `不變量`(CF1104 D、ARC222 F、ARC223 E)——已出現 3 場,偏思路難成卡,先觀察

@@ -4,7 +4,6 @@ track: math
 category: stochastic
 reviewed: 2026-07-01
 review_interval: 21
-mastery: learning
 ---
 
 # 隨機微積分・布朗運動(艱深)

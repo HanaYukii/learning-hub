@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "preview": "vitepress preview docs",
+    "reviewed": "node scripts/mark-reviewed.mjs"
   },
   "devDependencies": {
     "markdown-it-mathjax3": "^4.3.2",

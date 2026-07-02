@@ -7,7 +7,6 @@ problems:
   - { name: "資源受限最短路 (RCSP) 型;近期某場 Q4 即此型", url: "", rating: 2500 }
 reviewed: 2026-07-01
 review_interval: 21
-mastery: learning
 ---
 
 # 有界資源維狀態擴充(多準則最短路 / Pareto)

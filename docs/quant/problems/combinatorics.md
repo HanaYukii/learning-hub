@@ -4,7 +4,6 @@ track: math
 category: combinatorics
 reviewed: 2026-07-01
 review_interval: 21
-mastery: learning
 ---
 
 # 組合・計數期望(艱深)

@@ -4,7 +4,6 @@ track: math
 category: linalg
 reviewed: 2026-07-01
 review_interval: 21
-mastery: learning
 ---
 
 # 線代・共變異數・隨機矩陣(艱深)

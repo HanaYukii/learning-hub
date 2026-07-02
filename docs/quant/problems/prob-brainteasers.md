@@ -4,7 +4,6 @@ track: math
 category: probability
 reviewed: 2026-07-01
 review_interval: 21
-mastery: learning
 ---
 
 # 機率 & 期望 brainteasers(艱深)

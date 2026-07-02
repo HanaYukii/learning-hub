@@ -4,7 +4,6 @@ track: math          # math | hft-cpp
 category: probability
 reviewed: 2026-07-01
 review_interval: 14
-mastery: learning
 ---
 
 # 主題 — items

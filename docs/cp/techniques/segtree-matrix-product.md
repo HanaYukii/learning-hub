@@ -7,7 +7,6 @@ problems:
   - { name: "(示意) 帶修改的線性遞推 / 固定長度路徑計數", url: "", rating: 2500 }
 reviewed: 2026-07-01
 review_interval: 14
-mastery: learning
 ---
 
 # 線段樹維護矩陣乘積
