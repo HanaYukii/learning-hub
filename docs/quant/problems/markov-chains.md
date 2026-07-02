@@ -13,91 +13,195 @@ review_interval: 21
 ## 吸收機率與期望吸收時間(線性方程)
 
 - **一般吸收鏈:給定轉移矩陣,求「被某吸收態吸收的機率」與「期望吸收步數」。**
+  <details><summary>技巧+答案</summary>
+
   技巧:一步條件法(first-step analysis)。設 $h_i=P_i(\text{被 }A\text{ 吸收})$,對暫態解 $h_i=\sum_j P_{ij}h_j$、邊界 $h_A=1,h_B=0$;期望步數 $t_i=1+\sum_{j\in T}Q_{ij}t_j$;**答案/關鍵:基本矩陣 $N=(I-Q)^{-1}$,吸收機率 $=NR$,期望步數向量 $t=N\mathbf{1}$**。
 
+  </details>
+
 - **基本矩陣的機率意義:$N=(I-Q)^{-1}$ 的第 $(i,j)$ 項到底是什麼?**
+  <details><summary>技巧+答案</summary>
+
   技巧:把 $N=\sum_{k\ge0}Q^{k}$ 逐項相加,$Q^{k}_{ij}=P_i(\text{第 }k\text{ 步在 }j)$;**答案/關鍵:$N_{ij}=E_i[\text{吸收前造訪暫態 }j\text{ 的期望次數}]$,故行和 $=$ 期望吸收步數,對角線 $N_{ii}=1/P_i(\text{不再回 }i)$**。
 
+  </details>
+
 - **對稱賭徒破產:$\pm 1$ 隨機遊走,$0$ 與 $N$ 吸收,從 $k$ 出發,問到 $N$ 的機率與期望步數。**
+  <details><summary>技巧+答案</summary>
+
   技巧:調和函數 $h_k=k/N$;期望步數解非齊次差分 $t_k=1+\tfrac12(t_{k-1}+t_{k+1})$,特解 $-k^2$;**答案/關鍵:$P(\text{到 }N)=k/N$,$E[\text{步數}]=k(N-k)$**。
 
+  </details>
+
 - **有偏賭徒破產:每步右移機率 $p\neq q$,問破產前到達 $N$ 的機率與期望時間($r=q/p$)。**
+  <details><summary>技巧+答案</summary>
+
   技巧:非齊次線性差分方程,特解 + 齊次通解;或用鞅 $(q/p)^{S_n}$ 與 $S_n-(p-q)n$ 配 Optional Stopping;**答案/關鍵:$P_k=\dfrac{1-r^{k}}{1-r^{N}}$,$E[T_k]=\dfrac{k}{q-p}-\dfrac{N}{q-p}\cdot\dfrac{1-r^{k}}{1-r^{N}}$**。
 
+  </details>
+
 - **連續同號序列:公平硬幣,期望要多少次才首次出現連續 $k$ 個正面?**
+  <details><summary>技巧+答案</summary>
+
   技巧:對「目前連勝長度」建吸收鏈,一步分析或更新論證;**答案/關鍵:$E=2^{k+1}-2=\sum_{j=1}^{k}2^{j}$**。
+
+  </details>
 
 ## 模式等待與 Penney 賽局(硬幣鞅)
 
 - **模式 HTH vs HHT:期望首現次數為何不同?**
+  <details><summary>技巧+答案</summary>
+
   技巧:Conway 自重疊修正 / Li 鞅法,$E[T]=\sum_{i:\,\text{前綴}=\text{後綴長 }i}2^{i}$;**答案/關鍵:$E[\text{HTH}]=2^3+2^1=10$、$E[\text{HHT}]=2^3=8$(自重疊的 HTH 更慢);另 $E[\text{HHH}]=2^3+2^2+2^1=14$**。
 
+  </details>
+
 - **ABRACADABRA / 鞅賭客團:用「公平賭場」證明模式期望等待時間。**
+  <details><summary>技巧+答案</summary>
+
   技巧:每個時刻放一名賭客押注、破產即淨賠 $-1$,期末仍在場的賭客資本對應自重疊項,由鞅 $E[\text{財富}]=E[T]$;**答案/關鍵:$E[T]=\sum_{i:\,\text{overlap }i}|A|^{i}$(公平硬幣 $|A|=2$),同時給出模式間相關結構**。
 
+  </details>
+
 - **Penney 賽局(非遞移性):對手先選長度 $\ge3$ 的正反模式,你後選,能否穩贏?**
+  <details><summary>技巧+答案</summary>
+
   技巧:Conway leading-number 算勝率(誰先出現),兩模式競賽是吸收鏈的「先到吸收態」問題;**答案/關鍵:後手必有優勢,關係非遞移(如 HHT 勝 HTT、HTT 勝 TTH…成環);對手選 $b_1b_2b_3$,你選 $\bar b_2\,b_1b_2$,勝率可達 $2/3$**。
+
+  </details>
 
 ## 青蛙跳階 / 期望步數
 
 - **青蛙跳階:$n$ 階,每次等機率跳 $1$ 或 $2$ 階,期望幾步登頂?**
+  <details><summary>技巧+答案</summary>
+
   技巧:$e_n=1+\tfrac12 e_{n-1}+\tfrac12 e_{n-2}$,線性遞迴,特徵根 $1,-\tfrac12$;**答案/關鍵:$e_n=\tfrac{2}{3}n+\tfrac{2}{9}\big(1-(-\tfrac12)^{n}\big)\to \tfrac{2n}{3}$**。
 
+  </details>
+
 - **青蛙過河/隨機選前方石頭:$n$ 顆石頭,每次等機率跳到「當前之後任一顆(含終點)」,期望跳幾次?**
+  <details><summary>技巧+答案</summary>
+
   技巧:$e_n=1+\tfrac1n\sum_{k=0}^{n-1}e_k$,差分後 $e_n-e_{n-1}=\tfrac1n$;**答案/關鍵:$E[\text{跳數}]=H_n=\sum_{i=1}^{n}\tfrac1i\approx\ln n$**。
 
+  </details>
+
 - **蜈蚣/隨機階梯:上樓 $N$ 階,每步等機率上一階或下一階(底層反射),期望首次到頂步數?**
+  <details><summary>技巧+答案</summary>
+
   技巧:反射邊界的一維遊走 = 吸收版差分方程,$H_{i,i+1}=2i+1$ 電阻式差分;**答案/關鍵:$E[T]=N^2$(反射底、吸收頂;對稱情形二次成長)**。
+
+  </details>
 
 ## Ehrenfest 甕模型與平穩分布
 
 - **Ehrenfest:$m$ 顆球分兩甕,每步隨機挑一顆換甕。求甕中球數的平穩分布。**
+  <details><summary>技巧+答案</summary>
+
   技巧:出生–死亡鏈,細緻平衡 $\pi_i p_{i,i+1}=\pi_{i+1}p_{i+1,i}$;**答案/關鍵:$\pi_i=\binom{m}{i}2^{-m}$,即 $\mathrm{Binom}(m,\tfrac12)$**。
 
+  </details>
+
 - **Ehrenfest 的期望回訪時間:回到「某甕恰 $i$ 顆」狀態的期望時間?**
+  <details><summary>技巧+答案</summary>
+
   技巧:Kac 引理 $E[\text{return}]=1/\pi_i$;**答案/關鍵:$E[T_{ii}]=\dfrac{2^{m}}{\binom{m}{i}}$(回到全滿 $i=m$ 需 $2^{m}$ 步,故熱力學上「幾乎不可逆」)**。
 
+  </details>
+
 - **Ehrenfest 特徵值 / 混合:此鏈的鬆弛速率為何?**
+  <details><summary>技巧+答案</summary>
+
   技巧:生成元特徵值 $1-2k/m$($k=0,\dots,m$),特徵向量為 Krawtchouk 多項式;**答案/關鍵:第二大特徵值 $\lambda_2=1-\tfrac{2}{m}$,譜隙 $\tfrac{2}{m}$,混合時間 $\tfrac12 m\log m$(有 cutoff)**。
+
+  </details>
 
 ## 平穩分布、細緻平衡、期望回訪
 
 - **可逆性判定:給定鏈,如何快速判斷平穩分布可用細緻平衡求?**
+  <details><summary>技巧+答案</summary>
+
   技巧:Kolmogorov 判準(任意環路正反乘積相等)⇔ 存在 $\pi$ 使 $\pi_i P_{ij}=\pi_j P_{ji}$;**答案/關鍵:樹狀 / 出生–死亡鏈必可逆,平穩分布沿路徑連乘 $\pi_i\propto\prod \tfrac{p_{k,k+1}}{p_{k+1,k}}$**。
 
+  </details>
+
 - **Kac 期望回訪時間:不可約正常返鏈,回到狀態 $i$ 的期望時間?**
+  <details><summary>技巧+答案</summary>
+
   技巧:更新–獎勵定理 / 平穩測度定義;**答案/關鍵:$E_i[T_i^{+}]=\dfrac{1}{\pi_i}$**。
 
+  </details>
+
 - **環上隨機遊走的平穩與回訪:$n$ 頂點環 $C_n$ 上簡單隨機遊走。**
+  <details><summary>技巧+答案</summary>
+
   技巧:對稱 ⇒ 均勻平穩;細緻平衡自動成立;**答案/關鍵:$\pi_i=\tfrac1n$,期望回訪 $=n$**。
+
+  </details>
 
 ## 期望覆蓋時間(cover time)
 
 - **優惠券收集 = $K_n$ 上的覆蓋:集齊 $n$ 種等機率優惠券的期望次數。**
+  <details><summary>技巧+答案</summary>
+
   技巧:幾何和分解 $\sum_{k=1}^{n}\tfrac{n}{n-k+1}$;**答案/關鍵:$E=nH_n\approx n\ln n+\gamma n$,變異數 $=n^2\sum \tfrac1{i^2}\to\tfrac{\pi^2}{6}n^2$**。
 
+  </details>
+
 - **一般圖覆蓋時間上界:隨機遊走走遍所有頂點的期望時間如何估?**
+  <details><summary>技巧+答案</summary>
+
   技巧:生成樹雙倍巡遊(Aleliunas)給普適上界;Matthews 上界 $C(G)\le H_{\max}\,H_{n-1}$($H_{\max}=\max_{u\neq v}H_{uv}$);**答案/關鍵:任意連通圖 $C(G)\le 2|E|(n-1)$;下界階 $\Omega(n\log n)$,最壞($\text{lollipop}$)可達 $\Theta(n^3)$**。
 
+  </details>
+
 - **路徑圖覆蓋時間:$n$ 頂點路徑上從一端出發走遍全圖。**
+  <details><summary>技巧+答案</summary>
+
   技巧:等價於一維遊走到達最遠端的期望;**答案/關鍵:$C\sim n^2$(路徑/線段是覆蓋最慢的樹)**。
+
+  </details>
 
 ## Hitting / Commute time 與電阻網路
 
 - **通勤時間 = 電阻:圖上簡單隨機遊走,$u\to v\to u$ 的期望往返步數?**
+  <details><summary>技巧+答案</summary>
+
   技巧:把每條邊視為 $1\,\Omega$ 電阻,Chandra–Raghavan–Ruzzo–Smolensky 定理;**答案/關鍵:$C_{uv}=H_{uv}+H_{vu}=2|E|\,R_{uv}^{\text{eff}}$**。
 
+  </details>
+
 - **路徑圖擊中時間:$n$ 頂點路徑,從點 $0$ 到點 $k$ 的期望步數?**
+  <details><summary>技巧+答案</summary>
+
   技巧:串聯電阻 $R_{0k}=k$,$|E|=n-1$,加對稱性;**答案/關鍵:相鄰 $H_{i,i+1}=2i+1$;賭徒破產式給 $H_{0k}=k^2$(反射一端)**。
 
+  </details>
+
 - **完全圖 $K_n$ 的擊中時間:任兩點間期望步數?**
+  <details><summary>技巧+答案</summary>
+
   技巧:每步 $\tfrac{1}{n-1}$ 機率命中目標,幾何分布;**答案/關鍵:$H_{uv}=n-1$,通勤 $C_{uv}=2(n-1)$**。
 
+  </details>
+
 - **環 $C_n$ 的擊中時間:相距 $d$ 兩點間期望步數?**
+  <details><summary>技巧+答案</summary>
+
   技巧:兩段並聯電阻 $R=\dfrac{d(n-d)}{n}$,$|E|=n$,對稱 $H=\tfrac12 C$;**答案/關鍵:$H_{uv}=d(n-d)$(對徑 $d=n/2$ 時最大 $=n^2/4$)**。
 
+  </details>
+
 - **超立方體 $\{0,1\}^d$ 相對頂點:$0\cdots0$ 到 $1\cdots1$ 的期望步數量級?**
+  <details><summary>技巧+答案</summary>
+
   技巧:投影到 Ehrenfest($m=d$)的「離頂距離」出生死亡鏈;**答案/關鍵:$H\sim 2^{d}$(指數級;鄰點 $H=2^{d}-1$,對徑主階仍為 $2^d$)**。
 
+  </details>
+
 - **樹上通勤時間:樹上任兩點 $u,v$ 的期望往返步數?**
+  <details><summary>技巧+答案</summary>
+
   技巧:樹上唯一路徑 ⇒ $R_{uv}=\text{dist}(u,v)$,$|E|=n-1$;**答案/關鍵:$C_{uv}=2(n-1)\,d(u,v)$(閉式、無需解方程)**。
+
+  </details>

@@ -17,6 +17,7 @@ import { data as contests } from './contests.data'
 
 - **比賽 digest** — `contests/<日期>-<比賽>.md`,**主要單位**。一場一檔,每題列「技巧 + 作法」。([模板](/cp/contests/template))
 - **技巧卡** — `techniques/<slug>.md`,只有**反覆出現或值得深挖**的 pattern 才升級成一張卡;也保持精簡(模板碼 + 易錯一兩句,不寫長篇)。([模板](/cp/template))
+- **弱項專題** — `topics/<slug>.md`,**不等比賽、主動補弱項**:[幾何](/cp/topics/geometry)、[flow](/cp/topics/flow)、[矩陣](/cp/topics/matrix)、[數論組合](/cp/topics/ntc)。每份 = 核心模板 + 5–8 道 CF 2100–2500 經典題。
 
 > 側欄、下方索引表、[tag 索引](/cp/tags)、[複習佇列](/review/)全部**自動生成**——加一場比賽 = 只放一個 md 檔(frontmatter 填好 `contest/date/tags/reviewed`)。
 

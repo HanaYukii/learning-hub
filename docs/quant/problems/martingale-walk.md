@@ -11,46 +11,106 @@ review_interval: 21
 > 艱深題庫:每題「題目 + 技巧 + 解法/答案」。面試前快速複習。延伸見 [鞅與選擇停時](/quant/probability/martingale-optional-stopping)。
 
 - **賭徒破產(對稱):資本從 $k$ 出發,每步 $\pm1$ 各半,問打到 $N$ 前先破產?先算成功機率,再算期望局數。**
+  <details><summary>技巧+答案</summary>
+
   技巧:$S_n$ 是鞅解機率、$S_n^2-n$ 是鞅解期望($E[S_\tau^2]=E[\tau]$);**答案/關鍵:達到 $N$ 的機率 $=\dfrac{k}{N}$,期望時間 $=k(N-k)$**。
 
+  </details>
+
 - **賭徒破產(非對稱):每步 $+1$ 機率 $p$、$-1$ 機率 $q=1-p$($p\ne q$),邊界 $0,N$,問贏(先到 $N$)的機率與期望時間。**
+  <details><summary>技巧+答案</summary>
+
   技巧:指數鞅 $(q/p)^{S_n}$ 解機率、線性鞅 $S_n-(p-q)n$ 解期望(Wald:$(p-q)E[\tau]=E[S_\tau]-k$,不可套對稱公式);**答案/關鍵:$P(\text{到 }N)=\dfrac{(q/p)^k-1}{(q/p)^N-1}$,$E[\tau]=\dfrac{N\cdot P(\text{到 }N)-k}{p-q}$(等價 $\dfrac{k-N\cdot P}{q-p}$)**。
 
+  </details>
+
 - **首次連續兩正面 HH vs 正反 HT:公平硬幣一直擲,分別問等到 HH、HT 出現的期望次數,為何不同?**
+  <details><summary>技巧+答案</summary>
+
   技巧:Conway 自重疊(leading numbers)/賭場鞅論證,期望 $=\sum 2^{(\text{自重疊長})}$;**答案/關鍵:$E[\tau_{HH}]=2^2+2^1=6$、$E[\tau_{HT}]=2^2=4$;HH 能自重疊故等更久**。
 
+  </details>
+
 - **三連圖樣的等待:HTH、HHH、HTT 各需擲幾次(公平硬幣)?**
+  <details><summary>技巧+答案</summary>
+
   技巧:同 Conway 自重疊求和(把與自身後綴相符的前綴長度都算進去);**答案/關鍵:$E[\tau_{HTH}]=2^3+2^1=10$、$E[\tau_{HHH}]=2^3+2^2+2^1=14$、$E[\tau_{HTT}]=2^3=8$**。
 
+  </details>
+
 - **ABRACADABRA 問題:猴子每秒等機率打一個字母(字母表 26 個),問期望等多久第一次打出 ABRACADABRA?**
+  <details><summary>技巧+答案</summary>
+
   技巧:對每個起始時刻各放一位「押這串詞」的賭客,構造公平賭局(鞅)+ OST,重疊處(ABRA / A)會多留錢;**答案/關鍵:$E[\tau]=26^{11}+26^{4}+26$**。
 
+  </details>
+
 - **反射原理:對稱漫步從 0 出發,已知 $S_n=b>0$,問首次觸碰 0 前抵達 $b$ 的路徑數 / 首達 $a>0$ 的分布。**
+  <details><summary>技巧+答案</summary>
+
   技巧:André 反射把「碰過某水平的壞路徑」一一對應到反射後的路徑,做雙射計數;**答案/關鍵:反射建立壞路徑與鏡像路徑的一一對應,是 ballot / 首達分布的核心工具**。
 
+  </details>
+
 - **Ballot problem(投票問題):A 得 $a$ 票、B 得 $b$ 票($a>b$),隨機開票,問全程 A 始終嚴格領先的機率。**
+  <details><summary>技巧+答案</summary>
+
   技巧:反射原理數「不碰 0 的路徑」(Cycle lemma 亦可);**答案/關鍵:機率 $=\dfrac{a-b}{a+b}$**。
 
+  </details>
+
 - **Wald 恆等式:i.i.d. 增量 $X_i$、停時 $\tau$($E[\tau]<\infty$),問隨機和 $S_\tau=\sum_1^\tau X_i$ 的期望與二階版本。**
+  <details><summary>技巧+答案</summary>
+
   技巧:$S_n-nE[X]$ 是鞅(一階)、$(S_n-nE[X])^2-n\,\mathrm{Var}(X)$ 是鞅(二階)+ OST;**答案/關鍵:$E[S_\tau]=E[\tau]\,E[X_1]$,$\mathrm{Var}(S_\tau)=E[\tau]\,\mathrm{Var}(X_1)$(增量零均值時)**。
 
+  </details>
+
 - **無界對稱漫步首達 $+1$:對稱 $\pm1$ 漫步從 0 出發,首次到達 $+1$ 的期望步數?(OST 陷阱題)**
+  <details><summary>技巧+答案</summary>
+
   技巧:雖 $P(\tau<\infty)=1$,但 $E[\tau]=\infty$,OST 的可積/有界條件不滿足不能亂套;**答案/關鍵:$P(\tau<\infty)=1$ 但 $E[\tau]=\infty$——常返卻期望發散**。
 
+  </details>
+
 - **倍注鞅與 OST 失效:公平賭局每輸就加倍下注,直到第一次贏就收手淨賺 $1$;為何這不違反「公平賭局期望為 0」?**
+  <details><summary>技巧+答案</summary>
+
   技巧:財富 $M_{n\wedge\tau}$ 是鞅但**非一致可積**(輸的尾巴賠 $-2^n$、需無限資本),OST 三條件(有界停時 / 有界 $M$ / 一致可積)皆不滿足;**答案/關鍵:$M_\tau=1$ 幾乎必然但 $E[M_0]=0\ne 1$——OST 需一致可積(或 $E[\tau]<\infty$ 且增量有界),倍注策略正是反例**。
 
+  </details>
+
 - **Pólya 隨機漫步返回:$d$ 維整數格上的對稱簡單漫步,是否幾乎必然返回原點?**
+  <details><summary>技巧+答案</summary>
+
   技巧:Green 函數 $\sum_n P(S_n=0)$ 收斂性(等價於返回機率 $<1$)、局部極限定理 $P(S_{2n}=0)\sim c\,n^{-d/2}$;**答案/關鍵:$d=1,2$ 常返(返回機率 $=1$),$d\ge3$ 非常返;3D 返回機率 $\approx0.3405$**。
 
+  </details>
+
 - **Lévy 反正弦律:對稱漫步(或布朗運動)到時刻 $1$ 為止,問「停在正半軸的時間比例」的極限分布。**
+  <details><summary>技巧+答案</summary>
+
   技巧:占據時間 / 末次歸零 / 達最大值時刻三者同分布,反正弦而非集中在 $1/2$;**答案/關鍵:$P(\text{正時比例}\le x)=\dfrac{2}{\pi}\arcsin\sqrt{x}$,密度 $\dfrac{1}{\pi\sqrt{x(1-x)}}$——質量堆在兩端 $0,1$,反直覺**。
 
+  </details>
+
 - **指數鞅與非對稱首達(連續版):布朗運動 $X_t=\mu t+\sigma B_t$($\mu>0$),兩吸收壁 $-a,\ b$,問先打上壁 $b$ 的機率。**
+  <details><summary>技巧+答案</summary>
+
   技巧:指數鞅 $\exp\!\big(\theta X_t-(\mu\theta+\tfrac12\sigma^2\theta^2)t\big)$,取 $\theta=-2\mu/\sigma^2$ 消掉時間項 + OST;**答案/關鍵:$P(\text{先到 }b)=\dfrac{1-e^{2\mu a/\sigma^2}}{e^{-2\mu b/\sigma^2}-e^{2\mu a/\sigma^2}}$(單邊:對**逆向漂移**、即 $\mu<0$ 時,$P(\text{曾達 }b)=e^{-2|\mu|b/\sigma^2}$;而此處 $\mu>0$、$a\to\infty$ 則 $P\to1$)**。
 
+  </details>
+
 - **布朗運動首達時間(對稱):標準布朗運動,兩壁 $-a,\ b$,問打到任一壁的期望時間。**
+  <details><summary>技巧+答案</summary>
+
   技巧:$B_t$ 是鞅解機率、$B_t^2-t$ 是鞅解時間(離散 $S_n^2-n$ 的連續對應);**答案/關鍵:打上壁機率 $=\dfrac{a}{a+b}$,期望時間 $E[\tau]=ab$**。
 
+  </details>
+
 - **賭徒的最大財富 / Kelly 型上界:公平賭局下用 Doob 極大不等式,問財富曾達到 $\lambda$ 倍本金的機率上界。**
+  <details><summary>技巧+答案</summary>
+
   技巧:非負鞅的 Doob 極大不等式 $P(\sup_n M_n\ge\lambda)\le E[M_0]/\lambda$;**答案/關鍵:$P(\text{財富曾 }\ge\lambda M_0)\le 1/\lambda$——公平賭局翻倍機率 $\le1/2$**。
+
+  </details>
