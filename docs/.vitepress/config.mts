@@ -52,8 +52,8 @@ function groupIf(text: string, rel: string, opts?: Parameters<typeof scanDir>[1]
 }
 
 export default defineConfig({
-  // GitHub Pages 專案站:https://hanayukii.github.io/learning-hub/
-  base: '/learning-hub/',
+  // 自訂網域 https://cp-quant.hanayukii.dev(根路徑)
+  base: '/',
   lang: 'zh-TW',
   title: 'Learning Hub',
   description: '競程技巧 × 量化面試數學 個人知識庫',
