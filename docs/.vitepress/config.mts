@@ -2,6 +2,8 @@ import { defineConfig, type DefaultTheme } from 'vitepress'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+// @ts-expect-error 無型別定義
+import taskLists from 'markdown-it-task-lists'
 import { shortContest, cjkTokenize } from './lib'
 
 // Learning Hub —— 競程技巧 × 量化面試數學 個人知識庫
@@ -57,12 +59,15 @@ export default defineConfig({
   description: '競程技巧 × 量化面試數學 個人知識庫',
   lastUpdated: true,
   cleanUrls: true,
-  // TODO(#4):修完既有死鏈後改為 false,讓 build 當守門員
-  ignoreDeadLinks: true,
+  // 死鏈守門:漏掛索引、改檔名忘改連結 → build 直接紅(#4)
+  ignoreDeadLinks: false,
 
   markdown: {
     math: true, // markdown-it-mathjax3,支援 $...$ 與 $$...$$
     lineNumbers: false, // 模板碼是拿來抄的;個別長碼可用 ```cpp:line-numbers 局部開
+    config: (md) => {
+      md.use(taskLists) // quant checklist 的 - [ ] 勾選框
+    },
   },
 
   themeConfig: {

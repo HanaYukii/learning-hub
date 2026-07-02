@@ -39,15 +39,18 @@ import { data as contests } from './contests.data'
 ## 比賽 digest 索引(自動生成)
 
 <table>
-  <thead><tr><th>日期</th><th>比賽</th><th>重點 tag</th></tr></thead>
+  <thead><tr><th>日期</th><th>比賽</th><th>重點 tag</th><th>複核</th></tr></thead>
   <tbody>
     <tr v-for="c in contests" :key="c.url">
       <td>{{ c.date }}</td>
       <td><a :href="withBase(c.url)">{{ c.short }}</a></td>
       <td>{{ c.tags.join('·') }}</td>
+      <td>{{ c.verified ? '✅' : '⏳' }}</td>
     </tr>
   </tbody>
 </table>
+
+> 複核:digest 由 AI 依 editorial 產出;⏳ = 尚未人工重解核對。複習時重解過任一題且無誤 → 把該檔 frontmatter 的 `verified` 翻 `true`。
 
 ## 技巧卡索引
 

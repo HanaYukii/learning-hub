@@ -1,40 +1,46 @@
 # Learning Hub
 
-競程技巧 × 量化面試數學 的個人知識庫。用 [VitePress](https://vitepress.dev) 建置:Markdown 撰寫、全文搜尋、KaTeX 數學、可一鍵發布到 GitHub Pages。
+競程技巧 × 量化面試數學 的個人知識庫。[VitePress](https://vitepress.dev) 建置:Markdown 撰寫、全文搜尋(中文 bigram)、MathJax 數學,push `main` 自動部署 GitHub Pages → https://hanayukii.github.io/learning-hub/
 
 ## 開發
 
 ```bash
-npm install        # 安裝依賴
-npm run dev        # 本地預覽 http://localhost:5173
-npm run build      # 產生靜態站到 docs/.vitepress/dist
-npm run preview    # 預覽 build 結果
+npm install
+npm run dev        # 本地預覽
+npm run build      # 建置(死鏈會直接讓 build 失敗)
+npm run reviewed -- <docs 相對路徑> --ok|--fail   # 複習後更新間隔(自動 commit)
 ```
 
 ## 結構
 
 ```
 docs/
-├── .vitepress/config.mts     # 站台設定(nav / sidebar / 搜尋 / 數學)
+├── .vitepress/
+│   ├── config.mts            # 站台設定;sidebar 由掃描目錄自動生成
+│   └── lib.ts                # shortContest / toISO / cjkTokenize 共用工具
 ├── index.md                  # 首頁
-├── cp/                       # 競程技巧庫
-│   ├── index.md              # 總覽 + 技巧分類骨架 + 索引
-│   ├── template.md           # 筆記模板
-│   └── techniques/*.md       # 一招一檔
-├── quant/                    # 量化面試數學
-│   ├── index.md              # 總覽 + 主題分類骨架 + 索引
-│   ├── template.md           # 筆記模板
-│   └── <分類>/*.md           # 一主題一檔
-└── review/index.md           # 間隔複習佇列
+├── cp/                       # 競程
+│   ├── index.md              # 收錄原則 + digest 索引(自動)+ 技巧卡索引
+│   ├── tags.md               # 技巧 tag 聚合頁(自動)
+│   ├── contests/*.md         # 比賽 digest(主要單位,一場一檔)
+│   ├── techniques/*.md       # 技巧卡(反覆出現的 pattern 才升級)
+│   └── topics/*.md           # 弱項專題(不等比賽,主動補)
+├── quant/                    # 量化面試
+│   ├── index.md              # checklist + 題庫索引
+│   ├── problems/*.md         # 艱深題庫(題目+技巧+答案)
+│   ├── probability/*.md      # 主題 item-sheet
+│   └── hft-cpp/*.md          # HFT 低延遲 C++ 軌
+└── review/index.md           # 複習佇列(data loader 自動產,勿手編)
 ```
 
-## 新增一則筆記
+## 新增內容
 
-1. 複製對應的 `template.md` 到目標資料夾,改檔名為 `<slug>.md`。
-2. 填好 frontmatter(尤其 `trigger` / `reviewed` / `review_interval` / `mastery`)。
-3. 到 `docs/.vitepress/config.mts` 的 sidebar 掛上連結。
-4. 更新對應 `index.md` 的索引表。
+**比賽 digest**(最常見):放一個 `docs/cp/contests/<日期>-<賽>.md`,frontmatter 填 `contest / date / tags / url / editorial / source / verified / reviewed / review_interval`——側欄、索引表、tag 索引、複習佇列全部自動掛載,不用改其他檔案。格式照 `docs/cp/contests/template.md`(每題「技巧+作法 1–2 行」;tag 只能取自 `cp/index.md` 詞彙表;難度一律 CF-equivalent)。
 
-## 工作流
+**技巧卡 / 量化 item**:同理,放檔即掛載。模板見各區 `template.md`。
 
-打完一場比賽 → 把值得記的招交給 Claude → 由 Claude 研究 editorial / 題解產生草稿 → 你審閱定稿入庫 → 平時看 `review/` 複習。
+## 慣例
+
+- 收錄判準:各難度都收主流可遷移的;偏門不收;~2700 上限、經典模板工具破例;「不收」留痕。
+- `source: hints+code` = CF 散文題解抓不到、僅據官方 Hints+code 重建;`verified: false` = 尚未人工重解核對。
+- commit 不加 Co-Authored-By。

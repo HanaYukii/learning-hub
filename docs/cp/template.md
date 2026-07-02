@@ -25,4 +25,4 @@ review_interval: 14
 - …
 
 ## 例題
-- [題名](url) `rating` — 怎麼套、關鍵變形。
+- [題名](https://...) `rating` — 怎麼套、關鍵變形。

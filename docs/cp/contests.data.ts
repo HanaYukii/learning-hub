@@ -7,6 +7,7 @@ export interface ContestEntry {
   short: string
   date: string
   tags: string[]
+  verified: boolean
 }
 
 declare const data: ContestEntry[]
@@ -24,6 +25,7 @@ export default createContentLoader('cp/contests/*.md', {
           short: shortContest(contest),
           date: toISO(p.frontmatter.date),
           tags: (p.frontmatter.tags ?? []) as string[],
+          verified: p.frontmatter.verified === true,
         }
       })
       .sort((a, b) => b.date.localeCompare(a.date))
