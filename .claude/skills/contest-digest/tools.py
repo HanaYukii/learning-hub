@@ -8,6 +8,8 @@
   python tools.py ac-recent                          # 近期 AtCoder 賽(slug / 日期 / 名稱)
   python tools.py ac-difficulty <slug>               # 各題 CF-equivalent 難度
   python tools.py ac-editorial <slug> <out.txt>      # AtCoder editorial(英文官方)+ 難度 → 文字檔
+  python tools.py cf-statement <contestId> <index>   # CF 題面(去 tag 純文字,寫「題意」用)
+  python tools.py ac-statement <slug> <letter>       # AtCoder 題面(英文)
 
 已知陷阱(寫死在此,不必每次重踩):
   - CF 用 curl 帶瀏覽器 UA(WebFetch 會被 Cloudflare 403)。
@@ -156,6 +158,27 @@ def ac_editorial(slug, out):
     print(f"OK ac-editorial -> {out}  ({len(tasks)} tasks, {len(subs)} editorial pages)")
 
 
+def cf_statement(contest_id, index):
+    page = curl(f"https://codeforces.com/contest/{contest_id}/problem/{index}")
+    m = re.search(r'<div class="problem-statement">(.*?)<div class="(?:input-specification|sample-tests)', page, re.S)
+    body = m.group(1) if m else page
+    sys.stdout.reconfigure(encoding="utf-8")
+    print(strip_html(body)[:2200])
+
+
+def ac_statement(slug, letter):
+    page = curl(f"https://atcoder.jp/contests/{slug}/tasks/{slug}_{letter}?lang=en")
+    m = re.search(r'<div id="task-statement"(.*)', page, re.S)
+    body = m.group(1) if m else page
+    # 頁面同時含日/英兩份;有英文就取 lang-en 之後
+    en = body.split('class="lang-en"', 1)
+    if len(en) == 2:
+        body = en[1]
+    body = re.split(r"Sample Input 1|<footer", body)[0]
+    sys.stdout.reconfigure(encoding="utf-8")
+    print(strip_html(body)[:2200])
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     try:
@@ -171,6 +194,10 @@ if __name__ == "__main__":
             ac_difficulty(sys.argv[2])
         elif cmd == "ac-editorial":
             ac_editorial(sys.argv[2], sys.argv[3])
+        elif cmd == "cf-statement":
+            cf_statement(sys.argv[2], sys.argv[3])
+        elif cmd == "ac-statement":
+            ac_statement(sys.argv[2], sys.argv[3])
         else:
             print(__doc__)
             sys.exit(1)

@@ -29,7 +29,13 @@ python .claude/skills/contest-digest/tools.py ac-editorial <slug> <TMP>/ed.txt
 ```
 Read `<TMP>/ed.txt`。**CF 只有 Hints + 參考 code**(散文題解抓不到)——據此重建思路,並在 frontmatter 標 `source: hints+code`;AtCoder 是英文官方解說,標 `source: editorial`。
 
-### 3) 逐題抽「技巧 + 作法」,套收錄判準
+### 3) 逐題「題意 + 核心作法」,套收錄判準
+**每個收錄的題要先抓題面寫一行「題意」**(不可從 editorial 反推腦補):
+```
+python .claude/skills/contest-digest/tools.py cf-statement <contestId> <題號>   # CF
+python .claude/skills/contest-digest/tools.py ac-statement <slug> <小寫題號>    # AtCoder(英文)
+```
+題意 = 一句話把問題講清楚(含關鍵約束/範圍)。作法 1–2 行,**2000 分選手已懂的 common sense 跳過**(不解釋前綴和/Kadane/Dijkstra 是什麼),字數留給非顯然的關鍵步。
 **收錄(甜蜜區,兩端思考,難度本身不是排除理由):**
 - 各難度都收(含 A/B),只要題型**主流、可遷移、學得起來**;簡單題給一句關鍵觀察即可。
 - **丟**:偏門 gimmick(ad-hoc / 一次性 / 吃靈光,之後幾乎用不到)。
@@ -60,10 +66,11 @@ review_interval: 14
 
 # <官方全名> — 學習重點
 
-> 懶人包:每題「技巧 + 作法」。各難度都收主流可遷移的;偏門/太難略過。難度 `~` 為 CF-equivalent。
+> 懶人包:每題「題意 + 核心作法」。各難度都收主流可遷移的;偏門/太難略過。難度 `~` 為 CF-equivalent。
 
 - **[<題號>. <題名>](<題目連結>)** `tag` `tag` `~rating`
-  作法:<1–2 行;寶石觀察用 **粗體**>。
+  題意:<一句話講清楚問題,含關鍵約束>。
+  作法:<1–2 行核心;寶石觀察用 **粗體**;common sense 跳過>。
 
 **不收**:~~<題號>. <題名>~~ → <原因>。
 ```
