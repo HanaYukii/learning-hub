@@ -1,6 +1,6 @@
-# Learning Hub
+# cp-quant
 
-競程技巧 × 量化面試數學 的個人知識庫。[VitePress](https://vitepress.dev) 建置:Markdown 撰寫、全文搜尋(中文 bigram)、MathJax 數學,push `main` 自動部署 GitHub Pages → https://hanayukii.github.io/learning-hub/
+比賽 digest・量化面試題庫・C++ 筆記。[VitePress](https://vitepress.dev) 建置:Markdown 撰寫、全文搜尋(中文 bigram)、MathJax 數學,push `main` 自動部署 GitHub Pages → https://hanayukii.github.io/learning-hub/
 
 ## 開發
 

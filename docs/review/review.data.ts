@@ -4,7 +4,7 @@ import { toISO } from '../.vitepress/lib'
 export interface ReviewItem {
   url: string
   title: string
-  section: 'CP' | 'Quant'
+  section: 'CP' | 'Quant' | 'C++'
   reviewed: string
   interval: number
   due: string
@@ -22,7 +22,7 @@ function jitter(s: string): number {
   return (h % 7) - 3
 }
 
-export default createContentLoader(['cp/**/*.md', 'quant/**/*.md'], {
+export default createContentLoader(['cp/**/*.md', 'quant/**/*.md', 'cpp/**/*.md'], {
   transform(raw): ReviewItem[] {
     return raw
       .filter((p) => p.frontmatter.reviewed && !/template|example/.test(p.url))
@@ -33,7 +33,10 @@ export default createContentLoader(['cp/**/*.md', 'quant/**/*.md'], {
         return {
           url: p.url,
           title: String(p.frontmatter.title ?? p.frontmatter.contest ?? p.url),
-          section: (p.url.startsWith('/cp/') ? 'CP' : 'Quant') as 'CP' | 'Quant',
+          section: (p.url.startsWith('/cp/') ? 'CP' : p.url.startsWith('/cpp/') ? 'C++' : 'Quant') as
+            | 'CP'
+            | 'Quant'
+            | 'C++',
           reviewed,
           interval,
           due: due.toISOString().slice(0, 10),

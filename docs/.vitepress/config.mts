@@ -56,8 +56,8 @@ export default defineConfig({
   // (cp-quant.hanayukii.dev 待 GitHub 憑證好、或改 Cloudflare 代理後再切回 base:'/')
   base: '/learning-hub/',
   lang: 'zh-TW',
-  title: 'Learning Hub',
-  description: '競程技巧 × 量化面試數學 個人知識庫',
+  title: 'cp-quant',
+  description: '比賽 digest・量化面試題庫・C++ 筆記',
   lastUpdated: true,
   cleanUrls: true,
   // 死鏈守門:漏掛索引、改檔名忘改連結 → build 直接紅(#4)
@@ -76,6 +76,7 @@ export default defineConfig({
       { text: '首頁', link: '/' },
       { text: '競程技巧', link: '/cp/' },
       { text: '量化數學', link: '/quant/' },
+      { text: 'C++', link: '/cpp/' },
       { text: '複習佇列', link: '/review/' },
     ],
 
@@ -114,6 +115,14 @@ export default defineConfig({
         ...groupIf('機率', 'quant/probability'),
         ...groupIf('艱深題庫', 'quant/problems'),
         ...groupIf('HFT C++', 'quant/hft-cpp'),
+      ],
+      '/cpp/': [
+        {
+          text: 'C++ Modern & Low-Level',
+          items: [{ text: '總覽與 checklist', link: '/cpp/' }],
+        },
+        ...groupIf('Modern', 'cpp/modern'),
+        ...groupIf('Low-level', 'cpp/lowlevel'),
       ],
     },
 
