@@ -59,11 +59,11 @@ import { data as contests } from './contests.data'
 | --- | --- | --- |
 | [線段樹維護矩陣乘積](/cp/techniques/segtree-matrix-product) | 線段樹·矩陣·dp | 「線性遞推 × 區間 × 點修改」通法;ICPC 印尼心結題 |
 | [有界資源維狀態擴充](/cp/techniques/bounded-resource-state) | 最短路·狀態擴充·Pareto | 多準則最短路別折疊成單標籤 |
+| [線段樹分治 + 可回滾 DSU](/cp/techniques/segtree-divide-rollback-dsu) | 線段樹分治·離線 | 離線動態連通性通法;CF1105 E 型,模板已編譯對拍 |
+| [反悔貪心](/cp/techniques/regret-greedy) | 反悔貪心·貪心 | 「選 k 個互不相鄰」模板;ABC464 G / JOI Candies 型 |
 
 ## 技巧卡候選(digest 反覆出現的 pattern)
 
 出現 ≥2 次或屬經典模板 → 升級成卡。寫 digest 時順手更新:
 
-- `線段樹分治` + `可回滾DSU`(CF1105 E)——經典離線框架,**候選**
-- `反悔貪心`(ABC464 G)——JOI Candies 型,**候選**
 - `不變量`(CF1104 D、ARC222 F、ARC223 E)——已出現 3 場,偏思路難成卡,先觀察

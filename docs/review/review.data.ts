@@ -10,6 +10,9 @@ export interface ReviewItem {
   due: string
   /** 比賽日期(僅 digest 有),供「最近 digest 快掃」用 */
   date: string
+  /** AI 產出是否已人工重解核對(僅 digest/專題有此欄) */
+  verified: boolean | null
+  kind: 'digest' | 'topic' | 'note'
 }
 
 declare const data: ReviewItem[]
@@ -41,6 +44,11 @@ export default createContentLoader(['cp/**/*.md', 'quant/**/*.md', 'cpp/**/*.md'
           interval,
           due: due.toISOString().slice(0, 10),
           date: toISO(p.frontmatter.date),
+          verified: typeof p.frontmatter.verified === 'boolean' ? p.frontmatter.verified : null,
+          kind: (p.url.includes('/contests/') ? 'digest' : p.url.includes('/topics/') ? 'topic' : 'note') as
+            | 'digest'
+            | 'topic'
+            | 'note',
         }
       })
       .sort((a, b) => a.due.localeCompare(b.due))
