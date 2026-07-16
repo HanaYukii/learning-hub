@@ -1,0 +1,54 @@
+/* ===== digest 頁排版:降低密度、題目分區 ===== */
+
+/* 題目標題(h3)之間拉開距離,形成一題一區塊 */
+.vp-doc h3 {
+  margin-top: 2.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--vp-c-divider);
+}
+.vp-doc h3:first-of-type {
+  border-top: none;
+}
+
+/* 題目標題緊接的 tag 行:inline code 渲染成圓角 chips */
+.vp-doc h3 + p {
+  margin-top: 0.4rem;
+}
+.vp-doc h3 + p > code {
+  background: var(--vp-c-default-soft);
+  border-radius: 9999px;
+  padding: 3px 12px;
+  font-size: 12px;
+  margin-right: 4px;
+}
+/* 難度 chip(~ 開頭)配色 */
+.vp-doc h3 + p > code:last-child {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* 題意 / 作法 色塊:多一點內距與呼吸感 */
+.vp-doc .custom-block {
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+}
+.vp-doc .custom-block.info .custom-block-title,
+.vp-doc .custom-block.tip .custom-block-title {
+  letter-spacing: 0.05em;
+}
+/* 色塊內段落行距放鬆一點 */
+.vp-doc .custom-block p {
+  line-height: 1.75;
+}
+/* 色塊內的小 code block 不要太搶 */
+.vp-doc .custom-block div[class*='language-'] {
+  margin: 10px 0 4px;
+  border-radius: 8px;
+}
+
+/* 小例子(example)用 details 時的內距 */
+.vp-doc .custom-block.details {
+  padding: 10px 18px;
+}
