@@ -49,31 +49,13 @@ python .claude/skills/contest-digest/tools.py ac-statement <slug> <小寫題號>
 正確性:作法必須有 editorial 依據,不臆測;看不懂就標「(待補)」或不收。**寧缺勿濫**。
 
 ### 4) 產草稿檔 `docs/cp/contests/<YYYY-MM-DD>-<slug>.md`
-slug 例:`cf-1108-div1`、`ac-arc224`。格式嚴格照 `docs/cp/contests/template.md`:
-```
----
-contest: <官方全名>
-date: <YYYY-MM-DD>
-tags: [<場級 3–5 個代表 tag,取自詞彙表>]
-url: <比賽連結>
-editorial: <editorial 連結>
-source: editorial | hints+code
-verified: false
-aside: false
-reviewed: <今天>
-review_interval: 14
----
-
-# <官方全名> — 學習重點
-
-> 懶人包:每題「題意 + 核心作法」。各難度都收主流可遷移的;偏門/太難略過。難度 `~` 為 CF-equivalent。
-
-- **[<題號>. <題名>](<題目連結>)** `tag` `tag` `~rating`
-  題意:<2–4 句:「給定 X。規則/操作…。**求/輸出**:Y」+ 關鍵約束/範圍>。
-  作法:<1–2 行核心;寶石觀察用 **粗體**;common sense 跳過>。
-
-(不收的題不出現在檔案裡;exclusion 清單放 PR body / 回報。)
-```
+slug 例:`cf-1108-div1`、`ac-arc224`。**格式嚴格照 `docs/cp/contests/template.md`(富版面)**:
+- 每題一個 `### [題名](url)` 區塊 + 一行 tag chips。
+- `::: info 題意`:2–4 句(給定 X → 規則 → **求/輸出** Y + 約束),分段呼吸;**段尾加一個迷你手算例**(1–3 行,必須自己驗算過,沒把握就不放——錯例比沒例毒)。
+- `::: tip 作法`:1–2 行核心;code-shaped 的題附 5–15 行 ```cpp 關鍵片段 sketch(公式題不放)。
+- SVG:整份至多 1–2 張,只給空間結構題;寬 ≤560、只用 currentColor 與 var(--vp-c-brand-1)/var(--vp-c-default-soft)。
+- frontmatter 同 template(contest/date/tags/url/editorial/source/verified: false/aside: false/reviewed/review_interval)。
+- 不收的題不出現在檔案裡;exclusion 清單放 PR body / 回報。
 
 ### 5) 審閱閘(重要)
 把草稿檔路徑 + 收/丟摘要回報給使用者,**停下來**。不要自動 commit。等使用者說 OK / 要改哪裡。
