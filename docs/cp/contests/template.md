@@ -33,7 +33,7 @@ review_interval: 14
 
 <!--
 規範:
-- tag 只能取自 /cp/ 詞彙表;AtCoder 難度 = kenkoooo +400 粗估。
+- tag 只能取自 /cp/ 詞彙表;CF 題標 `~`(rating),AtCoder 題標 `AtC~` = kenkoooo difficulty 原值。
 - SVG 圖:整份至多 1–2 張,只給空間結構題;寬 ≤560,只用 currentColor 與 var(--vp-c-brand-1)/var(--vp-c-default-soft)。
 - 沒收的題不列在頁面上(exclusion 理由放 PR/回報)。
 -->

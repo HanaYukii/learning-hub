@@ -6,7 +6,7 @@
   python tools.py cf-editorial-url <contestId>       # 盡力找該賽的 editorial blog 連結
   python tools.py cf-editorial <entryUrl> <contestId> <out.txt>
   python tools.py ac-recent                          # 近期 AtCoder 賽(slug / 日期 / 名稱)
-  python tools.py ac-difficulty <slug>               # 各題 CF-equivalent 難度
+  python tools.py ac-difficulty <slug>               # 各題 kenkoooo 難度(AtC~)
   python tools.py ac-editorial <slug> <out.txt>      # AtCoder editorial(英文官方)+ 難度 → 文字檔
   python tools.py cf-statement <contestId> <index>   # CF 題面(去 tag 純文字,寫「題意」用)
   python tools.py ac-statement <slug> <letter>       # AtCoder 題面(英文)
@@ -15,7 +15,7 @@
   - CF 用 curl 帶瀏覽器 UA(WebFetch 會被 Cloudflare 403)。
   - CF 散文題解在 JS spoiler(顯示「Tutorial is loading...」)靜態頁抓不到 → 只能拿 Hints + 參考 code 重建。
   - AtCoder editorial 子頁是英文官方解說,前面有導覽列雜訊,往下才是 "X - 題名 Editorial" 本文。
-  - kenkoooo difficulty:低分區被指數壓縮,還原後 +400 粗估 CF-equivalent。
+  - kenkoooo difficulty:低分區被指數壓縮要還原;一律標原值 AtC~(不做 +400 換算)。
 """
 import subprocess, json, sys, re, html, math, datetime
 
@@ -104,10 +104,12 @@ def ac_recent():
 
 
 def _cf_equiv(diff):
+    """kenkoooo 難度直接顯示(低分區還原指數壓縮),四捨五入到 50。不做 +400 換算——
+    使用者(IM)判定該換算不準,一律標 kenkoooo 原值、前綴 AtC~ 區分尺度。"""
     if diff is None:
         return None
     raw = diff if diff >= 400 else 400 / math.exp(1.0 - diff / 400)
-    return round((raw + 400) / 100) * 100
+    return round(raw / 50) * 50
 
 
 def ac_difficulty(slug):
@@ -141,9 +143,9 @@ def ac_editorial(slug, out):
     subs = list(dict.fromkeys(re.findall(r'href="(/contests/' + slug + r'/editorial/\d+)"', ed_html)))
     lines = [f"SOURCE editorial  (AtCoder 英文官方解說)",
              f"EDITORIAL https://atcoder.jp/contests/{slug}/editorial",
-             f"TASKS URL https://atcoder.jp/contests/{slug}/tasks/<slug>", "", "PROBLEM LIST (含 CF-equivalent 難度):"]
+             f"TASKS URL https://atcoder.jp/contests/{slug}/tasks/<slug>", "", "PROBLEM LIST (含 AtC~ kenkoooo 難度):"]
     for s2, name in tasks:
-        lines.append(f"  {s2} : {name}   [CF~{diff.get(s2, '?')}]")
+        lines.append(f"  {s2} : {name}   [AtC~{diff.get(s2, '?')} (kenkoooo)]")
     lines.append("")
     import time
     for i, href in enumerate(subs):
