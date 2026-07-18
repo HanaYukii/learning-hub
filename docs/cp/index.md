@@ -67,3 +67,4 @@ import { data as contests } from './contests.data'
 出現 ≥2 次或屬經典模板 → 升級成卡。寫 digest 時順手更新:
 
 - `不變量`(CF1104 D、ARC222 F、ARC223 E)——已出現 3 場,偏思路難成卡,先觀察
+- `值域線段樹 descent`(ABC467 G,親自推導)——kth-element 式 root→leaf 走位取代外層二分,經典模板,**候選**
