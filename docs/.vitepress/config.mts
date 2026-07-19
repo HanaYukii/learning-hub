@@ -103,6 +103,7 @@ export default defineConfig({
           items: [{ text: '技巧卡模板', link: '/cp/template' }, ...scanDir('cp/techniques')],
         },
         ...groupIf('弱項專題', 'cp/topics'),
+        ...groupIf('LeetCode 月報', 'cp/leetcode', { sortByDate: true }),
       ],
       '/quant/': [
         {

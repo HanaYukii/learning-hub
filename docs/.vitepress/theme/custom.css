@@ -47,6 +47,14 @@
   margin: 10px 0 4px;
   border-radius: 8px;
 }
+/* code block:放鬆行距與內距,sketch 讀起來不擠 */
+.vp-doc div[class*='language-'] pre {
+  line-height: 1.7;
+  padding: 18px 0;
+}
+.vp-doc div[class*='language-'] code {
+  line-height: 1.7;
+}
 
 /* 小例子(example)用 details 時的內距 */
 .vp-doc .custom-block.details {

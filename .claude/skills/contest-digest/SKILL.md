@@ -53,7 +53,7 @@ python .claude/skills/contest-digest/tools.py ac-statement <slug> <小寫題號>
 slug 例:`cf-1108-div1`、`ac-arc224`。**格式嚴格照 `docs/cp/contests/template.md`(富版面)**:
 - 每題一個 `### [題名](url)` 區塊 + 一行 tag chips。
 - `::: info 題意`:2–4 句(給定 X → 規則 → **求/輸出** Y + 約束),分段呼吸;**段尾加一個迷你手算例**(1–3 行,必須自己驗算過,沒把握就不放——錯例比沒例毒)。
-- `::: tip 作法`:1–2 行核心;code-shaped 的題附 5–15 行 ```cpp 關鍵片段 sketch(公式題不放)。
+- `::: tip 作法`:1–2 行核心;code-shaped 的題附 5–15 行 ```cpp 關鍵片段 sketch(公式題不放)。**sketch 一律用乾淨可讀風格**——運算子/關鍵字/逗號後空格、一行一語句、4-space 縮排,**不要競賽壓縮風**(`for(int i=0;i<n;i++)` 這種)。可用 clang-format 過:`clang-format --style="{BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0, SpacesBeforeTrailingComments: 2}"`(pip install clang-format;LeetCode 月報的 assemble_lc.py 已內建自動套用)。
 - SVG:整份至多 1–2 張,只給空間結構題;寬 ≤560、只用 currentColor 與 var(--vp-c-brand-1)/var(--vp-c-default-soft)。
 - frontmatter 同 template(contest/date/tags/url/editorial/source/verified: false/aside: false/reviewed/review_interval)。
 - 不收的題不出現在檔案裡;exclusion 清單放 PR body / 回報。
