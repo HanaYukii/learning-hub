@@ -13,7 +13,7 @@ export interface ContestEntry {
 declare const data: ContestEntry[]
 export { data }
 
-export default createContentLoader('cp/contests/*.md', {
+export default createContentLoader(['cp/contests/*.md', 'cp/leetcode/*.md'], {
   transform(raw): ContestEntry[] {
     return raw
       .filter((p) => !/template|example/.test(p.url) && p.frontmatter.contest)

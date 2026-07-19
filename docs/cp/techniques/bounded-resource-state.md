@@ -4,7 +4,7 @@ tags: [最短路, 狀態擴充, 分層圖, dp]
 why: 「主準則較差但資源較多」的狀態可能是必經之路——不能把每點折疊成單一 min 標籤
 trigger: 最短路/DP 有第二個「有界」資源維(電量/油量/預算/容量),且慢但省資源的中間狀態可能才可行或最優
 problems:
-  - { name: "資源受限最短路 (RCSP) 型;近期某場 Q4 即此型", url: "", rating: 2500 }
+  - { name: "LC WC508 Q4 Minimum Time to Reach Target With Limited Power(狀態=(node, 剩餘power),時間 Dijkstra)", url: "https://leetcode.com/problems/minimum-time-to-reach-target-with-limited-power/", rating: 2103 }
 reviewed: 2026-07-01
 review_interval: 21
 ---

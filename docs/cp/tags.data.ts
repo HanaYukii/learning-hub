@@ -24,7 +24,7 @@ const LINE = /^- \*\*\[(.+?)\]\((.+?)\)\*\*((?:\s+`[^`]+`)+)\s*$/
 const HEAD = /^###\s+\[(.+?)\]\((.+?)\)\s*(?:\{.*\})?\s*$/
 const TAGLINE = /^(?:\s*`[^`]+`)+\s*$/
 
-export default createContentLoader(['cp/contests/*.md', 'cp/techniques/*.md', 'cp/topics/*.md'], {
+export default createContentLoader(['cp/contests/*.md', 'cp/techniques/*.md', 'cp/topics/*.md', 'cp/leetcode/*.md'], {
   includeSrc: true,
   transform(raw): TagGroup[] {
     const byTag: Record<string, TagProblem[]> = {}
@@ -33,15 +33,19 @@ export default createContentLoader(['cp/contests/*.md', 'cp/techniques/*.md', 'c
     for (const p of raw) {
       if (/template|example/.test(p.url)) continue
 
-      if (p.url.includes('/contests/') || p.url.includes('/topics/')) {
+      if (p.url.includes('/contests/') || p.url.includes('/topics/') || p.url.includes('/leetcode/')) {
         const from = p.url.includes('/topics/')
           ? '弱項專題'
-          : shortContest(String(p.frontmatter.contest ?? ''))
+          : p.url.includes('/leetcode/')
+            ? String(p.frontmatter.contest ?? 'LeetCode')
+            : shortContest(String(p.frontmatter.contest ?? ''))
         const lines = (p.src ?? '').split('\n')
+        // rating token 允許前綴:`~1500`(CF)、`AtC~1700`、`LC~2103`
+        const isRating = (t: string) => /^(?:LC|AtC)?~/.test(t)
         const emit = (problem: string, purl: string, tagstr: string) => {
           const toks = [...tagstr.matchAll(/`([^`]+)`/g)].map((x) => x[1])
-          const rating = toks.find((t) => t.startsWith('~')) ?? ''
-          for (const t of toks.filter((t) => !t.startsWith('~'))) {
+          const rating = toks.find(isRating) ?? ''
+          for (const t of toks.filter((t) => !isRating(t))) {
             push(t, { problem, purl, from, fromUrl: p.url, rating })
           }
         }
