@@ -69,3 +69,4 @@ import { data as contests } from './contests.data'
 
 - `不變量`(CF1104 D、ARC222 F、ARC223 E)——已出現 3 場,偏思路難成卡,先觀察
 - `值域線段樹 descent`(ABC467 G,親自推導)——kth-element 式 root→leaf 走位取代外層二分,經典模板,**候選**
+- `質因子容斥 + 調和篩`(LC BW184 Q4)——算「與 $v$ 互質/不互質的元素數」通法:∪ over「被某質因子整除」事件,∩ = 被乘積整除 = 調和篩的 cnt[d],**候選**
