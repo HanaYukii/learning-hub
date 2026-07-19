@@ -34,7 +34,7 @@ import { data as contests } from './contests.data'
 
 **鐵則:tag 只能從這張表選;要新 tag,先把它加進這張表再用。**(同義詞不要另起:`greedy`→`貪心`、`期望/期望值`→`機率期望`、`狀態壓縮`→`狀壓`)
 
-`dp` `數位dp` `區間dp` `狀壓` `背包` `貪心` `反悔貪心` `構造` `分類討論` `模擬` `數學` `圖論` `最短路` `flow` `樹` `HLD` `線段樹` `BIT` `線段樹分治` `可回滾DSU` `ODT` `資料結構` `數論` `組合計數` `容斥` `莫比烏斯` `歐拉函數` `機率期望` `反射原理` `多項式` `NTT` `字串` `幾何` `矩陣` `博弈` `排列` `置換環` `逆序對` `位元` `XOR` `WHT` `BSGS` `MITM` `不變量` `貢獻` `差分` `離線` `掃描線` `根號` `二分` `分治` `互動` `bitset` `狀態擴充` `分層圖` `Pareto`
+`dp` `數位dp` `區間dp` `狀壓` `背包` `貪心` `反悔貪心` `構造` `分類討論` `模擬` `數學` `圖論` `最短路` `flow` `樹` `HLD` `線段樹` `BIT` `線段樹分治` `可回滾DSU` `ODT` `資料結構` `數論` `組合計數` `容斥` `莫比烏斯` `歐拉函數` `機率期望` `反射原理` `多項式` `NTT` `字串` `Manacher` `幾何` `矩陣` `博弈` `排列` `置換環` `逆序對` `位元` `XOR` `WHT` `BSGS` `MITM` `不變量` `貢獻` `差分` `離線` `掃描線` `根號` `二分` `分治` `互動` `bitset` `狀態擴充` `分層圖` `Pareto`
 
 → 按 tag 聚合的所有題目見 **[技巧 tag 索引](/cp/tags)**。
 
@@ -64,6 +64,7 @@ import { data as contests } from './contests.data'
 | [反悔貪心](/cp/techniques/regret-greedy) | 反悔貪心·貪心 | 「選 k 個互不相鄰」模板;ABC464 G / JOI Candies 型 |
 | [莫比烏斯反演 / μ 除數篩](/cp/techniques/mobius-inversion) | 數論·容斥·莫比烏斯 | 互質/共質因子計數的批次通法;模板已對拍;LC BW184 Q4 型 |
 | [歐拉函數 φ / 積性函數線性篩](/cp/techniques/euler-totient) | 數論·歐拉函數·莫比烏斯 | gcd 求和 / 互質計數 / 模冪降次;模板已對拍;與 μ 同套件 |
+| [Manacher](/cp/techniques/manacher) | 字串·Manacher | O(n) 每中心最長回文;整數陣列變形(值相等);模板已對拍;LC WC509 Q4 型 |
 
 ## 技巧卡候選(digest 反覆出現的 pattern)
 
