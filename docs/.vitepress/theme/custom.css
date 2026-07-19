@@ -31,16 +31,24 @@
 /* 題意 / 作法 色塊:多一點內距與呼吸感 */
 .vp-doc .custom-block {
   border-radius: 10px;
-  padding: 14px 18px;
-  margin: 14px 0;
+  padding: 18px 22px;
+  margin: 16px 0;
 }
 .vp-doc .custom-block.info .custom-block-title,
 .vp-doc .custom-block.tip .custom-block-title {
   letter-spacing: 0.05em;
+  margin-bottom: 10px;
 }
-/* 色塊內段落行距放鬆一點 */
+/* 色塊內段落:行距放鬆、段間留白(給定/規則/求、例 各自呼吸) */
 .vp-doc .custom-block p {
-  line-height: 1.75;
+  line-height: 1.9;
+  margin: 0.75em 0;
+}
+.vp-doc .custom-block p:first-of-type {
+  margin-top: 0.15em;
+}
+.vp-doc .custom-block p:last-of-type {
+  margin-bottom: 0.15em;
 }
 /* 色塊內的小 code block 不要太搶 */
 .vp-doc .custom-block div[class*='language-'] {
@@ -59,4 +67,35 @@
 /* 小例子(example)用 details 時的內距 */
 .vp-doc .custom-block.details {
   padding: 10px 18px;
+}
+
+/* ===== 整體閱讀密度:內文與數學式放鬆 ===== */
+
+/* 內文段落 / 清單:行距與字距(中文密排 + inline 元素混排不擠) */
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+/* inline 數學式:左右留一點,別黏著中文;垂直對齊不撐行 */
+.vp-doc mjx-container:not([display='true']) {
+  margin: 0 0.12em;
+}
+
+/* display 數學式($$…$$):上下留白,窄螢幕可橫向捲動不溢出 */
+.vp-doc mjx-container[display='true'] {
+  margin: 1.1em 0;
+  padding: 4px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* inline code(非 chip):與中文之間也留一點呼吸 */
+.vp-doc :not(pre) > code {
+  margin: 0 0.1em;
+}
+/* chip 行的 code 不套用上面的左右 margin(chip 已有自己的間距) */
+.vp-doc h3 + p > code {
+  margin: 0 4px 0 0;
 }
