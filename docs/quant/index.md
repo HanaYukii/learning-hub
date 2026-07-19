@@ -1,12 +1,9 @@
-# 量化面試數學
+# 數學學習區
 
-> **用途**:量化/HFT 面試準備的 item 清單。主要自用、快速複習;同時公開可展示。**條列式**,密集可掃。
-> 兩軌:**research/trading**(數學)、**dev**(低延遲 C++)。面試準備求**覆蓋**,標準結果也列成 checklist,但一樣精簡條列。
-> 題庫每題「題目 → <small>技巧+答案(摺疊)</small>」——先自己想,再點開對答案。
+> 給**競賽與面試**的中上數學:機率、鞅、隨機過程、線代、定價、統計。每題「題目 → 技巧 + 答案(摺疊)」——先自己想,再點開對。
+> 另有一軌**低延遲 C++**(量化 / HFT 面試向)。
 
-## 艱深題庫(面試硬題)
-
-答案經對抗式校對;側欄與[複習佇列](/review/)自動掛載。
+## 題庫
 
 | 題庫 | 涵蓋 |
 | --- | --- |
@@ -20,9 +17,9 @@
 | [Kelly・賭注 sizing・做市 EV](/quant/problems/betting-games) | Kelly/fractional、骰子重擲、make a market、adverse selection |
 | [統計推論・回歸](/quant/problems/statistics-regression) | OLS 幾何、Gauss–Markov、三大 bias、MLE/MoM |
 
-## 數學軌 checklist
+## 主題 checklist
 
-`[x]` = 已有題庫/item-sheet 覆蓋(掌握度看[複習佇列](/review/)的間隔)。
+`[x]` = 已有題庫覆蓋。
 
 **機率**
 - [x] [鞅與選擇停時(OST)](/quant/probability/martingale-optional-stopping) + [題庫](/quant/problems/martingale-walk)
@@ -47,18 +44,14 @@
 - [ ] 凸最佳化 / KKT / Markowitz 專章(部分散在線代與定價,待整併)
 - [ ] ML 數學:bias-variance、正則化=先驗、logistic(待寫)
 
-## HFT C++ 軌
-
-蒸餾自[部落格](https://hanayukii.dev)親身面試紀錄的 item-sheet:
+## 低延遲 C++(量化 / HFT 面試向)
 
 - [x] [參數傳遞與 string 成本](/quant/hft-cpp/parameter-passing) — const& vs value vs string_view、SSO、NRVO、lambda/std::function
 - [x] [記憶體佈局成本](/quant/hft-cpp/memory-layout-costs) — padding、vtable、shared_ptr 原子、false sharing、Order Book 選型
 - [x] [手寫 inplace_vector](/quant/hft-cpp/inplace-vector) — aligned storage、placement new、Rule of Five、exception safety
 
-**Backlog(待寫;★ = 部落格有底稿)**
+**Backlog**
 - [ ] lock-free / memory ordering(acquire-release、seq_cst 成本)
 - [ ] SPSC ring buffer、memory pool / 自訂 allocator
-- [ ] CRTP 消 virtual ★(cpp-polymorphism)
-- [ ] noexcept 與例外成本、`[[likely]]`、branch prediction
-- [ ] 量測方法:rdtsc、benchmark 陷阱
-- [ ] NUMA / 大頁 / cache 層級
+- [ ] CRTP 消 virtual、noexcept 與例外成本、branch prediction
+- [ ] 量測方法:rdtsc、benchmark 陷阱;NUMA / 大頁 / cache 層級

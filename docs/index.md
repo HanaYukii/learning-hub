@@ -2,31 +2,37 @@
 layout: home
 
 hero:
-  name: cp-quant
-  tagline: 比賽 digest・量化面試題庫・C++ 筆記
+  name: 花雪 · HanaYukii
+  text: 競程筆記訓練場
+  tagline: 拆解高手腦中的解題思路——為什麼想到這個模型、哪些線索該觸發它、怎麼從暴力優化、實作最容易錯在哪。不是又一份看完仍不會的題解。
   actions:
     - theme: brand
-      text: 競程
+      text: 競程技巧庫
       link: /cp/
     - theme: alt
-      text: 量化
-      link: /quant/
+      text: 找我家教
+      link: /tutoring
     - theme: alt
-      text: C++
-      link: /cpp/
-    - theme: alt
-      text: 複習佇列
-      link: /review/
+      text: 關於我
+      link: /about
+
+features:
+  - title: 🏆 競程技巧庫
+    details: 每場 CF / AtCoder / LeetCode 的技巧懶人包,加上可複用的技巧卡。重點不在題號,而在「觸發線索 → 關鍵觀察 → 正確實作 → 技巧遷移」。
+    link: /cp/
+    linkText: 進技巧庫
+  - title: 📐 數學學習區
+    details: 給競賽與面試的中上數學——機率、鞅、隨機過程、線代、定價、統計。每題先自己想,再點開對答案。
+    link: /quant/
+    linkText: 開始練
+  - title: 🎓 家教 / 培訓
+    details: 把你從「中上」推到獎牌線 / 大廠面試線。高中競賽、ICPC 銀銅、Google 面試向。
+    link: /tutoring
+    linkText: 了解家教
+  - title: ✍️ 部落格
+    details: 更完整的技術長文、面試紀錄,以及競程與量化的觀點。
+    link: https://hanayukii.dev
+    linkText: 前往部落格
 ---
 
-## 內容
-
-- **[競程](/cp/)** — 每場 CF / AtCoder 一份 digest:每題「題意一行 + 核心作法一兩行」,CF 標 `~` rating、AtCoder 標 `AtC~`(kenkoooo);另有[技巧卡](/cp/)與弱項專題。收錄原則與 tag 詞彙見 [/cp/](/cp/),按技巧聚合見 [tag 索引](/cp/tags)。
-- **[量化面試](/quant/)** — 數學題庫(機率、鞅、隨機微積分、馬可夫、線代、定價、Kelly、統計回歸),答案摺疊,先想再看;另有 HFT C++ 考點。
-- **[C++](/cpp/)** — Modern / Low-level 雙軌的 item 化整理(編譯期、多型、物件佈局、SSO…)。
-- **[複習佇列](/review/)** — 由各筆記 frontmatter 自動排程的到期清單。
-
-## 說明
-
-- 內容走精簡可掃的筆記形式,不是教學文;寫給讀者的深入版在[部落格](https://hanayukii.dev)。
-- digest 依官方 editorial 整理;尚未重解核對的標 ⏳(見各索引的「複核」欄)。
+由 **ICPC 區域賽金牌**、**演算法海牛核心團隊講師**、**前 Google 工程師** 整理——一套我自己也願意拿來重新學競程的網站。

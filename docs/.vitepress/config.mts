@@ -56,8 +56,8 @@ export default defineConfig({
   // (cp-quant.hanayukii.dev 待 GitHub 憑證好、或改 Cloudflare 代理後再切回 base:'/')
   base: '/learning-hub/',
   lang: 'zh-TW',
-  title: 'cp-quant',
-  description: '比賽 digest・量化面試題庫・C++ 筆記',
+  title: '花雪的競程筆記訓練場',
+  description: '拆解高手腦中的解題思路——競程技巧庫、面試向數學、家教。ICPC 區域賽金牌 / 演算法海牛講師 / 前 Google 工程師 花雪 HanaYukii。',
   lastUpdated: true,
   cleanUrls: true,
   // 死鏈守門:漏掛索引、改檔名忘改連結 → build 直接紅(#4)
@@ -73,11 +73,11 @@ export default defineConfig({
 
   themeConfig: {
     nav: [
-      { text: '首頁', link: '/' },
-      { text: '競程技巧', link: '/cp/' },
-      { text: '量化數學', link: '/quant/' },
+      { text: '競程', link: '/cp/' },
+      { text: '數學', link: '/quant/' },
       { text: 'C++', link: '/cpp/' },
-      { text: '複習佇列', link: '/review/' },
+      { text: '家教', link: '/tutoring' },
+      { text: '關於', link: '/about' },
     ],
 
     sidebar: {
