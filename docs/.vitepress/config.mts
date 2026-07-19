@@ -56,6 +56,8 @@ export default defineConfig({
   // (cp-quant.hanayukii.dev 待 GitHub 憑證好、或改 Cloudflare 代理後再切回 base:'/')
   base: '/learning-hub/',
   lang: 'zh-TW',
+  // 模板檔是給作者的寫作參考,不對外部署
+  srcExclude: ['**/template.md'],
   title: '花雪的競程筆記訓練場',
   description: '拆解高手腦中的解題思路——競程技巧庫、面試向數學、家教。ICPC 區域賽金牌 / 演算法海牛講師 / 前 Google 工程師 花雪 HanaYukii。',
   lastUpdated: true,
@@ -92,26 +94,20 @@ export default defineConfig({
         {
           text: '比賽 digest',
           collapsed: false,
-          items: [
-            { text: 'digest 模板', link: '/cp/contests/template' },
-            ...scanDir('cp/contests', { titleKeys: ['contest'], sortByDate: true, short: true }),
-          ],
+          items: scanDir('cp/contests', { titleKeys: ['contest'], sortByDate: true, short: true }),
         },
         {
           text: '技巧卡',
           collapsed: false,
-          items: [{ text: '技巧卡模板', link: '/cp/template' }, ...scanDir('cp/techniques')],
+          items: scanDir('cp/techniques'),
         },
         ...groupIf('弱項專題', 'cp/topics'),
         ...groupIf('LeetCode 月報', 'cp/leetcode', { sortByDate: true }),
       ],
       '/quant/': [
         {
-          text: '量化數學',
-          items: [
-            { text: '總覽與 checklist', link: '/quant/' },
-            { text: 'item 模板', link: '/quant/template' },
-          ],
+          text: '數學學習區',
+          items: [{ text: '總覽', link: '/quant/' }],
         },
         ...groupIf('機率', 'quant/probability'),
         ...groupIf('艱深題庫', 'quant/problems'),
