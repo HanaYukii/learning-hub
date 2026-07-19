@@ -34,7 +34,7 @@ import { data as contests } from './contests.data'
 
 **鐵則:tag 只能從這張表選;要新 tag,先把它加進這張表再用。**(同義詞不要另起:`greedy`→`貪心`、`期望/期望值`→`機率期望`、`狀態壓縮`→`狀壓`)
 
-`dp` `數位dp` `區間dp` `狀壓` `背包` `貪心` `反悔貪心` `構造` `分類討論` `模擬` `數學` `圖論` `最短路` `flow` `樹` `HLD` `線段樹` `BIT` `線段樹分治` `可回滾DSU` `ODT` `資料結構` `數論` `組合計數` `容斥` `機率期望` `反射原理` `多項式` `NTT` `字串` `幾何` `矩陣` `博弈` `排列` `置換環` `逆序對` `位元` `XOR` `WHT` `BSGS` `MITM` `不變量` `貢獻` `差分` `離線` `掃描線` `根號` `二分` `分治` `互動` `bitset` `狀態擴充` `分層圖` `Pareto`
+`dp` `數位dp` `區間dp` `狀壓` `背包` `貪心` `反悔貪心` `構造` `分類討論` `模擬` `數學` `圖論` `最短路` `flow` `樹` `HLD` `線段樹` `BIT` `線段樹分治` `可回滾DSU` `ODT` `資料結構` `數論` `組合計數` `容斥` `莫比烏斯` `機率期望` `反射原理` `多項式` `NTT` `字串` `幾何` `矩陣` `博弈` `排列` `置換環` `逆序對` `位元` `XOR` `WHT` `BSGS` `MITM` `不變量` `貢獻` `差分` `離線` `掃描線` `根號` `二分` `分治` `互動` `bitset` `狀態擴充` `分層圖` `Pareto`
 
 → 按 tag 聚合的所有題目見 **[技巧 tag 索引](/cp/tags)**。
 
@@ -62,6 +62,7 @@ import { data as contests } from './contests.data'
 | [有界資源維狀態擴充](/cp/techniques/bounded-resource-state) | 最短路·狀態擴充·Pareto | 多準則最短路別折疊成單標籤 |
 | [線段樹分治 + 可回滾 DSU](/cp/techniques/segtree-divide-rollback-dsu) | 線段樹分治·離線 | 離線動態連通性通法;CF1105 E 型,模板已編譯對拍 |
 | [反悔貪心](/cp/techniques/regret-greedy) | 反悔貪心·貪心 | 「選 k 個互不相鄰」模板;ABC464 G / JOI Candies 型 |
+| [莫比烏斯反演 / μ 除數篩](/cp/techniques/mobius-inversion) | 數論·容斥·莫比烏斯 | 互質/共質因子計數的批次通法;模板已對拍;LC BW184 Q4 型 |
 
 ## 技巧卡候選(digest 反覆出現的 pattern)
 
@@ -69,4 +70,3 @@ import { data as contests } from './contests.data'
 
 - `不變量`(CF1104 D、ARC222 F、ARC223 E)——已出現 3 場,偏思路難成卡,先觀察
 - `值域線段樹 descent`(ABC467 G,親自推導)——kth-element 式 root→leaf 走位取代外層二分,經典模板,**候選**
-- `質因子容斥 + 調和篩`(LC BW184 Q4)——算「與 $v$ 互質/不互質的元素數」通法:∪ over「被某質因子整除」事件,∩ = 被乘積整除 = 調和篩的 cnt[d],**候選**
