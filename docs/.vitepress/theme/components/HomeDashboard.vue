@@ -100,8 +100,8 @@ function dueLabel(item: ReviewItem): string {
 
     <dl class="hub-stats" aria-label="網站內容統計">
       <div v-for="stat in stats" :key="stat.label" class="hub-stat">
-        <dd>{{ stat.value }}</dd>
         <dt>{{ stat.label }}</dt>
+        <dd>{{ stat.value }}</dd>
       </div>
     </dl>
 
@@ -297,6 +297,8 @@ function dueLabel(item: ReviewItem): string {
 }
 
 .hub-stat {
+  display: flex;
+  flex-direction: column;
   min-width: 0;
   padding: 15px 18px;
 }
@@ -306,6 +308,7 @@ function dueLabel(item: ReviewItem): string {
 }
 
 .hub-stat dd {
+  order: -1;
   margin: 0;
   color: var(--vp-c-text-1);
   font-family: var(--lh-font-mono);
@@ -359,7 +362,7 @@ function dueLabel(item: ReviewItem): string {
 
 .hub-section-label {
   color: var(--vp-c-brand-1);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 700;
 }
 
@@ -425,7 +428,7 @@ function dueLabel(item: ReviewItem): string {
   min-width: 38px;
   color: var(--lh-review);
   font-family: var(--lh-font-mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
 }
 
@@ -444,6 +447,9 @@ function dueLabel(item: ReviewItem): string {
 }
 
 .hub-inline-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--vp-c-brand-1);
   font-size: 0.82rem;
   font-weight: 700;
@@ -523,7 +529,7 @@ function dueLabel(item: ReviewItem): string {
 
 .hub-track-label {
   color: var(--track-color);
-  font-size: 0.58rem;
+  font-size: 0.68rem;
   font-weight: 700;
 }
 
@@ -604,7 +610,7 @@ function dueLabel(item: ReviewItem): string {
   padding: 3px 7px;
   background: var(--vp-c-default-soft);
   color: var(--vp-c-text-2);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
 }
 
 .hub-latest-arrow {
@@ -630,6 +636,9 @@ function dueLabel(item: ReviewItem): string {
 }
 
 .hub-utility-links a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   color: var(--vp-c-text-2);
   font-weight: 700;
   text-decoration: none;
