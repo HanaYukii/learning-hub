@@ -8,8 +8,7 @@ review_interval: 14
 
 # 弱項專題:網路流(Dinic/最小割建模/費用流)
 
-> 弱項專題懶人包(不等比賽,主動補):每題「題意 + 核心作法」。題目選自 CF problemset(rating 2100–2500 為主)。`verified: false`=作法尚未人工複核。
-> 版面:題意含小例、作法含關鍵片段。
+> 主題式整理:核心模板與觸發辨識,配 CF 2100–2500 經典題逐題「題意 + 作法」。
 
 ## 核心模板 / 觸發
 
@@ -17,6 +16,8 @@ review_interval: 14
 - **Dinic 模板三件套**:BFS **分層** + DFS **多路增廣** + **當前弧** `it[u]`。複雜度 $O(V^2E)$,**單位容量圖 $O(E\sqrt{V})$**。易錯:每輪忘記重置 `level/it`;反向邊成對存(`e ^ 1` 取反邊)。
 - **最小割建模(最大權閉合子圖)**:答案 $=\sum(\text{收益}) - \text{mincut}$。收益項連 $S$(割掉=放棄收益),成本項連 $T$(割掉=支付成本),**依賴關係連 $\infty$ 邊**(不可割)。
 - **費用流(MCMF)**:SPFA 增廣或 Johnson 位勢 + Dijkstra。**凸費用拆邊**:$c^2=\sum_{k=1}^{c}(2k-1)$ → 拆成 cap 1、cost $1,3,5,\dots$ 的平行邊。求最大收益 → 邊費用取負跑最小費用。
+- **容量縮放(capacity scaling)**:增廣次數跟容量大小掛鉤時的救法——門檻 $\Delta$ 從最高位元開始減半,每輪只沿殘量 $\ge\Delta$ 的邊增廣,每輪至多 $O(E)$ 次、總增廣 $O(E\log U)$ 次。**主戰場是費用流**:SSP 的增廣次數 $=$ 流值,容量 $10^9$ 直接炸,scaling SSP 把它壓到 $O(E\log U)$;純 maxflow 的 Dinic 本身與容量無關,通常不用。
+- **費用縮放(cost scaling)**:MCMF 的另一條路(Goldberg–Tarjan,$\varepsilon$-optimality + push-relabel,$O(V^2E\log(VC))$);圖大、流量大時常比 SSP 快一個量級,大型 assignment 可考慮。
 - **輸出方案**:邊上實際流量 $=$ 初始容量 $-$ 殘量;**最小割割集** $=$ 殘量網路上從 $S$ BFS 可達點集與其補集之間的原邊。
 - **常見易錯**:總量不守恆先判 $\sum a_i \ne \sum b_i$ 直接無解;點容量要**拆點**($v_{in}\to v_{out}$);二分 + 流時容量對 target 取 $\min$ 防溢位。
 
