@@ -56,8 +56,8 @@
   border-radius: 8px;
 }
 
-/* Scale inline article diagrams to the content width on narrow screens. */
-.vp-doc svg {
+/* Scale standalone article diagrams to the content width on narrow screens. */
+.vp-doc .custom-block > svg {
   display: block;
   max-width: 100%;
   height: auto;
