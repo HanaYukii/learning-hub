@@ -15,7 +15,7 @@ interface Track {
 
 interface SuggestedPost {
   title: string
-  section: 'CP' | 'Quant' | 'C++'
+  section: 'CP' | 'LeetCode' | 'Quant' | 'C++'
   detail: string
   link: string
 }
