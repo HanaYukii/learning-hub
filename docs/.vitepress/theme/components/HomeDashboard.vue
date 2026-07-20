@@ -39,24 +39,6 @@ const suggestedPosts: SuggestedPost[] = [
     detail: '質因子容斥完整推導、WQS/Aliens 二分、K 次交換最大子陣列和。',
     link: '/cp/leetcode/2026-06',
   },
-  {
-    title: '有界資源維狀態擴充(多準則最短路 / Pareto)',
-    section: 'CP',
-    detail: '從資源受限最短路出發，整理狀態擴充、分層 DP 與 Pareto 前緣。',
-    link: '/cp/techniques/bounded-resource-state',
-  },
-  {
-    title: '鞅與選擇停時定理(OST)',
-    section: 'Quant',
-    detail: '用吸收機率、期望步數與擲幣模式，整理鞅與選擇停時定理。',
-    link: '/quant/probability/martingale-optional-stopping',
-  },
-  {
-    title: '編譯器與標準庫的隱形優化:SSO / copy elision',
-    section: 'C++',
-    detail: '拆解 SSO、copy elision、NRVO 與 move 的實際成本。',
-    link: '/cpp/lowlevel/compiler-optimizations',
-  },
 ]
 
 const recentItems: ContestEntry[] = contests.slice(0, 3)
@@ -132,10 +114,10 @@ const tracks: Track[] = [
             <p class="hub-section-label is-feature">Editor’s picks</p>
             <h2 id="suggestions-heading">推薦閱讀</h2>
           </div>
-          <span class="hub-curation-note">跨三個主題</span>
+          <span class="hub-curation-note">最近整理</span>
         </div>
 
-        <p class="hub-panel-copy">不知道從哪裡開始時，可以先讀這三篇；它們各自代表本站的一條內容路線。</p>
+        <p class="hub-panel-copy">不知道從哪裡開始時，可以先讀這三篇最近整理過的:一場親自參賽的 ABC,加上兩期 LeetCode 月報。</p>
 
         <ul class="hub-suggestion-list">
           <li v-for="post in suggestedPosts" :key="post.link">
