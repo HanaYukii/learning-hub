@@ -22,6 +22,24 @@ interface SuggestedPost {
 
 const suggestedPosts: SuggestedPost[] = [
   {
+    title: 'ABC 467 D–G 學習重點(親自參賽)',
+    section: 'CP',
+    detail: '同心圓的中垂線歸約、鋸齒成本掃描、B 軸線段樹、值域樹 descent，含圖解與驗過的 code。',
+    link: '/cp/contests/2026-07-18-ac-abc467',
+  },
+  {
+    title: 'LeetCode 2026 年 7 月 — Q4 精選',
+    section: 'LeetCode',
+    detail: '整月週賽/雙週賽 Q4:Manacher 整數陣列變形、群作用軌道計數、不變量坍縮 DP。',
+    link: '/cp/leetcode/2026-07',
+  },
+  {
+    title: 'LeetCode 2026 年 6 月 — Q4 精選',
+    section: 'LeetCode',
+    detail: '質因子容斥完整推導、WQS/Aliens 二分、K 次交換最大子陣列和。',
+    link: '/cp/leetcode/2026-06',
+  },
+  {
     title: '有界資源維狀態擴充(多準則最短路 / Pareto)',
     section: 'CP',
     detail: '從資源受限最短路出發，整理狀態擴充、分層 DP 與 Pareto 前緣。',
