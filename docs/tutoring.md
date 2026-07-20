@@ -21,7 +21,7 @@
 
 ## 背景
 
-ICPC 台北區域賽金牌 · Codeforces International Master(2300+)· LeetCode 2800+ Guardian · 前 Google 工程師 · 演算法海牛核心團隊成員(參與教材製作與出題)。完整資歷見 [關於我](/about)。
+ICPC 區域賽金牌、前 Google 工程師、演算法海牛核心團隊成員。更多見 [關於](/about) 與 [個人網站](https://hanayukii.dev/about)。
 
 ## 聯絡
 
