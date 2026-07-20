@@ -59,7 +59,7 @@ export default defineConfig({
   // 模板檔是給作者的寫作參考,不對外部署
   srcExclude: ['**/template.md'],
   title: '花雪的競程筆記訓練場',
-  description: '拆解高手腦中的解題思路——競程技巧庫、面試向數學、家教。ICPC 區域賽金牌 / 演算法海牛講師 / 前 Google 工程師 花雪 HanaYukii。',
+  description: '競程比賽的解題筆記與技巧卡、面試向數學、家教。花雪 HanaYukii — ICPC 區域賽金牌、前 Google 工程師、演算法海牛核心團隊成員。',
   lastUpdated: true,
   cleanUrls: true,
   // 死鏈守門:漏掛索引、改檔名忘改連結 → build 直接紅(#4)

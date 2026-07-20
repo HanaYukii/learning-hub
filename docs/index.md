@@ -35,4 +35,4 @@ features:
     linkText: 前往部落格
 ---
 
-由花雪整理 · ICPC 區域賽金牌 · 演算法海牛講師 · 前 Google 工程師
+由花雪整理 · ICPC 區域賽金牌 · 前 Google 工程師 · 演算法海牛核心團隊成員
