@@ -7,10 +7,10 @@
 
 整體採「Hanayukii 冷色夜景品牌 × Jabiko editorial 資訊層級」：暗色優先、長時間閱讀友善，使用清楚的 surface、metadata 與主行動。首頁定位為知識索引，不是營銷 landing page 或刷題站；推薦閱讀由站主精選，不使用到期演算法。
 
-暫定區域色：
+暫定區域色（亮色維持既有配色；暗色用更清楚的冷色分工）：
 
-- 競程：teal
-- 數學：sky
+- 競程：cyan-blue
+- 數學：periwinkle
 - C++：coral
 - 推薦：gold
 - 家教：rose
@@ -117,6 +117,7 @@
 - Completed：2026-07-21
 - Decision：首頁不是營銷站；採 compact working index，不做大封面（2026-07-21）
 - Correction：知識庫不是刷題站；首頁以站主精選文章取代今日複習與到期狀態（2026-07-21）
+- Refinement：亮色配色維持不變；暗色品牌由 teal 改為 ice blue，競程／數學分為 cyan-blue／periwinkle，大面積 callout 改用中性 slate／navy surface（2026-07-21）
 - Files：
   - docs/.vitepress/config.mts
   - docs/.vitepress/theme/index.ts

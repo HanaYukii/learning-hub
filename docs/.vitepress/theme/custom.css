@@ -55,6 +55,13 @@
   margin: 10px 0 4px;
   border-radius: 8px;
 }
+
+/* Scale inline article diagrams to the content width on narrow screens. */
+.vp-doc svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 /* code block:放鬆行距與內距,sketch 讀起來不擠 */
 .vp-doc div[class*='language-'] pre {
   line-height: 1.7;

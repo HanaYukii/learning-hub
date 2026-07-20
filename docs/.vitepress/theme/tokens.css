@@ -60,8 +60,8 @@
 
 .dark {
   color-scheme: dark;
-  --lh-cp: #63d3bd;
-  --lh-quant: #65c7ef;
+  --lh-cp: #60cce8;
+  --lh-quant: #b0a3ff;
   --lh-cpp: #ff9879;
   --lh-feature: #f0c86f;
   --lh-tutoring: #f58ac2;
@@ -72,8 +72,8 @@
   --lh-border: #293149;
   --lh-focus: #f0c86f;
   --lh-page-wash:
-    radial-gradient(ellipse 72% 34rem at 50% -18rem, rgba(46, 196, 182, 0.1), transparent 72%),
-    radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.045), transparent 28rem),
+    radial-gradient(ellipse 72% 34rem at 50% -18rem, rgba(67, 142, 224, 0.09), transparent 72%),
+    radial-gradient(circle at 100% 0%, rgba(176, 163, 255, 0.04), transparent 28rem),
     #0c0e14;
 
   --vp-c-bg: #0c0e14;
@@ -90,22 +90,28 @@
   --vp-c-default-2: #30394e;
   --vp-c-default-3: #242b3a;
   --vp-c-default-soft: rgba(155, 161, 184, 0.12);
-  --vp-c-brand-1: #67d9cf;
-  --vp-c-brand-2: #46cbbf;
-  --vp-c-brand-3: #2ec4b6;
-  --vp-c-brand-soft: rgba(46, 196, 182, 0.14);
+  --vp-c-brand-1: #7eb5ff;
+  --vp-c-brand-2: #64a6f4;
+  --vp-c-brand-3: #438ee0;
+  --vp-c-brand-soft: rgba(67, 142, 224, 0.15);
+  --vp-custom-block-info-border: rgba(174, 180, 197, 0.1);
+  --vp-custom-block-info-bg: #181b24;
+  --vp-custom-block-info-code-bg: rgba(155, 161, 184, 0.1);
+  --vp-custom-block-tip-border: rgba(126, 181, 255, 0.22);
+  --vp-custom-block-tip-bg: #111d2e;
+  --vp-custom-block-tip-code-bg: rgba(67, 142, 224, 0.14);
   --vp-nav-bg-color: rgba(12, 14, 20, 0.9);
   --vp-nav-screen-bg-color: #0c0e14;
   --vp-local-nav-bg-color: rgba(12, 14, 20, 0.96);
   --vp-sidebar-bg-color: #0f1118;
   --vp-code-block-bg: #090b10;
   --vp-code-block-color: #cbd1de;
-  --vp-button-brand-text: #07110f;
-  --vp-button-brand-bg: #2ec4b6;
-  --vp-button-brand-hover-text: #07110f;
-  --vp-button-brand-hover-bg: #57d8cd;
-  --vp-button-brand-active-text: #07110f;
-  --vp-button-brand-active-bg: #67d9cf;
+  --vp-button-brand-text: #07111d;
+  --vp-button-brand-bg: #438ee0;
+  --vp-button-brand-hover-text: #07111d;
+  --vp-button-brand-hover-bg: #64a6f4;
+  --vp-button-brand-active-text: #07111d;
+  --vp-button-brand-active-bg: #7eb5ff;
   --vp-shadow-2: 0 10px 28px rgba(0, 0, 0, 0.32);
   --vp-shadow-3: 0 18px 46px rgba(0, 0, 0, 0.42);
 }
