@@ -79,7 +79,6 @@ export default defineConfig({
       { text: '競程', link: '/cp/' },
       { text: '數學', link: '/quant/' },
       { text: 'C++', link: '/cpp/' },
-      { text: '今日複習', link: '/review/' },
       { text: '家教', link: '/tutoring' },
       { text: '關於', link: '/about' },
     ],

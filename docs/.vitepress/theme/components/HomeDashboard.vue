@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
 import { withBase } from 'vitepress'
 import { data as contests } from '../../../cp/contests.data'
-import { data as reviewItems } from '../../../review/review.data'
 import type { ContestEntry } from '../../../cp/contests.data'
-import type { ReviewItem } from '../../../review/review.data'
 
 interface Track {
   title: string
@@ -16,24 +13,39 @@ interface Track {
   tone: 'cp' | 'quant' | 'cpp'
 }
 
-const today = ref('')
+interface SuggestedPost {
+  title: string
+  section: 'CP' | 'Quant' | 'C++'
+  detail: string
+  link: string
+}
 
-onMounted(() => {
-  const now = new Date()
-  today.value =
-    now.getFullYear() +
-    '-' +
-    String(now.getMonth() + 1).padStart(2, '0') +
-    '-' +
-    String(now.getDate()).padStart(2, '0')
-})
+const suggestedPosts: SuggestedPost[] = [
+  {
+    title: '有界資源維狀態擴充(多準則最短路 / Pareto)',
+    section: 'CP',
+    detail: '從資源受限最短路出發，整理狀態擴充、分層 DP 與 Pareto 前緣。',
+    link: '/cp/techniques/bounded-resource-state',
+  },
+  {
+    title: '鞅與選擇停時定理(OST)',
+    section: 'Quant',
+    detail: '用吸收機率、期望步數與擲幣模式，整理鞅與選擇停時定理。',
+    link: '/quant/probability/martingale-optional-stopping',
+  },
+  {
+    title: '編譯器與標準庫的隱形優化:SSO / copy elision',
+    section: 'C++',
+    detail: '拆解 SSO、copy elision、NRVO 與 move 的實際成本。',
+    link: '/cpp/lowlevel/compiler-optimizations',
+  },
+]
 
-const reviewCards: ReviewItem[] = reviewItems.slice(0, 3)
 const recentItems: ContestEntry[] = contests.slice(0, 3)
 const indexedTags = new Set(contests.flatMap((item) => item.tags)).size
 
 const stats = [
-  { value: reviewItems.length, label: '可排程筆記' },
+  { value: suggestedPosts.length, label: '推薦文章' },
   { value: contests.length, label: '比賽／月報' },
   { value: indexedTags, label: '已索引 tags' },
   { value: 3, label: '學習路線' },
@@ -69,16 +81,6 @@ const tracks: Track[] = [
   },
 ]
 
-const overdueCount = computed(() =>
-  today.value ? reviewItems.filter((item) => item.due <= today.value).length : 0,
-)
-
-function dueLabel(item: ReviewItem): string {
-  if (!today.value) return '到期 ' + item.due
-  if (item.due < today.value) return '已到期'
-  if (item.due === today.value) return '今天到期'
-  return '預計 ' + item.due.slice(5).replace('-', '/')
-}
 </script>
 
 <template>
@@ -88,12 +90,12 @@ function dueLabel(item: ReviewItem): string {
         <p class="hub-kicker">HanaYukii / Learning Hub</p>
         <h1 id="hub-title">花雪的競程筆記訓練場</h1>
         <p class="hub-intro">
-          競程比賽、面試數學與 C++ 的工作筆記。直接找一條路線開始，或從今天到期的內容複習。
+          競程比賽、面試數學與 C++ 的工作筆記。從推薦文章開始，或直接進入一條學習路線探索。
         </p>
       </div>
 
       <nav class="hub-shortcuts" aria-label="首頁快速入口">
-        <a class="hub-button is-primary" :href="withBase('/review/')">開始今日複習</a>
+        <a class="hub-button is-primary" :href="withBase('/#recommended-reading')">讀推薦文章</a>
         <a class="hub-button" :href="withBase('/cp/tags')">技巧索引</a>
       </nav>
     </header>
@@ -106,32 +108,32 @@ function dueLabel(item: ReviewItem): string {
     </dl>
 
     <div class="hub-main-grid">
-      <section class="hub-panel hub-review-panel" aria-labelledby="review-heading">
+      <section id="recommended-reading" class="hub-panel hub-suggestions-panel" aria-labelledby="suggestions-heading">
         <div class="hub-panel-heading">
           <div>
-            <p class="hub-section-label is-review">Next up</p>
-            <h2 id="review-heading">今日複習</h2>
+            <p class="hub-section-label is-feature">Editor’s picks</p>
+            <h2 id="suggestions-heading">推薦閱讀</h2>
           </div>
-          <span class="hub-status">
-            {{ today ? overdueCount + ' 項已到期' : '依到期日排序' }}
-          </span>
+          <span class="hub-curation-note">跨三個主題</span>
         </div>
 
-        <p class="hub-panel-copy">先處理最接近到期的三筆，不用再從完整索引裡挑。</p>
+        <p class="hub-panel-copy">不知道從哪裡開始時，可以先讀這三篇；它們各自代表本站的一條內容路線。</p>
 
-        <ol v-if="reviewCards.length" class="hub-review-list">
-          <li v-for="item in reviewCards" :key="item.url">
-            <a :href="withBase(item.url)">
-              <span class="hub-review-section">{{ item.section }}</span>
-              <strong>{{ item.title }}</strong>
-              <span class="hub-review-due">{{ dueLabel(item) }}</span>
+        <ul class="hub-suggestion-list">
+          <li v-for="post in suggestedPosts" :key="post.link">
+            <a :href="withBase(post.link)">
+              <span class="hub-suggestion-section">{{ post.section }}</span>
+              <span class="hub-suggestion-body">
+                <strong>{{ post.title }}</strong>
+                <span class="hub-suggestion-detail">{{ post.detail }}</span>
+              </span>
+              <span class="hub-suggestion-arrow" aria-hidden="true">→</span>
             </a>
           </li>
-        </ol>
-        <p v-else class="hub-empty">目前沒有排程中的複習項目。</p>
+        </ul>
 
-        <a class="hub-inline-link is-review" :href="withBase('/review/')">
-          查看完整複習佇列 <span aria-hidden="true">→</span>
+        <a class="hub-inline-link is-feature" :href="withBase('/#tracks-heading')">
+          再看全部學習入口 <span aria-hidden="true">→</span>
         </a>
       </section>
 
@@ -343,6 +345,11 @@ function dueLabel(item: ReviewItem): string {
   padding: 20px;
 }
 
+.hub-suggestions-panel,
+#tracks-heading {
+  scroll-margin-top: calc(var(--vp-nav-height) + 20px);
+}
+
 .hub-panel-heading,
 .hub-section-heading {
   display: flex;
@@ -366,17 +373,17 @@ function dueLabel(item: ReviewItem): string {
   font-weight: 700;
 }
 
-.hub-section-label.is-review {
-  color: var(--lh-review);
+.hub-section-label.is-feature {
+  color: var(--lh-feature);
 }
 
-.hub-status {
+.hub-curation-note {
   flex: 0 0 auto;
-  border: 1px solid color-mix(in srgb, var(--lh-review) 42%, var(--lh-border));
+  border: 1px solid color-mix(in srgb, var(--lh-feature) 42%, var(--lh-border));
   border-radius: 999px;
   padding: 4px 9px;
-  background: color-mix(in srgb, var(--lh-review) 11%, transparent);
-  color: var(--lh-review);
+  background: color-mix(in srgb, var(--lh-feature) 11%, transparent);
+  color: var(--lh-feature);
   font-size: 0.72rem;
   font-weight: 700;
 }
@@ -399,7 +406,7 @@ function dueLabel(item: ReviewItem): string {
   font-size: 0.82rem;
 }
 
-.hub-review-list {
+.hub-suggestion-list {
   display: grid;
   gap: 8px;
   margin: 16px 0 18px;
@@ -407,43 +414,51 @@ function dueLabel(item: ReviewItem): string {
   list-style: none;
 }
 
-.hub-review-list a {
+.hub-suggestion-list a {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 4px 10px;
-  min-height: 58px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  min-height: 72px;
   align-items: center;
-  padding: 9px 10px;
+  padding: 10px;
   border-radius: 9px;
   color: inherit;
   text-decoration: none;
 }
 
-.hub-review-list a:hover {
+.hub-suggestion-list a:hover {
   background: var(--lh-surface-hover);
 }
 
-.hub-review-section {
-  grid-row: 1 / 3;
-  min-width: 38px;
-  color: var(--lh-review);
+.hub-suggestion-section {
+  min-width: 42px;
+  color: var(--lh-feature);
   font-family: var(--lh-font-mono);
   font-size: 0.72rem;
   font-weight: 700;
 }
 
-.hub-review-list strong {
+.hub-suggestion-body {
+  display: flex;
   min-width: 0;
-  overflow: hidden;
-  font-size: 0.86rem;
-  line-height: 1.35;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.hub-review-due {
+.hub-suggestion-list strong {
+  min-width: 0;
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.hub-suggestion-detail {
   color: var(--vp-c-text-3);
   font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.hub-suggestion-arrow {
+  color: var(--lh-feature);
 }
 
 .hub-inline-link {
@@ -456,8 +471,8 @@ function dueLabel(item: ReviewItem): string {
   text-decoration: none;
 }
 
-.hub-inline-link.is-review {
-  color: var(--lh-review);
+.hub-inline-link.is-feature {
+  color: var(--lh-feature);
 }
 
 .hub-tracks-section {
