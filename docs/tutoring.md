@@ -10,7 +10,7 @@
 
 ## 背景
 
-ICPC 區域賽金牌、前 Google 工程師、演算法海牛核心團隊成員。更多見 [關於](/about) 與 [個人網站](https://hanayukii.dev/about)。
+ICPC 區域賽金牌、LeetCode max 2800、前 Google 工程師、演算法海牛核心團隊成員。更多見 [關於](/about) 與 [個人網站](https://hanayukii.dev/about)。
 
 ## 聯絡
 

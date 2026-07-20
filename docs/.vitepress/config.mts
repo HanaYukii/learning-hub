@@ -48,7 +48,7 @@ function scanDir(
 /** 目錄存在才產生該 sidebar 群組(如日後的 quant/hft-cpp、cp/topics) */
 function groupIf(text: string, rel: string, opts?: Parameters<typeof scanDir>[1]): DefaultTheme.SidebarItem[] {
   const items = scanDir(rel, opts)
-  return items.length ? [{ text, collapsed: false, items }] : []
+  return items.length ? [{ text, collapsed: true, items }] : []
 }
 
 export default defineConfig({
@@ -56,6 +56,7 @@ export default defineConfig({
   // (cp-quant.hanayukii.dev 待 GitHub 憑證好、或改 Cloudflare 代理後再切回 base:'/')
   base: '/learning-hub/',
   lang: 'zh-TW',
+  appearance: 'dark',
   // 模板檔是給作者的寫作參考,不對外部署
   srcExclude: ['**/template.md'],
   title: '花雪的競程筆記訓練場',
@@ -78,6 +79,7 @@ export default defineConfig({
       { text: '競程', link: '/cp/' },
       { text: '數學', link: '/quant/' },
       { text: 'C++', link: '/cpp/' },
+      { text: '今日複習', link: '/review/' },
       { text: '家教', link: '/tutoring' },
       { text: '關於', link: '/about' },
     ],
@@ -93,12 +95,12 @@ export default defineConfig({
         },
         {
           text: '比賽 digest',
-          collapsed: false,
+          collapsed: true,
           items: scanDir('cp/contests', { titleKeys: ['contest'], sortByDate: true, short: true }),
         },
         {
           text: '技巧卡',
-          collapsed: false,
+          collapsed: true,
           items: scanDir('cp/techniques'),
         },
         ...groupIf('弱項專題', 'cp/topics'),
@@ -134,6 +136,10 @@ export default defineConfig({
     },
     outline: { level: [2, 3], label: '本頁目錄' },
     docFooter: { prev: '上一篇', next: '下一篇' },
+    footer: {
+      message: '競程・數學・C++，持續整理。',
+      copyright: '© 2026 花雪 HanaYukii',
+    },
     lastUpdatedText: '最後更新',
     darkModeSwitchLabel: '深色模式',
     lightModeSwitchTitle: '切換淺色模式',
