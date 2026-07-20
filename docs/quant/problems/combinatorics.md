@@ -10,7 +10,7 @@ review_interval: 21
 
 > 艱深題庫:每題「題目 + 技巧 + 解法/答案」。面試前快速複習。
 
-- **從 $(0,0)$ 走到 $(n,n)$、只往右/上、且不越過對角線 $y=x$ 的路徑數?(等價:$n$ 對括號的合法排列數、$n+1$ 葉二元樹數)**
+- **從 $(0,0)$ 走到 $(n,n)$、只往右/上、且不越過對角線 $y=x$ 的路徑數?(等價:$n$ 對括號的合法排列數、$n+1$ 葉 binary tree 數)**
   <details><summary>技巧+答案</summary>
 
   技巧:反射原理(André)/ Catalan 遞迴 $C_{n}=\sum_{k}C_kC_{n-1-k}$;**答案/關鍵:$C_n=\dfrac{1}{n+1}\dbinom{2n}{n}=\dbinom{2n}{n}-\dbinom{2n}{n+1}$**。
@@ -31,7 +31,7 @@ review_interval: 21
 
   </details>
 
-- **隨機排列的固定點(fixed points)個數期望與變異數?**
+- **隨機排列的固定點(fixed points)個數期望與 variance?**
   <details><summary>技巧+答案</summary>
 
   技巧:指示變數 $X=\sum_i\mathbf 1[\sigma(i)=i]$,單點 $P=1/n$,計 $E[X^2]$ 需兩兩相關項;**答案/關鍵:$E[X]=1$、$\mathrm{Var}(X)=1$($n\ge2$ 恆成立);$X$ 依分布收斂到 $\mathrm{Poisson}(1)$,恰 $k$ 個機率 $\to e^{-1}/k!$**。
@@ -69,7 +69,7 @@ review_interval: 21
 - **每盒有均勻隨機一張、共 $n$ 種贈品券,集滿全部的期望開盒數?(Coupon Collector)**
   <details><summary>技巧+答案</summary>
 
-  技巧:分段幾何等待,第 $k$ 張新券等待 $\frac{n}{n-k+1}$,線性期望求和;**答案/關鍵:$E=nH_n\approx n\ln n+\gamma n$;變異數 $\sim\frac{\pi^2}{6}n^2$**。
+  技巧:分段幾何等待,第 $k$ 張新券等待 $\frac{n}{n-k+1}$,線性期望求和;**答案/關鍵:$E=nH_n\approx n\ln n+\gamma n$;variance $\sim\frac{\pi^2}{6}n^2$**。
 
   </details>
 

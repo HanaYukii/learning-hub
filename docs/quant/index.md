@@ -12,7 +12,7 @@
 | [隨機微積分・布朗運動](/quant/problems/stochastic-calculus) | Itô、反射原理、首達、arcsine、OU |
 | [馬可夫鏈・吸收](/quant/problems/markov-chains) | 基本矩陣、吸收時間、hitting/commute time |
 | [組合・計數期望](/quant/problems/combinatorics) | Catalan、錯排、$H_n$、生成函數 |
-| [線代・共變異數・隨機矩陣](/quant/problems/linear-algebra) | PSD、相關係數界、PCA、Marchenko–Pastur |
+| [線代・covariance・隨機矩陣](/quant/problems/linear-algebra) | PSD、相關係數界、PCA、Marchenko–Pastur |
 | [選擇權・定價數學](/quant/problems/pricing) | 複製、風險中性、BS PDE、Greeks |
 | [Kelly・賭注 sizing・做市 EV](/quant/problems/betting-games) | Kelly/fractional、骰子重擲、make a market、adverse selection |
 | [統計推論・回歸](/quant/problems/statistics-regression) | OLS 幾何、Gauss–Markov、三大 bias、MLE/MoM |

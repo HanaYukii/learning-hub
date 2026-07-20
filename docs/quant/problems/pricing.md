@@ -98,7 +98,7 @@ review_interval: 21
 - **遠期價與期貨價在何條件下相等?何時分歧?**
   <details><summary>技巧+答案</summary>
 
-  技巧:無套利持有成本 vs 每日結算相關性;**答案/關鍵:$F_0=S_0e^{(r-q)T}$;利率為常數(或與標的不相關)時 futures = forward,否則因保證金再投資與利率的共變異數項而分歧。**
+  技巧:無套利持有成本 vs 每日結算相關性;**答案/關鍵:$F_0=S_0e^{(r-q)T}$;利率為常數(或與標的不相關)時 futures = forward,否則因保證金再投資與利率的 covariance 項而分歧。**
 
   </details>
 
@@ -121,7 +121,7 @@ review_interval: 21
 - **Gamma-scalping:delta-hedged long-gamma 部位在時間 $dt$、標的變動 $dS$ 下的瞬時損益是多少?賺什麼?**
   <details><summary>技巧+答案</summary>
 
-  技巧:Itô/泰勒二階項、BS PDE;**答案/關鍵:$\mathrm{dP\&L}\approx\tfrac12\Gamma\big[(\mathrm dS)^2-\sigma_{imp}^2S^2\,\mathrm dt\big]$;即賺「已實現 − 隱含」變異數之差,乘以 $\tfrac12\Gamma S^2$。**
+  技巧:Itô/泰勒二階項、BS PDE;**答案/關鍵:$\mathrm{dP\&L}\approx\tfrac12\Gamma\big[(\mathrm dS)^2-\sigma_{imp}^2S^2\,\mathrm dt\big]$;即賺「已實現 − 隱含」variance 之差,乘以 $\tfrac12\Gamma S^2$。**
 
   </details>
 
@@ -171,7 +171,7 @@ review_interval: 21
 
   </details>
 
-- **變異數交換(variance swap)公平履約價:如何由 log-contract 靜態複製、權重為何?**
+- **variance 交換(variance swap)公平履約價:如何由 log-contract 靜態複製、權重為何?**
   <details><summary>技巧+答案</summary>
 
   技巧:Carr–Madan 套在 $f=-2\ln(S_T/S_0)$(log contract);**答案/關鍵:$K_{var}=\dfrac{2e^{rT}}{T}\Big(\int_0^{F}\frac{P(K)}{K^2}dK+\int_{F}^\infty\frac{C(K)}{K^2}dK\Big)$;OTM 選擇權以 $1/K^2$ 加權,低 strike put 權重極大(左尾主導)。**

@@ -42,7 +42,7 @@ review_interval: 21
 
   </details>
 
-- **反射原理:求 $M_t=\max_{s\le t}W_s$ 的分布、期望與變異數。**
+- **反射原理:求 $M_t=\max_{s\le t}W_s$ 的分布、期望與 variance。**
   <details><summary>技巧+答案</summary>
 
   技巧:反射原理 $P(M_t\ge a)=2P(W_t\ge a)$,故 $M_t\overset{d}{=}|W_t|$(半常態);
@@ -98,7 +98,7 @@ review_interval: 21
 
   </details>
 
-- **Brownian bridge:給定 $W_0=0,\,W_1=0$,求 $B_s$($0\le s\le 1$)的均值、變異數與共變異數。**
+- **Brownian bridge:給定 $W_0=0,\,W_1=0$,求 $B_s$($0\le s\le 1$)的均值、variance 與 covariance。**
   <details><summary>技巧+答案</summary>
 
   技巧:條件高斯,$B_s=W_s-sW_1$;或直接算條件分布;
@@ -109,7 +109,7 @@ review_interval: 21
 - **二次變差:證明布朗運動在 $[0,t]$ 上的二次變差為 $t$(非隨機)。**
   <details><summary>技巧+答案</summary>
 
-  技巧:$\sum(W_{t_{k+1}}-W_{t_k})^2\to t$ 於 $L^2$;每項期望 $\Delta t$、變異數 $2\Delta t^2\to0$;
+  技巧:$\sum(W_{t_{k+1}}-W_{t_k})^2\to t$ 於 $L^2$;每項期望 $\Delta t$、variance $2\Delta t^2\to0$;
   **答案/關鍵:$[W]_t=t$(a.s. 確定值),故 $(dW)^2=dt$;這正是 Itô 修正項的來源,也使一階變差發散、路徑處處不可微**。
 
   </details>

@@ -1,18 +1,18 @@
 ---
-title: 線代・共變異數・隨機矩陣(艱深)
+title: 線代・covariance・隨機矩陣(艱深)
 track: math
 category: linalg
 reviewed: 2026-07-01
 review_interval: 21
 ---
 
-# 線代・共變異數・隨機矩陣(艱深)
+# 線代・covariance・隨機矩陣(艱深)
 
 > 艱深題庫:每題「題目 + 技巧 + 解法/答案」。面試前快速複習。
 
-## 共變異數與正定性
+## covariance 與正定性
 
-- **證明任意共變異數矩陣 $\Sigma$ 必為半正定,並說明何時嚴格正定。**
+- **證明任意 covariance 矩陣 $\Sigma$ 必為半正定,並說明何時嚴格正定。**
   <details><summary>技巧+答案</summary>
 
   技巧:對任意向量 $a$,$a^\top\Sigma a=\mathrm{Var}(a^\top X)\ge 0$;**答案/關鍵:$\Sigma=\mathbb{E}[(X-\mu)(X-\mu)^\top]$ 為 Gram 矩陣故 PSD;嚴格 PD $\iff$ 各分量無仿射相依(即 $X$ 不落在低維超平面上,$\Sigma$ 滿秩)**。
@@ -66,7 +66,7 @@ review_interval: 21
 - **PCA:證明第一主成分方向是 $\Sigma$ 最大特徵值對應的特徵向量。**
   <details><summary>技巧+答案</summary>
 
-  技巧:最大化 $\max_{\|w\|=1}w^\top\Sigma w$,Lagrange 乘子或 Rayleigh 商;**答案/關鍵:一階條件給 $\Sigma w=\lambda w$,目標值 $=\lambda$,故取最大特徵值 $\lambda_{\max}$;第 $i$ 主成分解釋變異數比例 $=\lambda_i/\sum_j\lambda_j$**。
+  技巧:最大化 $\max_{\|w\|=1}w^\top\Sigma w$,Lagrange 乘子或 Rayleigh 商;**答案/關鍵:一階條件給 $\Sigma w=\lambda w$,目標值 $=\lambda$,故取最大特徵值 $\lambda_{\max}$;第 $i$ 主成分解釋 variance 比例 $=\lambda_i/\sum_j\lambda_j$**。
 
   </details>
 
@@ -84,10 +84,10 @@ review_interval: 21
 
   </details>
 
-- **全域最小變異數投資組合(GMVP):在 $w^\top\mathbf 1=1$ 下最小化 $w^\top\Sigma w$,求最優權重與最小變異數。**
+- **全域最小 variance 投資組合(GMVP):在 $w^\top\mathbf 1=1$ 下最小化 $w^\top\Sigma w$,求最優權重與最小 variance。**
   <details><summary>技巧+答案</summary>
 
-  技巧:等式約束二次規劃,單一 Lagrange 乘子;**答案/關鍵:$w^\star=\dfrac{\Sigma^{-1}\mathbf 1}{\mathbf 1^\top\Sigma^{-1}\mathbf 1}$,最小變異數 $=\dfrac{1}{\mathbf 1^\top\Sigma^{-1}\mathbf 1}$;權重可為負(允許放空),精度矩陣 $\Sigma^{-1}$ 主宰配置**。
+  技巧:等式約束二次規劃,單一 Lagrange 乘子;**答案/關鍵:$w^\star=\dfrac{\Sigma^{-1}\mathbf 1}{\mathbf 1^\top\Sigma^{-1}\mathbf 1}$,最小 variance $=\dfrac{1}{\mathbf 1^\top\Sigma^{-1}\mathbf 1}$;權重可為負(允許放空),精度矩陣 $\Sigma^{-1}$ 主宰配置**。
 
   </details>
 
@@ -123,21 +123,21 @@ review_interval: 21
 
 ## 隨機矩陣・高維
 
-- **Marchenko–Pastur:$n$ 筆 iid $p$ 維樣本($p/n\to\gamma<1$)、真實 $\Sigma=I$,樣本共變異數 $\hat\Sigma$ 的特徵值分布?支撐邊界?**
+- **Marchenko–Pastur:$n$ 筆 iid $p$ 維樣本($p/n\to\gamma<1$)、真實 $\Sigma=I$,樣本 covariance $\hat\Sigma$ 的特徵值分布?支撐邊界?**
   <details><summary>技巧+答案</summary>
 
-  技巧:大隨機矩陣譜的 MP 律;**答案/關鍵:特徵值支撐在 $\big[(1-\sqrt\gamma)^2,\ (1+\sqrt\gamma)^2\big]$(單位變異數;一般乘 $\sigma^2$)。即使真值為 $I$,有限樣本特徵值也「散開」——這正是為何要做 shrinkage / RMT 去噪**。
+  技巧:大隨機矩陣譜的 MP 律;**答案/關鍵:特徵值支撐在 $\big[(1-\sqrt\gamma)^2,\ (1+\sqrt\gamma)^2\big]$(單位 variance;一般乘 $\sigma^2$)。即使真值為 $I$,有限樣本特徵值也「散開」——這正是為何要做 shrinkage / RMT 去噪**。
 
   </details>
 
-- **當 $p>n$($\gamma>1$)時 MP 分布多出什麼?樣本共變異數還可逆嗎?**
+- **當 $p>n$($\gamma>1$)時 MP 分布多出什麼?樣本 covariance 還可逆嗎?**
   <details><summary>技巧+答案</summary>
 
   技巧:秩不足 + MP 在 $\gamma>1$ 的原子質量;**答案/關鍵:$\hat\Sigma$ 秩至多 $n<p$ 故不可逆;MP 在 $0$ 處有質量 $1-1/\gamma$ 的離散原子,其餘非零譜落在正區間 $\big[(1-\sqrt\gamma)^2,(1+\sqrt\gamma)^2\big]$($\gamma>1$ 時下界 $>0$,與原子分離)**。
 
   </details>
 
-- **高維下樣本共變異數是差估計,標準補救(Ledoit–Wolf)是什麼?最優收縮強度怎麼定?**
+- **高維下樣本 covariance 是差估計,標準補救(Ledoit–Wolf)是什麼?最優收縮強度怎麼定?**
   <details><summary>技巧+答案</summary>
 
   技巧:凸收縮到結構化目標 + 最小化期望 Frobenius 誤差;**答案/關鍵:$\hat\Sigma_{\mathrm{LW}}=(1-\alpha)\hat\Sigma+\alpha\,\mu I$($\mu=\mathrm{tr}(\hat\Sigma)/p$);最優 $\alpha^\star=\dfrac{\mathbb{E}\|\hat\Sigma-\Sigma\|_F^2\text{ 的估計}}{\|\hat\Sigma-\mu I\|_F^2}$,把散開的特徵值往中心壓、改善條件數與樣本外表現**。
@@ -161,6 +161,6 @@ review_interval: 21
 - **(經典)高維單位球中兩隨機向量幾乎正交:$\mathbb{E}[\cos\theta]$ 與集中度?**
   <details><summary>技巧+答案</summary>
 
-  技巧:$\cos\theta=\frac{u^\top v}{\|u\|\|v\|}$,對稱性 + 集中;**答案/關鍵:$\mathbb{E}[\cos\theta]=0$,$\mathrm{Var}\approx 1/d$,故高維隨機向量以高機率近正交($\theta\approx90^\circ$)——「維度詛咒」在共變異數估計/最近鄰的直接後果**。
+  技巧:$\cos\theta=\frac{u^\top v}{\|u\|\|v\|}$,對稱性 + 集中;**答案/關鍵:$\mathbb{E}[\cos\theta]=0$,$\mathrm{Var}\approx 1/d$,故高維隨機向量以高機率近正交($\theta\approx90^\circ$)——「維度詛咒」在 covariance 估計/最近鄰的直接後果**。
 
   </details>

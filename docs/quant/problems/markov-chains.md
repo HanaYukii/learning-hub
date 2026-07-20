@@ -144,7 +144,7 @@ review_interval: 21
 - **優惠券收集 = $K_n$ 上的覆蓋:集齊 $n$ 種等機率優惠券的期望次數。**
   <details><summary>技巧+答案</summary>
 
-  技巧:幾何和分解 $\sum_{k=1}^{n}\tfrac{n}{n-k+1}$;**答案/關鍵:$E=nH_n\approx n\ln n+\gamma n$,變異數 $=n^2\sum \tfrac1{i^2}\to\tfrac{\pi^2}{6}n^2$**。
+  技巧:幾何和分解 $\sum_{k=1}^{n}\tfrac{n}{n-k+1}$;**答案/關鍵:$E=nH_n\approx n\ln n+\gamma n$,variance $=n^2\sum \tfrac1{i^2}\to\tfrac{\pi^2}{6}n^2$**。
 
   </details>
 

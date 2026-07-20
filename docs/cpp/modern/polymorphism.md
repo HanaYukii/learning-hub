@@ -61,7 +61,7 @@ review_interval: 21
 
 ## concepts:把靜態介面講清楚
 
-- **concept 把 template 的隱式介面顯式化,錯誤直指呼叫點**:`concept HasArea = requires(const T t) { { t.area() } -> std::convertible_to<double>; };`,不滿足時報一行「constraint not satisfied」,而非具現化深處的長篇錯誤。
+- **concept 把 template 的隱式介面顯式化,錯誤直指呼叫點**:`concept HasArea = requires(const T t) { { t.area() } -> std::convertible_to<double>; };`,不滿足時報一行「constraint not satisfied」,而非 instantiation 深處的長篇錯誤。
 
 ## 第三條路:std::variant + std::visit
 

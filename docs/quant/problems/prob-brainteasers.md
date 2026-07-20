@@ -42,10 +42,10 @@ review_interval: 21
 
   </details>
 
-- **Coupon collector:$n$ 種贈品各等機率,期望蒐集幾次集滿?總次數的變異數(大 $n$)?**
+- **Coupon collector:$n$ 種贈品各等機率,期望蒐集幾次集滿?總次數的 variance(大 $n$)?**
   <details><summary>技巧+答案</summary>
 
-  技巧:各階段獨立幾何相加,$E=\sum_{k=1}^n \frac n{k}=nH_n$,$\mathrm{Var}=\sum_{k=1}^n\frac{n^2(k-1)}{k^2}$(逐項幾何變異數);**答案/關鍵:$\boxed{E=nH_n\sim n\ln n+\gamma n}$;$\mathrm{Var}\to\dfrac{\pi^2}{6}n^2$(Basel)。注意這是「總次數」的變異數,並非最後一張(那張是幾何,變異數 $\sim n^2$)**。
+  技巧:各階段獨立幾何相加,$E=\sum_{k=1}^n \frac n{k}=nH_n$,$\mathrm{Var}=\sum_{k=1}^n\frac{n^2(k-1)}{k^2}$(逐項幾何 variance);**答案/關鍵:$\boxed{E=nH_n\sim n\ln n+\gamma n}$;$\mathrm{Var}\to\dfrac{\pi^2}{6}n^2$(Basel)。注意這是「總次數」的 variance,並非最後一張(那張是幾何,variance $\sim n^2$)**。
 
   </details>
 
@@ -88,7 +88,7 @@ review_interval: 21
 
   </details>
 
-- **$n$ 個 iid $U(0,1)$ 的第 $k$ 順序統計量期望與變異數?**
+- **$n$ 個 iid $U(0,1)$ 的第 $k$ 順序統計量期望與 variance?**
   <details><summary>技巧+答案</summary>
 
   技巧:$\mathrm{Beta}(k,n{-}k{+}1)$ 的矩;**答案/關鍵:$E[U_{(k)}]=\dfrac{k}{n+1}$,$\boxed{\mathrm{Var}=\dfrac{k(n-k+1)}{(n+1)^2(n+2)}}$**。
