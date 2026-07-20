@@ -98,7 +98,7 @@ review_interval: 21
 
   </details>
 
-- **Brownian bridge:給定 $W_0=0,\,W_1=0$,求 $B_s$($0\le s\le 1$)的均值、變異數與協方差。**
+- **Brownian bridge:給定 $W_0=0,\,W_1=0$,求 $B_s$($0\le s\le 1$)的均值、變異數與共變異數。**
   <details><summary>技巧+答案</summary>
 
   技巧:條件高斯,$B_s=W_s-sW_1$;或直接算條件分布;

@@ -36,7 +36,7 @@ review_interval: 21
 - **押 full Kelly,財富曾跌到初始 $x$ 倍($x<1$)的機率?押 $c\,f^*$ 呢?**
   <details><summary>技巧+答案</summary>
 
-  技巧:log-wealth 是帶漂移 BM(漂移 $m$、方差 $s^2$),單邊觸壁機率 $x^{2m/s^2}$,代入得指數 $2/c-1$。**答案:full Kelly 機率 $=x$(腰斬機率 50%!);fractional 為 $x^{2/c-1}$,half-Kelly 腰斬機率僅 $(1/2)^3=12.5\%$**——打折的量化理由(Thorp)。
+  技巧:log-wealth 是帶漂移 BM(漂移 $m$、變異數 $s^2$),單邊觸壁機率 $x^{2m/s^2}$,代入得指數 $2/c-1$。**答案:full Kelly 機率 $=x$(腰斬機率 50%!);fractional 為 $x^{2/c-1}$,half-Kelly 腰斬機率僅 $(1/2)^3=12.5\%$**——打折的量化理由(Thorp)。
 
   </details>
 
@@ -89,7 +89,7 @@ review_interval: 21
 - **面試官:“Make me a market on 兩顆骰子之和。”怎麼報?**
   <details><summary>技巧+答案</summary>
 
-  技巧:三步:① fair value $=$ EV $=7$;② 繞 EV 開雙邊(如 **6.5 bid / 7.5 ask**),寬度反映你對 EV 的不確定度;③ 被 lift(對方買)⇒ 上移報價、控庫存與 size。**關鍵:spread 要補償方差 + 對手可能 informed;報價前先確認自己雙邊都願意成交。**
+  技巧:三步:① fair value $=$ EV $=7$;② 繞 EV 開雙邊(如 **6.5 bid / 7.5 ask**),寬度反映你對 EV 的不確定度;③ 被 lift(對方買)⇒ 上移報價、控庫存與 size。**關鍵:spread 要補償變異數 + 對手可能 informed;報價前先確認自己雙邊都願意成交。**
 
   </details>
 
@@ -119,7 +119,7 @@ review_interval: 21
 - **每輪全押「$+50\%$ / $-40\%$ 各半」,單輪 EV $=+5\%$,長期會怎樣?**
   <details><summary>技巧+答案</summary>
 
-  技巧:看 $\mathbb{E}[\log]$ 不看 $\mathbb{E}$:$\tfrac12\ln1.5+\tfrac12\ln0.6\approx-0.053<0$。**答案:財富 a.s. $\to0$!方差拖累 $g\approx\mu-\tfrac{\sigma^2}{2}$**;$\mathbb{E}[W_n]$ 被極小機率的暴富路徑撐大、typical path 幾何衰減。此局 Kelly:$f^*=\tfrac{p}{0.4}-\tfrac{q}{0.5}=25\%$——sizing 本身就是答案。
+  技巧:看 $\mathbb{E}[\log]$ 不看 $\mathbb{E}$:$\tfrac12\ln1.5+\tfrac12\ln0.6\approx-0.053<0$。**答案:財富 a.s. $\to0$!變異數拖累 $g\approx\mu-\tfrac{\sigma^2}{2}$**;$\mathbb{E}[W_n]$ 被極小機率的暴富路徑撐大、typical path 幾何衰減。此局 Kelly:$f^*=\tfrac{p}{0.4}-\tfrac{q}{0.5}=25\%$——sizing 本身就是答案。
 
   </details>
 

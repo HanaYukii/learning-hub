@@ -30,7 +30,7 @@ review_interval: 21
 - **Header-only LUT 標準式:C++17 `static inline` 變數 + IIFE lambda `[](){...}()`**:`inline` 變數允許多個 TU 各有定義、由 linker 合併成一份(否則 header 全域變數 = ODR violation);IIFE 把初始化邏輯收在宣告處,免傳統 `extern` 宣告/定義分離。Linkage 細節:合併行為來自 `inline`;class static data member 才需 `static inline` 連用,**namespace scope 單用 `inline` 即可——加 `static` 反成 internal linkage、各 TU 各留一份**。
 - **`index & 4095` 取代 `index % 4096`:and **1 cycle** vs div **~20–30 cycles****。成立前提是 table size 為 **2 的冪**(所以要配 static_assert);且 index 應為 **unsigned**——signed `%` 對負數語意不同,編譯器折成 mask 還得補 sign-correction 指令。
 - **Table sizing 對齊 L1d:4096 entries × 8 B(double)= 32 KB ≈ 常見 L1 data cache 容量**:全表駐 L1 → load 約 **4 cycles**;查表版 FastSin 約 **3 條指令**,`std::sin`(argument reduction + polynomial)約 **50–100 條**、慢 **10–20 倍**;表開太大(如 1M entries)反而 cache miss、可能比重算還慢。
-- **C++20 真編譯期 LUT:lambda 標 `constexpr` + `static constexpr`,整張表進 `.rodata`、零 runtime initialization**:但 `std::sin` 在 C++23(含)前**不是 constexpr**(C++23 P0533 只納入 fabs/frexp 等;sin/cos 要到 **C++26 P1383**),所以得自寫 constexpr sin 或退回 `inline` runtime 初始化版(GCC 會把 `std::sin` 當 builtin 常量摺疊,屬非可攜擴充)。另注意**編譯期浮點運算結果可能與 runtime libm 有 ULP 級差異**(標準未規定精度、實作各異,cross-compile 時尤要留意)。
+- **C++20 真編譯期 LUT:lambda 標 `constexpr` + `static constexpr`,整張表進 `.rodata`、零 runtime initialization**:但 `std::sin` 在 C++23(含)前**不是 constexpr**(C++23 P0533 只納入 fabs/frexp 等;sin/cos 要到 **C++26 P1383**),所以得自寫 constexpr sin 或退回 `inline` runtime 初始化版(GCC 會把 `std::sin` 當 builtin 常數摺疊,屬非可攜擴充)。另注意**編譯期浮點運算結果可能與 runtime libm 有 ULP 級差異**(標準未規定精度、實作各異,cross-compile 時尤要留意)。
 
 ## 模板遞迴 vs constexpr、編譯期字串
 
