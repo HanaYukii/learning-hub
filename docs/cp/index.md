@@ -22,7 +22,7 @@ import { data as contests } from './contests.data'
 
 ## 技巧 tag
 
-`dp` `數位dp` `區間dp` `狀壓` `背包` `貪心` `反悔貪心` `構造` `分類討論` `模擬` `數學` `圖論` `最短路` `flow` `樹` `HLD` `線段樹` `BIT` `線段樹分治` `可回滾DSU` `ODT` `資料結構` `數論` `組合計數` `容斥` `莫比烏斯` `歐拉函數` `機率期望` `反射原理` `多項式` `NTT` `字串` `Manacher` `幾何` `矩陣` `博弈` `排列` `置換環` `逆序對` `位元` `XOR` `WHT` `BSGS` `MITM` `不變量` `貢獻` `差分` `離線` `掃描線` `根號` `二分` `分治` `互動` `bitset` `狀態擴充` `分層圖` `Pareto`
+`dp` `數位dp` `區間dp` `狀壓` `背包` `貪心` `反悔貪心` `構造` `分類討論` `模擬` `數學` `圖論` `最短路` `flow` `樹` `HLD` `線段樹` `BIT` `線段樹分治` `可回滾DSU` `ODT` `treap` `資料結構` `數論` `組合計數` `容斥` `莫比烏斯` `歐拉函數` `機率期望` `反射原理` `多項式` `NTT` `字串` `Manacher` `幾何` `矩陣` `博弈` `排列` `置換環` `逆序對` `位元` `XOR` `WHT` `BSGS` `MITM` `不變量` `貢獻` `差分` `離線` `掃描線` `根號` `二分` `分治` `互動` `bitset` `狀態擴充` `分層圖` `Pareto`
 
 ## 比賽 digest 索引
 
@@ -49,3 +49,4 @@ import { data as contests } from './contests.data'
 | [歐拉函數 φ / 積性函數線性篩](/cp/techniques/euler-totient) | 數論·歐拉函數·莫比烏斯 | gcd 求和 / 互質計數 / 模冪降次 |
 | [Manacher](/cp/techniques/manacher) | 字串·Manacher | O(n) 每中心最長回文(含整數陣列變形) |
 | [數位 DP](/cp/techniques/digit-dp) | 數位dp·dp | [L,R] 數位條件計數;tight/lead 不進 memo key |
+| [Implicit Treap](/cp/techniques/implicit-treap) | 資料結構·treap | 按位置插入的動態序列 + 前綴聚合;split/merge 兩原語;模板已對拍 |
