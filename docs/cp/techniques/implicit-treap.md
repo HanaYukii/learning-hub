@@ -1,7 +1,7 @@
 ---
-title: Implicit Treap：按位置插入的動態序列
+title: Treap：按位置插入的動態序列
 tags: [資料結構, treap]
-why: 動態序列需要在中間插入/刪除，又要查前綴聚合；一般陣列、BIT、線段樹都不適合直接套。implicit treap 用 split/merge 把操作維持在期望 O(log n)
+why: 動態序列需要在中間插入/刪除，又要查前綴聚合；一般陣列、BIT、線段樹都不適合直接套。treap 用 split/merge 把操作維持在期望 O(log n)
 trigger: 按 rank(第幾個)插入/刪除，同時維護和、長度、max 等子樹資訊；或需要區間搬移、翻轉、cut-paste
 problems:
   - { name: "動態字串序列的起始位置(本文例子)", url: "", rating: 2000 }
@@ -11,14 +11,16 @@ review_interval: 21
 lastUpdated: false
 ---
 
-# Implicit Treap
+# Treap:按位置插入的動態序列
 
 遇到要在序列中間插入、又要查前綴聚合時，普通陣列會卡在 $O(n)$ 搬移；BIT 和一般線段樹也綁著固定下標，不適合直接套。
 
-Implicit treap 直接把 inorder 當成序列。節點不存 key，只靠左子樹的 `cnt` 判斷 rank；另外用隨機 priority 維持 heap，樹高期望是 $O(\log n)$。平常只需要兩個操作：
+Treap 直接把 inorder 當成序列。節點不存 key，只靠左子樹的 `cnt` 判斷 rank；另外用隨機 priority 維持 heap，樹高期望是 $O(\log n)$。平常只需要兩個操作：
 
 - `split(t, k)`:把樹切成「前 $k$ 個」和「其餘」兩棵。
 - `merge(a, b)`:把兩棵樹接起來($a$ 全體在 $b$ 前面),優先度大的當根。
+
+名字備忘：這種「split/merge、不用旋轉」的寫法，中文圈叫**無旋 treap / FHQ treap**；「不存 key、拿 size 當隱式 key 維護序列」的用法，英文圈(cp-algorithms/CF)叫 **implicit treap**。兩個名字各講一個面向，口語說 treap 就夠。
 
 ## split / merge 模板
 
@@ -70,7 +72,7 @@ ll prefix(Node*& root, int k) {
 
 ## 例子：動態字串序列的起始位置
 
-這題來自一次面試，以下只留去識別化後的資料結構核心。當下我有看出中間插入會讓 BIT 和一般線段樹的 index 失效，但沒有想到 implicit treap，最後只寫了前綴和版本。
+這題來自一次面試，以下只留去識別化後的資料結構核心。當下我有看出中間插入會讓 BIT 和一般線段樹的 index 失效，但沒有想到 treap，最後只寫了前綴和版本。
 
 > 維護一列不重複的字串。`insert(index, s)` 插入 $s$，使它前面恰有 `index` 個字串；`query(s)` 回傳整列串接後，$s$ 的 0-based 起始字元位置。字串本身不會被拆開。
 
@@ -118,4 +120,4 @@ split / merge 只改節點之間的連結，不會搬動 Node 本身。只要配
 - [洛谷 P3391 文藝平衡樹](https://www.luogu.com.cn/problem/P3391) `~1800` — 區間翻轉的標準題：切出區間、掛 lazy tag，再接回去。
 - [Edu 192 F Summer Vacation](/cp/contests/2026-07-06-cf-edu192) `~2500` — cut-paste 加轉移函數；需要共享結構時改成 copy-on-write 的持久化 treap。持久化版本不能沿用單一 `parent` 指標。
 - Rope / 文字編輯器：大文本中間插入、刪除與搬移。
-- Treap 也能按實際 key 當平衡 BST 用；那是另一種 split 條件，不是本文的 implicit rank。
+- Treap 也能按實際 key 當平衡 BST 用；那是另一種 split 條件，不是本文的按 rank 版本。

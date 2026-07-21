@@ -49,4 +49,4 @@ import { data as contests } from './contests.data'
 | [歐拉函數 φ / 積性函數線性篩](/cp/techniques/euler-totient) | 數論·歐拉函數·莫比烏斯 | gcd 求和 / 互質計數 / 模冪降次 |
 | [Manacher](/cp/techniques/manacher) | 字串·Manacher | O(n) 每中心最長回文(含整數陣列變形) |
 | [數位 DP](/cp/techniques/digit-dp) | 數位dp·dp | [L,R] 數位條件計數;tight/lead 不進 memo key |
-| [Implicit Treap](/cp/techniques/implicit-treap) | 資料結構·treap | 按位置插入的動態序列 + 前綴聚合;split/merge 兩原語;模板已對拍 |
+| [Treap(split/merge)](/cp/techniques/implicit-treap) | 資料結構·treap | 按位置插入的動態序列 + 前綴聚合;split/merge 兩原語;模板已對拍 |
