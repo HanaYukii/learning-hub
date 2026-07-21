@@ -4,7 +4,7 @@ tags: [資料結構, treap]
 why: 「在第 k 個位置插入」會讓陣列 / BIT / 線段樹全滅——下標固定的結構撐不住中間插入;treap 用 split/merge 兩個原語把這件事變成 O(log n)
 trigger: 動態序列要按 rank(第幾個)插入/刪除,同時維護前綴聚合(和、長度、max);或要做區間搬移 / 翻轉 / cut-paste
 problems:
-  - { name: "動態字串序列的起始位置(面試實戰型,本卡 worked example)", url: "", rating: 2000 }
+  - { name: "動態字串序列的起始位置(本卡 worked example)", url: "", rating: 2000 }
   - { name: "洛谷 P3391 文藝平衡樹(區間翻轉)", url: "https://www.luogu.com.cn/problem/P3391", rating: 1800 }
 reviewed: 2026-07-20
 review_interval: 21
@@ -12,7 +12,7 @@ review_interval: 21
 
 # Implicit Treap
 
-**要解什麼**:維護一個會**在中間插入**的序列,還要邊插邊查聚合(前綴和、前綴長度、第 k 個元素…)。陣列插入要 O(n) 搬移;BIT / 線段樹的下標是蓋死的,中間一插全體位移就壞了。需要的是「**以 rank 為 key 的平衡樹**」——而比賽/面試現場最好手寫的就是 implicit treap。
+**要解什麼**:維護一個會**在中間插入**的序列,還要邊插邊查聚合(前綴和、前綴長度、第 k 個元素…)。陣列插入要 O(n) 搬移;BIT / 線段樹的下標是蓋死的,中間一插全體位移就壞了。需要的是「**以 rank 為 key 的平衡樹**」——而現場最好手寫的就是 implicit treap。
 
 **核心**:treap = BST + heap 的混血——inorder 順序就是序列順序(BST 性質),每個節點帶一個**隨機優先度**、往上維持 heap 性質。隨機優先度讓樹形跟「隨機插入順序的 BST」同分布,期望深度 $O(\log n)$。「implicit」指**不存 key**:要找第 $k$ 個元素,用左子樹的 `size` 導航即可,所以插入位置可以任意。一切操作由兩個原語拼出來:
 
@@ -69,7 +69,7 @@ ll prefix(Node*& root, int k) {
 
 ## Worked example:動態字串序列的起始位置
 
-> 維護一列字串,兩種操作:`add_pair(index, s)` 把 $s$ 插在第 `index` 個字串的位置(index 以**字串個數**計);`query(s)` 回傳把整列串接後,$s$ 的**起始字元位置**。(面試實戰型;字串不會被拆開。)
+> 維護一列字串,兩種操作:`add_pair(index, s)` 把 $s$ 插在第 `index` 個字串的位置(index 以**字串個數**計);`query(s)` 回傳把整列串接後,$s$ 的**起始字元位置**。(字串不會被拆開;文字編輯器 / rope 的常見子問題。)
 
 先建對應表,這題就變成上面的模板題:
 
@@ -95,7 +95,7 @@ ll startIndex(Node* v) {
 
 parent 的維護不必另寫邏輯:**在 `pull` 裡順手設 `t->l->p = t`、`t->r->p = t`**,split/merge 本來就會對每個改過的節點呼叫 pull。兩個操作都是期望 $O(\log n)$。
 
-面試先問清楚的事:字串是否唯一(不唯一則 map 要存多個 handle)、`query` 的 s 是否保證是完整插入過的字串(否則變成 dynamic text indexing,完全另一題)、0-based 還是 1-based、有沒有 delete、總長會不會爆 int(前綴長度用 `long long`)。
+動手前先釐清規格:字串是否唯一(不唯一則 map 要存多個 handle)、`query` 的 s 是否保證是完整插入過的字串(否則變成 dynamic text indexing,完全另一題)、0-based 還是 1-based、有沒有 delete、總長會不會爆 int(前綴長度用 `long long`)。
 
 ## 要點 / 易錯
 
