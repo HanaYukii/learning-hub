@@ -93,13 +93,16 @@ ll startIndex(Node* v) {
 }
 ```
 
-parent 的維護不必另寫邏輯:**在 `pull` 裡順手設 `t->l->p = t`、`t->r->p = t`**,split/merge 本來就會對每個改過的節點呼叫 pull。兩個操作都是期望 $O(\log n)$。
+parent 的維護不必另寫邏輯:**在 `pull` 裡順手設 `t->l->p = t`、`t->r->p = t`**,split/merge 本來就會對每個改過的節點呼叫 pull。
 
-動手前先釐清規格:字串是否唯一(不唯一則 map 要存多個 handle)、`query` 的 s 是否保證是完整插入過的字串(否則變成 dynamic text indexing,完全另一題)、0-based 還是 1-based、有沒有 delete、總長會不會爆 int(前綴長度用 `long long`)。
+這裡有個值得說破的點:**split/merge 只改節點之間的指標關係,Node 物件本身不搬家**——所以 map 裡存的 `Node*` 在任意次結構調整後仍然有效,這就是「map 存 handle」成立的原因。插入期望 $O(\log n)$;查詢 $O(|s|+\log n)$($|s|$ 是 hash 字串的成本)。順帶:只查**完整字串**時 hashmap 就是最佳解,Trie 要到「有 prefix matching 需求」或字串極長、query 極多時才有優勢。
+
+動手前先釐清規格:字串是否唯一(不唯一則 map 要存多個 handle,實務上通常改給每筆插入一個 ID)、`query` 的 s 是否保證是完整插入過的字串(否則變成 dynamic text indexing,完全另一題)、0-based 還是 1-based、有沒有 delete、總長會不會爆 int(前綴長度用 `long long`)。
 
 ## 要點 / 易錯
 
 - **split 的兩個輸出根,parent 都要清**。常見寫法只清了 `b` 側——insert-only 流程會被後續 merge 蓋掉而僥倖沒事,一旦單獨使用 split(比如只查不改),stale parent 會讓向上走位走進舊樹,錯得很難查。乾脆在 split/merge 的出口把根的 `p` 一律設 null。
+- **Node 位址必須穩定**:map 存的是裸指標,節點放進會 reallocate 的 `vector<Node>` 就全滅——用 `new`、`deque<Node>` 或 memory pool。
 - 優先度用 `mt19937`,別用 `rand()`(RAND_MAX 太小、低熵,樹會退化)。
 - 聚合(前綴長度、和)開 `long long`。
 - 遞迴 split/merge 期望深度 $O(\log n)$,不用怕爆疊;多測記得整棵釋放或用 memory pool。
@@ -112,5 +115,13 @@ parent 的維護不必另寫邏輯:**在 `pull` 裡順手設 `t->l->p = t`、`t-
 - [Edu 192 F Summer Vacation](/cp/contests/2026-07-06-cf-edu192) `~2500` — 序列 **cut-paste** 疊轉移函數;取段要共享結構 → **持久化 treap**(split/merge 改寫成 copy-on-write)。
 - **Rope / 文字編輯器**:大文本任意位置插入刪除,同一結構換皮。
 - 進階:treap 也能按 key 當平衡 BST 用(split by value)、兩棵樹 merge(啟發式/finger),遇到再收。
+
+## 後記
+
+這張卡源自一次現場手寫的實戰,幾條誠實的記錄留給之後的自己:
+
+- **辨認比模板值錢**:當下沒想起 treap,但有推到「BIT、線段樹都不能用」——這一步已經對了一半;剩下用一個偷懶的前綴和暴力頂著,方向沒歪。認出瓶頸、給出能動的降級解,常常也走得下去。
+- **久沒手寫 code,第一版的程式邏輯沒想清楚**,中途才修回來。手感不練就是會晃,這種結構題連帶考的還有 class 介面怎麼切。
+- 事後跟朋友對答案,不只一人回報**在別的場合也碰過需要 treap 的 follow-up**,而共同心得都是「現在應該寫不出來了」——這正是它該躺在模板庫裡的原因:出現率比直覺高,現場憑空生不出來。
 
 （模板與 worked example 經隨機資料對照暴力驗證。)
