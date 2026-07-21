@@ -8,6 +8,7 @@ problems:
   - { name: "洛谷 P3391 文藝平衡樹(區間翻轉)", url: "https://www.luogu.com.cn/problem/P3391", rating: 1800 }
 reviewed: 2026-07-20
 review_interval: 21
+lastUpdated: false
 ---
 
 # Implicit Treap
@@ -69,9 +70,11 @@ ll prefix(Node*& root, int k) {
 
 ## 例子：動態字串序列的起始位置
 
+這題來自一次面試，以下只留去識別化後的資料結構核心。當下我有看出中間插入會讓 BIT 和一般線段樹的 index 失效，但沒有想到 implicit treap，最後只寫了前綴和版本。
+
 > 維護一列不重複的字串。`insert(index, s)` 插入 $s$，使它前面恰有 `index` 個字串；`query(s)` 回傳整列串接後，$s$ 的 0-based 起始字元位置。字串本身不會被拆開。
 
-這題其實是兩件事疊在一起：treap 管序列順序，hash map 管字串到節點的查找。每個節點另外維護子樹字串數 `cnt` 和總字元數 `len`：
+面試後跟朋友重新討論，解法可以拆成兩層：treap 管序列順序，hash map 管字串到節點的查找。每個節點另外維護子樹字串數 `cnt` 和總字元數 `len`：
 
 | 需求 | 做法 |
 | --- | --- |
@@ -116,9 +119,3 @@ split / merge 只改節點之間的連結，不會搬動 Node 本身。只要配
 - [Edu 192 F Summer Vacation](/cp/contests/2026-07-06-cf-edu192) `~2500` — cut-paste 加轉移函數；需要共享結構時改成 copy-on-write 的持久化 treap。持久化版本不能沿用單一 `parent` 指標。
 - Rope / 文字編輯器：大文本中間插入、刪除與搬移。
 - Treap 也能按實際 key 當平衡 BST 用；那是另一種 split 條件，不是本文的 implicit rank。
-
-## 面試後補記
-
-這張卡是補一次現場沒叫出 implicit treap 的洞。當時知道 BIT、一般線段樹不適合，只能先拿前綴和暴力頂著；久沒手寫，第一版介面也切得不太順。面試後和朋友重新對過，才把 `unordered_map<string, Node*>`、parent 指標與 subtree length 串成完整解法。
-
-（模板與例子已用隨機資料對照暴力驗證。）
