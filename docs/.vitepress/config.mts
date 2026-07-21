@@ -62,6 +62,8 @@ export default defineConfig({
   title: '花雪的競程筆記訓練場',
   description: '競程比賽的解題筆記與技巧卡、面試向數學、家教。花雪 HanaYukii — ICPC 區域賽金牌、前 Google 工程師、演算法海牛核心團隊成員。',
   lastUpdated: true,
+  // SEO:讓 Google 有效收錄全站(hostname 換自訂網域時記得同步改)
+  sitemap: { hostname: 'https://hanayukii.github.io/learning-hub/' },
   cleanUrls: true,
   // 死鏈守門:漏掛索引、改檔名忘改連結 → build 直接紅(#4)
   ignoreDeadLinks: false,
