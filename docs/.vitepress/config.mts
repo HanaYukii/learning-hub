@@ -10,6 +10,65 @@ import { shortContest, cjkTokenize } from './lib'
 // 文件: https://vitepress.dev/reference/site-config
 
 const docsDir = fileURLToPath(new URL('..', import.meta.url))
+const publicBase = 'https://hanayukii.github.io/learning-hub/'
+const fallbackDescription = '競程、量化面試數學與 Modern C++ 的個人學習筆記。'
+
+const fixedDescriptions: Record<string, string> = {
+  'index.md': '競程、量化面試數學與 Modern C++ 的個人學習工作台。',
+  'cp/index.md': '競程比賽 digest、技巧卡、弱項專題與 LeetCode 月報。',
+  'cp/tags.md': '依演算法與資料結構標籤瀏覽競程筆記。',
+  'quant/index.md': '量化面試向的機率、鞅、隨機過程、線性代數、定價與統計題庫。',
+  'cpp/index.md': 'Modern C++ 與 low-level 知識庫，供面試與複習使用。',
+  'review/index.md': '依複習週期整理待回顧的競程、數學與 C++ 筆記。',
+  'tutoring.md': '競程與演算法家教：高中競賽、大廠面試與進階自學。',
+  'about.md': '關於花雪 HanaYukii、本站的整理方向與聯絡方式。',
+}
+
+function plain(value: unknown): string {
+  return typeof value === 'string' ? value.replace(/[`*_]/g, '').replace(/\s+/g, ' ').trim() : ''
+}
+
+function clip(text: string, max = 150): string {
+  return text.length <= max ? text : `${text.slice(0, max - 1).trimEnd()}…`
+}
+
+/** 產生每頁自己的連結預覽摘要；frontmatter description 永遠優先。 */
+function pageDescription(relativePath: string, title: string, frontmatter: Record<string, unknown>): string {
+  const explicit = plain(frontmatter.description)
+  if (explicit) return explicit
+
+  if (fixedDescriptions[relativePath]) return fixedDescriptions[relativePath]
+
+  const contest = plain(frontmatter.contest)
+  if (contest) {
+    const tags = Array.isArray(frontmatter.tags)
+      ? frontmatter.tags.filter((tag): tag is string => typeof tag === 'string').slice(0, 5).join('、')
+      : ''
+    return tags ? `${contest} 賽後解題整理，涵蓋 ${tags} 等重點。` : `${contest} 賽後解題整理。`
+  }
+
+  if (relativePath.startsWith('cp/techniques/')) {
+    const why = plain(frontmatter.why)
+    return clip(why ? `${title}：${why}` : `${title}：競程技巧的觸發條件、核心作法與實作細節。`)
+  }
+  if (relativePath.startsWith('cp/topics/')) return `${title}：競程弱項專題與練習進度整理。`
+  if (relativePath.startsWith('cp/leetcode/')) return `${title}：LeetCode 競賽題目精選與解題重點。`
+  if (relativePath.startsWith('quant/problems/')) return `${title}：量化面試數學題目、技巧與答案整理。`
+  if (relativePath.startsWith('quant/probability/')) return `${title}：機率與隨機過程的觀念、推導與題目整理。`
+  if (relativePath.startsWith('quant/hft-cpp/')) return `${title}：量化與 HFT 面試向的 C++ 實作筆記。`
+  if (relativePath.startsWith('cpp/')) return `${title}：Modern C++ 與 low-level 工程筆記。`
+
+  return title ? `${title}｜花雪的學習筆記。` : fallbackDescription
+}
+
+function canonicalUrl(page: string): string {
+  const route = page === 'index.md'
+    ? ''
+    : page.endsWith('/index.md')
+      ? `${page.slice(0, -'index.md'.length)}`
+      : page.replace(/\.md$/, '')
+  return new URL(route, publicBase).href
+}
 
 /** 從 markdown 原始碼撈單一 frontmatter 欄位(避免額外依賴) */
 function fm(src: string, key: string): string {
@@ -60,13 +119,39 @@ export default defineConfig({
   // 模板檔是給作者的寫作參考,不對外部署
   srcExclude: ['**/template.md'],
   title: '花雪的競程筆記訓練場',
-  description: '競程比賽的解題筆記與技巧卡、面試向數學、家教。花雪 HanaYukii — ICPC 區域賽金牌、前 Google 工程師、演算法海牛核心團隊成員。',
+  description: fallbackDescription,
   lastUpdated: true,
   // SEO:讓 Google 有效收錄全站(hostname 換自訂網域時記得同步改)
   sitemap: { hostname: 'https://hanayukii.github.io/learning-hub/' },
   cleanUrls: true,
   // 死鏈守門:漏掛索引、改檔名忘改連結 → build 直接紅(#4)
   ignoreDeadLinks: false,
+
+  transformPageData(pageData) {
+    return {
+      description: pageDescription(
+        pageData.relativePath,
+        pageData.title,
+        pageData.frontmatter as Record<string, unknown>,
+      ),
+    }
+  },
+
+  transformHead({ page, pageData, description }) {
+    const url = canonicalUrl(page)
+    const socialTitle = pageData.title || '花雪的競程筆記訓練場'
+    return [
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:type', content: 'website' }],
+      ['meta', { property: 'og:site_name', content: '花雪的競程筆記訓練場' }],
+      ['meta', { property: 'og:title', content: socialTitle }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:url', content: url }],
+      ['meta', { name: 'twitter:card', content: 'summary' }],
+      ['meta', { name: 'twitter:title', content: socialTitle }],
+      ['meta', { name: 'twitter:description', content: description }],
+    ]
+  },
 
   markdown: {
     math: true, // markdown-it-mathjax3,支援 $...$ 與 $$...$$
