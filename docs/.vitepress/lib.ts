@@ -13,6 +13,8 @@ export function shortContest(name: string): string {
   if ((m = name.match(/AtCoder Regular Contest (\d+)/))) return `ARC ${m[1]}`
   if ((m = name.match(/AtCoder Beginner Contest (\d+)/))) return `ABC ${m[1]}`
   if ((m = name.match(/AtCoder Heuristic Contest (\d+)/))) return `AHC ${m[1]}`
+  if ((m = name.match(/LeetCode Weekly Contest (\d+)/))) return `LC WC${m[1]}`
+  if ((m = name.match(/LeetCode Biweekly Contest (\d+)/))) return `LC BW${m[1]}`
   return name
 }
 
