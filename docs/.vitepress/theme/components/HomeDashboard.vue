@@ -189,7 +189,6 @@ const tracks: Track[] = [
     </section>
 
     <nav class="hub-utility-links" aria-label="其他入口">
-      <a :href="withBase('/tutoring')">家教／培訓</a>
       <a href="https://hanayukii.dev">技術部落格</a>
       <a :href="withBase('/about')">關於花雪</a>
       <span>ICPC 區域賽金牌 · 前 Google 工程師 · 演算法海牛核心團隊</span>

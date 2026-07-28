@@ -20,7 +20,6 @@ const fixedDescriptions: Record<string, string> = {
   'quant/index.md': '量化面試向的機率、鞅、隨機過程、線性代數、定價與統計題庫。',
   'cpp/index.md': 'Modern C++ 與 low-level 知識庫，供面試與複習使用。',
   'review/index.md': '依複習週期整理待回顧的競程、數學與 C++ 筆記。',
-  'tutoring.md': '競程與演算法家教：高中競賽、大廠面試與進階自學。',
   'about.md': '關於花雪 HanaYukii、本站的整理方向與聯絡方式。',
 }
 
@@ -166,7 +165,6 @@ export default defineConfig({
       { text: '競程', link: '/cp/' },
       { text: '數學', link: '/quant/' },
       { text: 'C++', link: '/cpp/' },
-      { text: '家教', link: '/tutoring' },
       { text: '關於', link: '/about' },
     ],
 
