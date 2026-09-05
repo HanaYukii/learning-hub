@@ -6,15 +6,15 @@ import { fileURLToPath } from 'node:url'
 import taskLists from 'markdown-it-task-lists'
 import { shortContest, cjkTokenize } from './lib'
 
-// Learning Hub —— 競程技巧 × 量化面試數學 個人知識庫
+// 花雪手帖 —— 競程、量化數學與 LeetCode 筆記
 // 文件: https://vitepress.dev/reference/site-config
 
 const docsDir = fileURLToPath(new URL('..', import.meta.url))
 const publicBase = 'https://hanayukii.github.io/learning-hub/'
-const fallbackDescription = '競程、量化面試數學與 Modern C++ 的個人學習筆記。'
+const fallbackDescription = '花雪手帖：競程、量化數學與 LeetCode 筆記，涵蓋解題思路、數學推導與 C++ 實作。'
 
 const fixedDescriptions: Record<string, string> = {
-  'index.md': '競程、量化面試數學與 Modern C++ 的個人學習工作台。',
+  'index.md': fallbackDescription,
   'cp/index.md': '競程比賽 digest、技巧卡、弱項專題與 LeetCode 月報。',
   'cp/tags.md': '依演算法與資料結構標籤瀏覽競程筆記。',
   'quant/index.md': '量化面試向的機率、鞅、隨機過程、線性代數、定價與統計題庫。',
@@ -57,7 +57,7 @@ function pageDescription(relativePath: string, title: string, frontmatter: Recor
   if (relativePath.startsWith('quant/hft-cpp/')) return `${title}：量化與 HFT 面試向的 C++ 實作筆記。`
   if (relativePath.startsWith('cpp/')) return `${title}：Modern C++ 與 low-level 工程筆記。`
 
-  return title ? `${title}｜花雪的學習筆記。` : fallbackDescription
+  return title ? `${title}｜花雪手帖。` : fallbackDescription
 }
 
 function canonicalUrl(page: string): string {
@@ -117,7 +117,7 @@ export default defineConfig({
   appearance: 'dark',
   // 模板檔是給作者的寫作參考,不對外部署
   srcExclude: ['**/template.md'],
-  title: '花雪的競程筆記訓練場',
+  title: '花雪手帖',
   description: fallbackDescription,
   lastUpdated: true,
   // SEO:讓 Google 有效收錄全站(hostname 換自訂網域時記得同步改)
@@ -138,11 +138,11 @@ export default defineConfig({
 
   transformHead({ page, pageData, description }) {
     const url = canonicalUrl(page)
-    const socialTitle = pageData.title || '花雪的競程筆記訓練場'
+    const socialTitle = pageData.title || '花雪手帖'
     return [
       ['link', { rel: 'canonical', href: url }],
       ['meta', { property: 'og:type', content: 'website' }],
-      ['meta', { property: 'og:site_name', content: '花雪的競程筆記訓練場' }],
+      ['meta', { property: 'og:site_name', content: '花雪手帖' }],
       ['meta', { property: 'og:title', content: socialTitle }],
       ['meta', { property: 'og:description', content: description }],
       ['meta', { property: 'og:url', content: url }],
@@ -221,7 +221,7 @@ export default defineConfig({
     outline: { level: [2, 3], label: '本頁目錄' },
     docFooter: { prev: '上一篇', next: '下一篇' },
     footer: {
-      message: '競程・數學・C++，持續整理。',
+      message: '競程、量化數學與 LeetCode 筆記。',
       copyright: '© 2026 花雪 HanaYukii',
     },
     lastUpdatedText: '最後更新',

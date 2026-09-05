@@ -22,16 +22,16 @@ interface SuggestedPost {
 
 const suggestedPosts: SuggestedPost[] = [
   {
-    title: 'ABC 468 D–G 學習重點(親自參賽)',
+    title: 'ARC229 A–D 學習重點',
     section: 'CP',
-    detail: '回文中心擴張的單調剪枝、調和數雙層前綴和、前綴最大值拆鏈 + LIS、巢狀完備區塊的補集遞推。',
-    link: '/cp/contests/2026-07-25-ac-abc468',
+    detail: '逆序對構造、折半操作的位元差分、奇偶端點分類，以及 Nim 變體的必敗態。',
+    link: '/cp/contests/2026-09-05-ac-arc229',
   },
   {
-    title: 'ABC 467 D–G 學習重點(親自參賽)',
+    title: 'CF1119 Div.3 B–G 學習重點',
     section: 'CP',
-    detail: '同心圓的中垂線歸約、鋸齒成本掃描、B 軸線段樹、值域樹 descent，含圖解與驗過的 code。',
-    link: '/cp/contests/2026-07-18-ac-abc467',
+    detail: 'MEX 構造、距離禁區聯集、泡泡排序逆序對，以及刪點後的缺口前綴和。',
+    link: '/cp/contests/2026-09-05-cf-1119-div3',
   },
   {
     title: 'LeetCode 2026 年 7 月 — Q4 精選',
@@ -87,10 +87,10 @@ const tracks: Track[] = [
   <main class="hub-dashboard" aria-labelledby="hub-title">
     <header class="hub-dashboard-header">
       <div class="hub-heading">
-        <p class="hub-kicker">HanaYukii / Learning Hub</p>
-        <h1 id="hub-title">花雪的競程筆記訓練場</h1>
+        <p class="hub-kicker">HanaYukii</p>
+        <h1 id="hub-title">花雪手帖</h1>
         <p class="hub-intro">
-          競程比賽、面試數學與 C++ 的工作筆記。從推薦文章開始，或直接進入一條學習路線探索。
+          競程、量化數學與 LeetCode 筆記
         </p>
       </div>
 
@@ -117,7 +117,7 @@ const tracks: Track[] = [
           <span class="hub-curation-note">最近整理</span>
         </div>
 
-        <p class="hub-panel-copy">不知道從哪裡開始時，可以先讀這三篇最近整理過的:一場親自參賽的 ABC,加上兩期 LeetCode 月報。</p>
+        <p class="hub-panel-copy">從 ARC229、CF1119 的解題整理開始，或閱讀 LeetCode 月報精選。</p>
 
         <ul class="hub-suggestion-list">
           <li v-for="post in suggestedPosts" :key="post.link">

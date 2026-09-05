@@ -2,7 +2,8 @@
 layout: page
 pageClass: learning-home
 outline: false
-title: 花雪的競程筆記訓練場
+title: 花雪手帖｜競程、量化數學與 LeetCode 筆記
+titleTemplate: false
 
 ---
 

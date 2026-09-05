@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "競程技巧 × 量化面試數學 個人知識庫",
+  "description": "花雪手帖｜競程、量化數學與 LeetCode 筆記",
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",

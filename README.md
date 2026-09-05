@@ -1,6 +1,6 @@
-# cp-quant
+# 花雪手帖｜競程、量化數學與 LeetCode 筆記
 
-比賽 digest・量化面試題庫・C++ 筆記。[VitePress](https://vitepress.dev) 建置:Markdown 撰寫、全文搜尋(中文 bigram)、MathJax 數學,push `main` 自動部署 GitHub Pages → https://hanayukii.github.io/learning-hub/
+競程比賽 digest、量化數學題庫與 LeetCode 題解，另收錄 C++ 實作筆記。[VitePress](https://vitepress.dev) 建置:Markdown 撰寫、全文搜尋(中文 bigram)、MathJax 數學,push `main` 自動部署 GitHub Pages → https://hanayukii.github.io/learning-hub/
 
 ## 開發
 
