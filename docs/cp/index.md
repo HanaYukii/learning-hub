@@ -14,7 +14,7 @@ import { data as contests } from './contests.data'
 ## 這裡有什麼
 
 - **比賽 digest** — 每場 Codeforces / AtCoder 一份,逐題「題意 + 核心作法」,附驗算小例與關鍵 code。
-- **[LeetCode 月報](/cp/leetcode/2026-07)** — 以月為單位,每場收 Q4(偶爾有亮點的 Q3)。
+- **[LeetCode 月報](/cp/leetcode/2026-08)** — 以月為單位,每場收 Q4(偶爾有亮點的 Q3)。
 - **技巧卡** — 反覆出現、值得深挖的 pattern,收成可複用的模板 + 易錯點。
 - **弱項專題** — 成套補的主題:[幾何](/cp/topics/geometry)、[flow](/cp/topics/flow)、[矩陣](/cp/topics/matrix)、[數論組合](/cp/topics/ntc)。
 

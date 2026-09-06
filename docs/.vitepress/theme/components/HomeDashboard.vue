@@ -34,10 +34,10 @@ const suggestedPosts: SuggestedPost[] = [
     link: '/cp/contests/2026-09-05-cf-1119-div3',
   },
   {
-    title: 'LeetCode 2026 年 7 月 — Q4 精選',
+    title: 'LeetCode 2026 年 8 月 — Q4 精選',
     section: 'LeetCode',
-    detail: '整月週賽/雙週賽 Q4:Manacher 整數陣列變形、群作用軌道計數、不變量坍縮 DP。',
-    link: '/cp/leetcode/2026-07',
+    detail: '整月週賽/雙週賽 Q4:峰子陣列的最左歸屬 + BIT、隨機 XOR hash 判全偶、prefix gcd 分段計數、電梯區間 DP 的 k·d 計費。',
+    link: '/cp/leetcode/2026-08',
   },
 ]
 
