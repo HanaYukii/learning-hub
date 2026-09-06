@@ -1,6 +1,6 @@
 ---
 name: contest-digest
-description: 把一場 Codeforces/AtCoder 比賽整理成「題目懶人包」digest,加進 learning-hub 並部署。當使用者說「做一場 digest」「加最新一場比賽」「整理某場 CF/AtCoder」或用 /contest-digest <url|最新> 時使用。
+description: 把一場 Codeforces/AtCoder 比賽整理成「題目懶人包」digest,或把一個月的 LeetCode 週賽/雙週賽整理成月報,加進 learning-hub 並部署。當使用者說「做一場 digest」「加最新一場比賽」「整理某場 CF/AtCoder」「補 LeetCode 月報」或用 /contest-digest <url|最新> 時使用。
 ---
 
 # contest-digest
@@ -69,6 +69,26 @@ git commit -m "digest: <比賽短名>"   # 不要加 Co-Authored-By
 git push origin main               # Actions 自動部署;側欄/索引/複習佇列/tag 頁自動掛載
 ```
 回報線上連結。若 build 抓到問題就修好再推。
+
+## LeetCode 月報(一月一檔,不走上面的單場流程)
+
+檔案 `docs/cp/leetcode/<YYYY-MM>.md`,收該月(UTC+8 日期)所有 Weekly / Biweekly。網路存取全走 `python3 .claude/skills/contest-digest/lc_tools.py`(GraphQL 可直接 POST;HTML 頁與 `/contest/api/info/` 被 Cloudflare 擋):
+
+```
+python3 .claude/skills/contest-digest/lc_tools.py lc-month 2026-08                        # 該月場次 + 四題 + zerotrac rating
+python3 .claude/skills/contest-digest/lc_tools.py lc-dump 2026-08 <TMP>/lc08              # 每場 Q3/Q4 題面(含官方 Hints)各存一檔
+python3 .claude/skills/contest-digest/lc_tools.py lc-format docs/cp/leetcode/2026-08.md   # 寫完後對 ```cpp 區塊套 clang-format
+```
+
+規則(照 2026-06 / 07 / 08 三期的既有格式):
+- frontmatter:`contest: LeetCode YYYY-MM`、`title: M 月 · Q4 精選`、`date:` 該月最後一場日期、`url: https://leetcode.com/contest/`、`source: ai-solved`(混有親自參賽的場次 → `mixed`)、`verified: false`、`aside: false`、`reviewed:` 寫檔日、`review_interval: 21`;`tags` 取全月主要 tag(仍限詞彙表)。
+- H1 `# LeetCode YYYY 年 M 月 — Q4 精選`,引言固定一行(每場收 Q4;`LC~` = zerotrac rating;未定分標 `LC~est`)。
+- 每場一節 `## Weekly N · YYYY-MM-DD`。**Q4 必收**(再簡單也寫,作法短寫即可);Q3 只有非顯然亮點才收全篇,否則只留一行引言:「> **Q3** [題名](url) `LC~xxxx` — 一句理由(掃過,無新亮點)」。Q1 / Q2 不出現。
+- 題意 / 作法 / 手算例 / cpp sketch 規格同單場 digest。**作法據官方 Hints(lc-dump 已附)重建,每題 code 必須先在本機以範例 + 隨機暴力對拍過**才寫進去(Apple clang 沒有 `bits/stdc++.h`,自備 shim);手算例也用程式驗。
+- 難度 `LC~<zerotrac>`;zerotrac 尚未收錄的新場次標 `LC~est<自估>`,並在該場節首加一行「官方 rating 未出,難度標 `LC~est`」。
+- **親自參賽**的場次:整場四題另開 `docs/cp/contests/<date>-lc-wcNNN.md`(`source: self`、`verified: true`;側欄短名 `LC WC512` 由 lib.ts 自動產生),月報只留 Q3/Q4 並互相連結。
+- 新一期完成後手動更新兩處連結:`docs/cp/index.md` 的「LeetCode 月報」與 `docs/.vitepress/theme/components/HomeDashboard.vue` 的推薦文章;側欄 / 索引表 / tag 頁 / 複習佇列自動掛載。
+- commit 訊息慣例 `<Month> LC report: ...`;同樣不加 Co-Authored-By。
 
 ## 檢查點
 - [ ] 難度標記正確(CF `~` / AtCoder `AtC~` kenkoooo 原值)、tag 全在詞彙表內
