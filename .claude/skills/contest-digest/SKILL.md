@@ -5,7 +5,7 @@ description: 把一場 Codeforces/AtCoder 比賽整理成「題目懶人包」di
 
 # contest-digest
 
-把一場競賽整理成**懶人包 digest**(每題「技巧 + 作法 1–2 行」),寫進 `docs/cp/contests/`,**停下來給使用者過目**,核可後才 commit + push(自動部署;側欄/索引/複習佇列/tag 頁全部自動掛載,不必手動改)。
+把一場競賽整理成**懶人包 digest**(每題「技巧 + 作法 1–2 行」),寫進 `docs/cp/contests/`,驗證通過後直接 commit + push(自動部署;側欄/索引/複習佇列/tag 頁全部自動掛載,不必手動改)。這是使用者對本專案文章整理的既定偏好，不需另等核可；若使用者明確要求只做草稿、不提交或不推送，則依該次指示執行。
 
 受眾是 **CF 巔峰 IM 2347、ICPC 金牌**的使用者——只收對他有學習價值的,老套秒殺的一句話帶過或不收。
 
@@ -58,17 +58,17 @@ slug 例:`cf-1108-div1`、`ac-arc224`。**格式嚴格照 `docs/cp/contests/temp
 - frontmatter 同 template(contest/date/tags/url/editorial/source/verified: false/aside: false/reviewed/review_interval)。
 - 不收的題不出現在檔案裡;exclusion 清單放 PR body / 回報。
 
-### 5) 審閱閘(重要)
-把草稿檔路徑 + 收/丟摘要回報給使用者,**停下來**。不要自動 commit。等使用者說 OK / 要改哪裡。
+### 5) 驗證內容
+核對題意、作法、手算例與來源，對程式執行適當的樣例或對拍。修正驗證發現的問題後，直接進入提交上線，不另設審閱閘。
 
-### 6) 核可後上線
+### 6) 提交上線
 ```
 cd <repo> && npm run build        # 死鏈 / 語法守門;綠了才推
 git add docs/cp/contests/<檔>
 git commit -m "digest: <比賽短名>"   # 不要加 Co-Authored-By
 git push origin main               # Actions 自動部署;側欄/索引/複習佇列/tag 頁自動掛載
 ```
-回報線上連結。若 build 抓到問題就修好再推。
+回報線上連結、收錄摘要與略過題目的理由。若 build 抓到問題就修好再推；驗證尚未通過或推送失敗時，說明實際阻礙，不宣稱已上線。
 
 ## LeetCode 月報(一月一檔,不走上面的單場流程)
 
@@ -94,4 +94,4 @@ python3 .claude/skills/contest-digest/lc_tools.py lc-format docs/cp/leetcode/202
 - [ ] 難度標記正確(CF `~` / AtCoder `AtC~` kenkoooo 原值)、tag 全在詞彙表內
 - [ ] source / verified / aside / tags frontmatter 齊全
 - [ ] 題意含明確 input/output;超 2700 非經典模板的未收;頁面無「不收」段
-- [ ] 審閱閘有停、commit 無 Co-Authored-By
+- [ ] 驗證通過後依使用者指示提交推送，commit 無 Co-Authored-By

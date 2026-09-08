@@ -22,16 +22,16 @@ interface SuggestedPost {
 
 const suggestedPosts: SuggestedPost[] = [
   {
+    title: 'Edu194 B–E 學習重點',
+    section: 'CP',
+    detail: '餘數求和、XOR 的 submask 貪心、前綴和符號分類，以及循環平衡的 O(1) 區間公式。',
+    link: '/cp/contests/2026-09-08-cf-edu194',
+  },
+  {
     title: 'ARC229 A–D 學習重點',
     section: 'CP',
     detail: '逆序對構造、折半操作的位元差分、奇偶端點分類，以及 Nim 變體的必敗態。',
     link: '/cp/contests/2026-09-05-ac-arc229',
-  },
-  {
-    title: 'CF1119 Div.3 B–G 學習重點',
-    section: 'CP',
-    detail: 'MEX 構造、距離禁區聯集、泡泡排序逆序對，以及刪點後的缺口前綴和。',
-    link: '/cp/contests/2026-09-05-cf-1119-div3',
   },
   {
     title: 'LeetCode 2026 年 8 月 — Q4 精選',
@@ -117,7 +117,7 @@ const tracks: Track[] = [
           <span class="hub-curation-note">最近整理</span>
         </div>
 
-        <p class="hub-panel-copy">從 ARC229、CF1119 的解題整理開始，或閱讀 LeetCode 月報精選。</p>
+        <p class="hub-panel-copy">從 Edu194、ARC229 的解題整理開始，或閱讀 LeetCode 月報精選。</p>
 
         <ul class="hub-suggestion-list">
           <li v-for="post in suggestedPosts" :key="post.link">
