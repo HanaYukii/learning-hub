@@ -39,4 +39,4 @@ review_interval: 21
 
 ## 什麼該搬到編譯期、什麼不該
 
-- **該搬:常數與純計算能前移就前移;type/size/invariant 錯誤在 build 時擋掉;generic code 真的分型別走不同邏輯才用 `if constexpr`;LUT 三條件 = 高頻熱路徑 + 允許精度誤差 + 輸入範圍固定**。不該搬:依賴 runtime 輸入的值、會炸 compile time/binary size 的巨表、為「看起來很 compile-time」硬堆的 template trick——LUT 是空間換時間,cache footprint 是隱藏成本;重點不是語法炫,而是把不必留到 runtime 的工作提前做掉。
+- **該搬:常數與純計算能前移就前移;type/size/invariant 錯誤在 build 時擋掉;generic code 真的分型別走不同邏輯才用 `if constexpr`;LUT 三條件 = 高頻熱路徑 + 允許精度誤差 + 輸入範圍固定**。不該搬:依賴 runtime 輸入的值、使 compile time/binary size 過大的巨表、沒有實際收益的 template trick——LUT 是空間換時間,cache footprint 是隱藏成本，需一起評估。

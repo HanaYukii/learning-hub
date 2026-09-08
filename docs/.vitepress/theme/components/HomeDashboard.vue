@@ -143,7 +143,7 @@ const tracks: Track[] = [
             <p class="hub-section-label">Browse</p>
             <h2 id="tracks-heading">學習入口</h2>
           </div>
-          <p>內容保留文件式結構，入口只負責帶你到正確的地方。</p>
+          <p>依主題瀏覽題解、數學推導與 C++ 筆記。</p>
         </div>
 
         <div class="hub-tracks">

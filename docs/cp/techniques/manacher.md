@@ -1,7 +1,7 @@
 ---
 title: Manacher(線性最長回文 / 每中心回文半徑)
 tags: [字串, Manacher]
-why: O(n) 求「每個中心的最長回文」;殼常包在整數陣列上、比較改成值相等——認出來就秒殺
+why: O(n) 求「每個中心的最長回文」;也適用整數陣列，將字元比較改成數值比較
 trigger: 回文子串/子陣列相關;尤其「對每個中心要最長回文」或「回文子串計數」
 problems:
   - { name: "LC WC509 Q4 Palindromic Subarray Sum(整數陣列 Manacher + 全正單調)", url: "https://leetcode.com/problems/palindromic-subarray-sum/", rating: 2202 }
@@ -37,7 +37,7 @@ vector<int> manacher(const vector<T>& a, T SEP) {
 ## 這題的變形(WC509 Q4 Palindromic Subarray Sum)
 正整數陣列,求「本身是回文的連續子陣列」的最大元素和。
 
-- **寶石:全正值 ⇒ 固定中心時回文半徑越大、區間和越大** → 每個中心只需它的**最長回文**,不必枚舉所有回文。於是問題塌成「對每中心取最長回文的區間和,取 max」,直接套 Manacher($O(n)$)。
+- **全正值 ⇒ 固定中心時回文半徑越大、區間和越大** → 每個中心只需它的**最長回文**,不必枚舉所有回文。問題便化為「對每中心取最長回文的區間和,取 max」,直接套 Manacher($O(n)$)。
 - Manacher 跑在**整數陣列**上:比較從字元相等改成**值相等**(通用模板已支援);$S$ 取值域外的值(值 $\ge1$ 就用 $0$ 或 $-1$)。
 
 ```cpp

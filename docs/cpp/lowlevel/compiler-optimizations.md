@@ -29,4 +29,4 @@ review_interval: 21
 ## Move 不是免費的
 
 - **SSO string 的 move ≈ copy**:短字串模式下沒有 heap pointer 可偷,move ctor 仍要**整塊複製 inline buffer** 並重置來源;只有 heap 模式的 move 才是 **O(1)** 指標交接。「move 一定便宜」對 `std::string` 不成立。
-- **elision 永遠不輸 move:零次 vs 一次**:NRVO / 強制 elision 是**零次**特殊成員函數呼叫,move 是**一次**(vector 是搬三個指標,SSO string 是 buffer copy)。核心觀念:**不要和編譯器搶工作** — 最好的優化是直接 `return x;`,讓編譯器決定。
+- **elision 永遠不輸 move:零次 vs 一次**:NRVO / 強制 elision 是**零次**特殊成員函數呼叫,move 是**一次**(vector 是搬三個指標,SSO string 是 buffer copy)。直接 `return x;`，保留編譯器進行 copy elision 的機會。

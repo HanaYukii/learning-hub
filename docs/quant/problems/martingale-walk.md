@@ -8,7 +8,7 @@ review_interval: 21
 
 # 鞅・隨機漫步・停時(艱深)
 
-> 艱深題庫:每題「題目 + 技巧 + 解法/答案」。面試前快速複習。延伸見 [鞅與選擇停時](/quant/probability/martingale-optional-stopping)。
+> 用鞅處理隨機漫步、破產機率與停時。延伸見 [鞅與選擇停時](/quant/probability/martingale-optional-stopping)。
 
 - **賭徒破產(對稱):資本從 $k$ 出發,每步 $\pm1$ 各半,問打到 $N$ 前先破產?先算成功機率,再算期望局數。**
   <details><summary>技巧+答案</summary>

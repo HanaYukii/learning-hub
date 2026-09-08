@@ -8,7 +8,7 @@ review_interval: 21
 
 # 隨機微積分・布朗運動(艱深)
 
-> 艱深題庫:每題「題目 + 技巧 + 解法/答案」。面試前快速複習。
+> 布朗運動、Itô 公式與隨機微積分題。
 
 - **用 Itô lemma 展開 $d(W_t^2)$,並由此求 $\int_0^t W_s\,dW_s$。**
   <details><summary>技巧+答案</summary>

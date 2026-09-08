@@ -11,7 +11,7 @@ import { data as groups } from './tags.data'
 
 # 技巧 tag 索引
 
-「我想複習所有 XX 題」看這頁——**自動**聚合所有 digest 的題目與技巧卡,依 tag 分組(出現次數排序)。
+依 tag 查找題目與技巧卡，按出現次數排序。
 
 <p>
   <a v-for="g in groups" :key="'a' + g.tag" :href="'#' + g.tag" style="display:inline-block;margin:2px 6px 2px 0;">

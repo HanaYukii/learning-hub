@@ -1,7 +1,7 @@
 # C++ Modern & Low-Level
 
-> **用途**:現代 C++ 與底層知識的 item 化知識庫,面試/複習快掃。**求覆蓋**(quant 式):標準知識也列一行,非顯然處才展開。
-> **分工**:這裡是**知識庫**(體系導向);[HFT C++ 面試軌](/quant/hft-cpp/parameter-passing) 是**考點 item-sheet**(面試導向),條目互相連結。
+> 現代 C++ 與底層知識筆記。基本概念簡記，容易混淆或影響效能的地方另作說明。
+> 按主題閱讀可從下表開始；[HFT C++ 面試軌](/quant/hft-cpp/parameter-passing) 則以問答方式整理。
 
 ## Modern 軌 checklist
 
@@ -29,4 +29,4 @@
 - [ ] Huge pages / TLB / NUMA
 - [ ] 量測方法:rdtsc、benchmark 陷阱
 
-> ★ = 蒸餾自[部落格](https://hanayukii.dev)既有文章。未打勾 = backlog,之後波次補。
+> ★ = 整理自[部落格](https://hanayukii.dev)既有文章。未勾選的主題待補。

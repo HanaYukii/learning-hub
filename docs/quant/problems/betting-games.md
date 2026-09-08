@@ -8,7 +8,7 @@ review_interval: 21
 
 # Kelly・賭注 sizing・做市 EV 遊戲(艱深)
 
-> 艱深題庫:每題「題目 + 技巧 + 解法/答案」。面試前快速複習。
+> Kelly 下注比例、重擲決策與做市題。
 
 ## Kelly 與 bet sizing
 

@@ -12,9 +12,9 @@ review_interval: 21
 ## 動態多型:virtual 分派機制與成本
 
 - **virtual call = 經 vtable 的兩次記憶體間接**:object → **vptr** → vtable slot → 函式位址;每個多型物件多 **1 個 vptr(64-bit 下通常 8 bytes)**,每個多型 class 一份 vtable(Itanium ABI 慣例,標準不規定實作方式)。
-- **真正的成本不是跳轉本身,而是「優化屏障」**:間接呼叫讓編譯器無法 inline(除非能 devirtualize,見下),連帶失去常數傳播、向量化等後續優化;分支預測命中時 call 開銷很小,**miss 時約 15–20 cycles 的 pipeline flush**(依 µarch 而異)。
+- **間接呼叫也會限制編譯器優化**:間接呼叫讓編譯器無法 inline(除非能 devirtualize,見下),連帶失去常數傳播、向量化等後續優化;分支預測命中時 call 開銷很小,**miss 時約 15–20 cycles 的 pipeline flush**(依 µarch 而異)。
 - **多型基底必須有 virtual destructor**:經 `Base*` 對衍生物件 `delete` 而 dtor 非 virtual 是 **UB**;慣用 `virtual ~Shape() = default;`。
-- **virtual 的核心賣點是異質容器與開放集合**:`vector<unique_ptr<Shape>>` 可裝執行期才知道的型別;template/CRTP 做不到——`Shape<Circle>` 與 `Shape<Square>` 是**不同型別,塞不進同一容器**。
+- **virtual 適用於異質容器與開放的型別集合**:`vector<unique_ptr<Shape>>` 可裝執行期才知道的型別;template/CRTP 做不到——`Shape<Circle>` 與 `Shape<Square>` 是**不同型別,塞不進同一容器**。
 
 <svg width="620" viewBox="0 0 620 232" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" style="max-width:100%;height:auto" role="img" aria-label="virtual 經 vptr 與 vtable 兩次間接呼叫,對比 CRTP 編譯期直接inline">
   <defs>

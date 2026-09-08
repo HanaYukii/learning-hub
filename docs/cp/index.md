@@ -9,13 +9,13 @@ import { data as contests } from './contests.data'
 
 # 競程技巧庫
 
-> 拆解每場比賽值得學的**解題思路**:題意、關鍵觀察、正確實作、能遷移到哪。重點不在題號,而在「看到什麼線索 → 想到什麼方法」。
+> 整理比賽中的解題思路、實作細節，以及同一種技巧還能用在哪些題目。
 
 ## 這裡有什麼
 
-- **比賽 digest** — 每場 Codeforces / AtCoder 一份,逐題「題意 + 核心作法」,附驗算小例與關鍵 code。
+- **比賽 digest** — 每場 Codeforces / AtCoder 一份,整理題意與作法，附小例子和程式片段。
 - **[LeetCode 月報](/cp/leetcode/2026-08)** — 以月為單位,每場收 Q4(偶爾有亮點的 Q3)。
-- **技巧卡** — 反覆出現、值得深挖的 pattern,收成可複用的模板 + 易錯點。
+- **技巧卡** — 把反覆用到的技巧整理成模板，附上使用條件與易錯處。
 - **弱項專題** — 成套補的主題:[幾何](/cp/topics/geometry)、[flow](/cp/topics/flow)、[矩陣](/cp/topics/matrix)、[數論組合](/cp/topics/ntc)。
 
 難度大致涵蓋到 CF `~2700` / AtCoder `AtC~2300`,更高的只收長期可複用的經典模板。按技巧聚合見 **[技巧 tag 索引](/cp/tags)**。

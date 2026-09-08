@@ -20,7 +20,7 @@ review_interval: 21
   要點:vptr/vtable 是主流 ABI(Itanium、MSVC)的實作方式——標準沒有規定,但 GCC/Clang/MSVC 皆如此:有 virtual function 的 class,每個物件開頭插一個指標大小的 **vptr**(64-bit 為 8 bytes),指向唯讀資料段裡該 class 共用的 **vtable**(function pointer 陣列);`struct { int x; virtual void foo(); }` 的 $\text{sizeof} = 8(\text{vptr}) + 4(\text{int}) + 4(\text{pad}) = 16$。**關鍵:「空間成本是每物件一個 vptr + 對齊 padding,vtable 本身每 class 只有一份。」**
 
 - **virtual call 的真正代價是失去 inline,不是兩次 indirection**
-  要點:呼叫路徑 = 讀 vptr → 讀 vtable entry → indirect call(兩次相依的 memory load);indirect branch 在預測命中時跳轉本身很便宜,真正的殺手是編譯期不知道目標、**無法 inline** 與後續優化,hot loop 差距可達 $5\text{–}10\times$。`std::function` 的 type erasure 有同款 overhead(還可能多一次 heap allocation)。**關鍵:「代價在失去 inline 與後續優化;hot path 用 `final` 讓編譯器 devirtualize,或用 CRTP 把 dispatch 搬到編譯期(零 runtime 成本,代價是失去 runtime 多型)。」**
+  要點:呼叫路徑 = 讀 vptr → 讀 vtable entry → indirect call(兩次相依的 memory load);indirect branch 在預測命中時跳轉本身很便宜,額外成本來自編譯期不知道目標、**無法 inline** 與後續優化,hot loop 差距可達 $5\text{–}10\times$。`std::function` 的 type erasure 有類似的 overhead(還可能多一次 heap allocation)。**關鍵:「代價在失去 inline 與後續優化;hot path 用 `final` 讓編譯器 devirtualize,或用 CRTP 把 dispatch 搬到編譯期(零 runtime 成本,代價是失去 runtime 多型)。」**
 
 - **unique_ptr 近零成本;shared_ptr 是 16B + heap 上的 control block**
   要點:預設(無狀態)deleter 下 $\text{sizeof(unique\_ptr)}=8$,與 raw pointer 相同(有狀態 deleter 如 function pointer 會變大),inline 後機器碼通常與 raw pointer 等價;但它有非 trivial destructor,按值傳參時 Itanium ABI 規定走記憶體而非暫存器,嚴格說是「近零成本」而非絕對零。$\text{sizeof(shared\_ptr)}=16$(64-bit;物件指標 + control block 指標),control block 另存 atomic 的 strong/weak count、deleter、allocator。**關鍵:「不需要共享所有權就用 `unique_ptr`——先問所有權模型,再談指標選型。」**

@@ -49,7 +49,7 @@ review_interval: 21
 ## Vtable 與 virtual 的代價
 
 - **加一個 `virtual` 使 `sizeof` 從 4 → 16(x86-64)**:物件開頭插入 **8B vptr** + int 4B + padding 4B;vptr 指向 per-class 的 vtable(function pointer 陣列,放 read-only data section),derived override 就是換掉 vtable 裡對應的 entry。vptr/vtable 是實作慣例(Itanium ABI),標準未規定,但主流編譯器行為一致。
-- **virtual call = 2 次 memory indirection,但真正的殺手是失去 inline:hot loop 差距可達 5–10x**:讀 vptr → 查 vtable → 跳轉;目標到 runtime 才確定,編譯器無法 inline,呼叫點後續優化也全部斷掉。non-virtual call 是編譯期已知地址的直接跳轉。
+- **virtual call = 2 次 memory indirection,也可能失去 inline:hot loop 差距可達 5–10x**:讀 vptr → 查 vtable → 跳轉;目標到 runtime 才確定,編譯器無法 inline,呼叫點後續優化也全部斷掉。non-virtual call 是編譯期已知地址的直接跳轉。
 - **`final` 觸發 devirtualization,拿回 inline**:標了 `final` 就不會再被繼承/override,編譯器可把 virtual call 還原成 direct call;**LTO** 在某些情況下也能達成類似效果。
 - **CRTP 以編譯期 dispatch 取代 virtual,零 runtime 成本**:`static_cast<Derived*>(this)->impl()`,dispatch 全在編譯期、可 inline;缺點是語法複雜、做不到 runtime 多型(異質容器不行)。
 - **`std::function` 內部是 type erasure,帶有類 vtable 的 indirection(超出 small buffer 的 callable 還會 heap allocate)**:callable type 編譯期已知時,改用 template 參數直接收 lambda。

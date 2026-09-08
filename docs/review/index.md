@@ -42,11 +42,11 @@ const menu = computed(() => {
 
 # 複習佇列
 
-本頁**自動**掃描全站筆記的 frontmatter(`reviewed` + `review_interval`)產生,新內容入庫即自動排程,不需手動維護。
+依筆記的複習日期與間隔排出待複習內容。
 
 ## 📋 本週菜單
 
-一次複習 session 的預設份量(同一週內固定,不用選擇困難):
+本週的複習清單：
 
 <ul v-if="menu">
   <li v-for="i in menu.due3" :key="i.url">複習:<a :href="withBase(i.url)">{{ i.title }}</a>({{ i.section }},到期 {{ i.due }})</li>
