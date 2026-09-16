@@ -18,7 +18,7 @@ import { data as contests } from './contests.data'
 - **技巧卡** — 把反覆用到的技巧整理成模板，附上使用條件與易錯處。
 - **弱項專題** — 成套補的主題:[幾何](/cp/topics/geometry)、[flow](/cp/topics/flow)、[矩陣](/cp/topics/matrix)、[數論組合](/cp/topics/ntc)。
 
-難度大致涵蓋到 CF `~2700` / AtCoder `AtC~2300`,更高的只收長期可複用的經典模板。按技巧聚合見 **[技巧 tag 索引](/cp/tags)**。
+難度大致涵蓋到 CF `~2500` / AtCoder `AtC~2300`,更高的只收長期可複用的經典模板。按技巧聚合見 **[技巧 tag 索引](/cp/tags)**。
 
 ## 技巧 tag
 

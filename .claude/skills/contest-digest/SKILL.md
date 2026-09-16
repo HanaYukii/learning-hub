@@ -43,7 +43,7 @@ python .claude/skills/contest-digest/tools.py ac-statement <slug> <小寫題號>
 - CF 場:各難度都收(含 A/B),只要題型**主流、可遷移、學得起來**;簡單題給一句關鍵觀察即可。
 - **ABC 場:前段不收——原則上從 E 起,且 kenkoooo ≳ AtC~1300 才逐題收**(D 以下僅分數特別高才破例);略過的在 header 引言一行帶過(如「A–E 熱身略過;只收 F/G」)。
 - **丟**:偏門 gimmick(ad-hoc / 一次性 / 吃靈光,之後幾乎用不到)。
-- 難度上限:CF **~2700**、AtCoder **AtC~2300**;超過的**只在經典模板工具**(HLD、ODT、線段樹分治、可回滾DSU、分治NTT、BSGS、WHT…)時破例,否則不收。
+- 難度上限:CF **~2500**、AtCoder **AtC~2300**(使用者定的「適合自己或高一點」的帶,2026-09-16 從 ~2700 下修);超過的**只在經典模板工具**(HLD、ODT、線段樹分治、可回滾DSU、分治NTT、BSGS、WHT…)時破例,否則不收。
 
 **難度**:CF 題標 `~`(官方 rating / 題位估計);**AtCoder 題標 `AtC~` = kenkoooo difficulty 原值**(ed.txt / ac-difficulty 直接給,**不做 +400 換算**)。
 
@@ -95,5 +95,5 @@ python3 .claude/skills/contest-digest/lc_tools.py lc-format docs/cp/leetcode/202
 ## 檢查點
 - [ ] 難度標記正確(CF `~` / AtCoder `AtC~` kenkoooo 原值)、tag 全在詞彙表內
 - [ ] source / verified / aside / tags frontmatter 齊全
-- [ ] 題意含明確 input/output;超 2700 非經典模板的未收;頁面無「不收」段
+- [ ] 題意含明確 input/output;超 2500(CF)/ 2300(AtC)非經典模板的未收;頁面無「不收」段
 - [ ] 驗證通過後依使用者指示提交推送，commit 無 Co-Authored-By
