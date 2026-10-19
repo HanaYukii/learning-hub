@@ -34,10 +34,10 @@ const suggestedPosts: SuggestedPost[] = [
     link: '/cp/contests/2026-09-05-ac-arc229',
   },
   {
-    title: 'LeetCode 2026 年 8 月 — Q4 精選',
+    title: 'LeetCode 2026 年 10 月 — Q4 精選',
     section: 'LeetCode',
-    detail: '整月週賽/雙週賽 Q4:峰子陣列的最左歸屬 + BIT、隨機 XOR hash 判全偶、prefix gcd 分段計數、電梯區間 DP 的 k·d 計費。',
-    link: '/cp/leetcode/2026-08',
+    detail: '整月週賽/雙週賽 Q4:奇數段拆分即 Fibonacci、前綴樹子節點排序的子集 DP、後綴背包重建字典序最小、半整數座標的區間覆蓋貪心。',
+    link: '/cp/leetcode/2026-10',
   },
 ]
 
